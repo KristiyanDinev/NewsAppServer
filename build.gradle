@@ -5,24 +5,30 @@ plugins {
 }
 
 group = 'we.newsapp'
-version = '0.0.1-SNAPSHOT'
-
+version = '1'
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(21)
 	}
 }
-
+def mockitoAgent = configurations.create('mockitoAgent')
 repositories {
 	mavenCentral()
 }
 
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// https://mvnrepository.com/artifact/org.mockito/mockito-subclass
+	testImplementation 'org.mockito:mockito-subclass:5.14.2'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+	print(mockitoAgent.asPath)
+	jvmArgs("-javaagent:${mockitoAgent.asPath}")
+	//useJUnitPlatform()
 }
