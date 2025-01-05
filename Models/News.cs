@@ -1,0 +1,10 @@
+﻿namespace NewsAppServer.Models {
+    public class News {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Thumbnail_base64 { get; set; }
+        public string PDF_path { get; set; }
+        public string HTML_body { get; set; }
+        public DateTime Posted_on_UTC_timezored { get; set; }
+    }
+}
