@@ -1,14 +1,14 @@
 [
   {
-    "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__0_1",
-    "RelativePath": "news",
+    "ContainingType": "NewsAppServer.Controllers.AdminController\u002B\u003C\u003Ec",
+    "Method": "\u003C.ctor\u003Eb__0_0",
+    "RelativePath": "adminlogin",
     "HttpMethod": "POST",
     "IsController": false,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "bbcode",
+        "Name": "adminPassword",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -23,16 +23,87 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec",
+    "Method": "\u003C.ctor\u003Eb__0_3",
+    "RelativePath": "delete/news",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newsID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec",
+    "Method": "\u003C.ctor\u003Eb__0_2",
+    "RelativePath": "edit/news",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "news",
+        "Type": "NewsAppServer.Models.News",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec",
+    "Method": "\u003C.ctor\u003Eb__0_1",
+    "RelativePath": "news",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "news",
+        "Type": "NewsAppServer.Models.News",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec",
     "Method": "\u003C.ctor\u003Eb__0_0",
-    "RelativePath": "news/{limit:int?}",
+    "RelativePath": "news/{page:int}/{amount:int}",
     "HttpMethod": "GET",
     "IsController": false,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "limit",
+        "Name": "page",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
+      },
+      {
+        "Name": "amount",
+        "Type": "System.Int32",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [

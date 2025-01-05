@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+		<title>SCEditor Demo</title>
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sceditor@3/minified/themes/default.min.css" id="theme-style" />
+		  
+		<script src="https://cdn.jsdelivr.net/npm/sceditor@3/minified/sceditor.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sceditor@3/minified/icons/monocons.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sceditor@3/minified/formats/bbcode.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sceditor@3/minified/formats/xhtml.js"></script>
+
+		
+	</head>
+	<body>
+
+		<form action="https://localhost:5001/news" method="post">
+			<lable>Title:</lable>
+			<input name="Title" type="text">
+			<br>
+			<lable>Tags:</lable>
+			<input name="Tags" type="text">
+			<br>
+			<lable>Thumnail:</lable>
+			<input name="Thumbnail_base64" type="file" accept="image/png,image/jpg,image/jpeg,image/svg,image/apng">
+			<br>
+			<lable>Select PDFs</lable>
+			<input name="PDF_path" type="file" accept="application/pdf" multiple>
+			<br>
+			<lable>Body</lable>
+			<textarea name="HTML_body" id="example" rows="20" cols="50" ></textarea>
+			<br>
+			<button type="submit">Submit</button>
+		</form>
+
+
+
+
+		<script>
+			var textarea = document.getElementById('example');
+			sceditor.create(textarea, {
+				format: 'bbcode',
+				icons: 'monocons',
+				toolbar: 'bold,italic,underline,strike,subscript,superscript,left,center,right|justify,font,size,color,code,cut,copy,paste|horizontalrule,image,link,unlink,youtube,date,time,maximize,source',
+				style: 'https://cdn.jsdelivr.net/npm/sceditor@3/minified/themes/default.min.css'
+			});
+		</script>
+
+		<p>SCEditor is licensed under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT</a></p>
+	</body>
+</html>
+
+

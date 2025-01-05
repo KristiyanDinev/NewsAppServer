@@ -9,24 +9,52 @@ namespace NewsAppServer.Controllers {
         public NewsController(WebApplication app) {
             // [FromForm] string bbcode
 
-            app.MapGet("/news/{page:int}/{amount:int}", (HttpContext http, DatabaseManager db, 
+            app.MapGet("/news/{page:int}/{amount:int}", async (HttpContext http, 
+                DatabaseManager db, 
                 int page, int amount) => {
-                    amount += 1;
-                    return db.GetNews(page, amount);
+                    
+                    page -= 1;
+                    List<News> news = await db.GetNews(page, amount);
+                    return news;
+                    
             });
 
-            app.MapPost("/news", (HttpContext http, [FromForm] News news) => {
-                // BBCode.ConvertToHtml(bbcode)
+            app.MapPost("/news", (HttpContext http, DatabaseManager db, 
+                [FromForm] News news) => {
+                    // BBCode.ConvertToHtml(bbcode)
+                    try {
+                        news.HTML_body = BBCode.ConvertToHtml(news.HTML_body);
+                        db.AddNews(news);
+                    } catch (Exception ex) {
+                        return Results.BadRequest();
+                    }
+                    return Results.Ok();
             }).DisableAntiforgery();
 
 
-            app.MapPost("/edit/news", (HttpContext http, [FromForm] News news) => {
-                Console.WriteLine(news.Id);
-                Console.WriteLine(news.Title);
-            }).DisableAntiforgery();
+            app.MapPost("/edit/news", (HttpContext http, DatabaseManager db, 
+                [FromForm] News news) => {
 
-            app.MapPost("/delete/news", (HttpContext http, [FromForm] int newsID) => {
-                Console.WriteLine(newsID);
+                    try {
+                        db.EditNews(news);
+                    } catch (Exception ex) { 
+                        return Results.BadRequest();
+                    }
+                        return Results.Ok();
+
+                }).DisableAntiforgery();
+
+            app.MapPost("/delete/news", (HttpContext http, DatabaseManager db, 
+                [FromForm] int newsID) => {
+
+                try {
+                    db.RemoveNews(newsID);
+                } catch (Exception ex) {
+                    return Results.BadRequest();
+                }
+                return Results.Ok();
+
+
             }).DisableAntiforgery();
         }
     }

@@ -3,10 +3,7 @@
     "NewsAppServer": {
       "commandName": "Project",
       "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:53997;http://localhost:53998"
+      "applicationUrl": "https://localhost:5001"
     }
   }
 }

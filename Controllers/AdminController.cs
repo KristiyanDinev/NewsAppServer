@@ -5,11 +5,12 @@ using NewsAppServer.Database;
 namespace NewsAppServer.Controllers {
     public class AdminController {
         public AdminController(WebApplication app) {
-            app.MapPost("/adminlogin", (HttpContext http, DatabaseManager db, [FromForm] string adminPassword) => {
+            app.MapPost("/adminlogin", async (HttpContext http, DatabaseManager db, [FromForm] string adminPassword) => {
 
 
                 try {
-                    if (db.GetAdminPasswords().Contains(adminPassword)) {
+                    List<string> passwords = await db.GetAdminPasswords();
+                    if (passwords.Contains(adminPassword)) {
                         return Results.Ok();
                     }
                     throw new Exception();

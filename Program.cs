@@ -13,6 +13,8 @@ namespace NewsAppServer
             // Microsoft.Data.Sqlite
             // SQLite
             // 1@#c4V5B6N7M8(0,(*mN76B5V4c3347E65R*^T&y^&r%6E4W5C3
+            // INSERT INTO Admins VALUES ('1@#c4V5B6N7M8(0,(*mN76B5V4c3347E65R*^T&y^&r%6E4W5C3');
+
 
             DatabaseManager.Setup();
 
