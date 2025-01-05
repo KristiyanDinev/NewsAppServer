@@ -53,18 +53,16 @@ CREATE TABLE IF NOT EXISTS Admins (Password VARCHAR NOT NULL);
             }
         }
 
-		public List<News> GetNews(int limit) { 
+		public List<News> GetNews(int page, int amountPerPage) { 
+            // fist page is 0
 			List<News> list = new List<News>();
             using (var connection = new SqliteConnection(_connectionString)) {
                 connection.Open();
 
                 var command = connection.CreateCommand();
-                if (limit > 0) {
-                    command.CommandText = "SELECT * FROM News LIMIT $limit";
-                    command.Parameters.AddWithValue("$limit", limit);
-                } else {
-                    command.CommandText = "SELECT * FROM News";
-                }
+                command.CommandText = "SELECT * FROM News ORDER BY Posted_on DESC LIMIT $amount OFFSET $page;";
+                command.Parameters.AddWithValue("$page", page * amountPerPage);
+                command.Parameters.AddWithValue("$amount", amountPerPage);
                 using (var reader = command.ExecuteReader()) {
                     while (reader.Read()) {
                         foreach (News news in reader.Cast<News>()) {
@@ -75,5 +73,22 @@ CREATE TABLE IF NOT EXISTS Admins (Password VARCHAR NOT NULL);
             }
             return list;
         }
-	}
+
+
+        public List<string> GetAdminPasswords() {
+            List<string> list = new List<string>();
+            using (var connection = new SqliteConnection(_connectionString)) {
+                connection.Open();
+
+                var command = connection.CreateCommand();
+                command.CommandText = "SELECT * FROM Admins;";
+                using (var reader = command.ExecuteReader()) {
+                    while (reader.Read()) {
+                        list.Add(reader.GetString(0));
+                    }
+                }
+            }
+            return list;
+        }
+    }
 }
