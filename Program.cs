@@ -15,8 +15,7 @@ namespace NewsAppServer
             // 1@#c4V5B6N7M8(0,(*mN76B5V4c3347E65R*^T&y^&r%6E4W5C3
             // INSERT INTO Admins VALUES ('1@#c4V5B6N7M8(0,(*mN76B5V4c3347E65R*^T&y^&r%6E4W5C3');
 
-
-            DatabaseManager.Setup();
+         
 
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddScoped<DatabaseManager>();
@@ -34,6 +33,10 @@ namespace NewsAppServer
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRateLimiter();
+
+            DatabaseManager._connectionString += 
+                app.Configuration.GetValue<string>("SQLite_Location");
+            DatabaseManager.Setup();
 
             new NewsController(app);
             new AdminController(app);

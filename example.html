@@ -16,29 +16,30 @@
 	</head>
 	<body>
 
-		<form action="https://localhost:5001/news" method="post">
+		<form enctype="multipart/form-data" action="https://localhost:5001/news" method="post" >
 			<lable>Title:</lable>
 			<input name="Title" type="text">
 			<br>
 			<lable>Tags:</lable>
 			<input name="Tags" type="text">
 			<br>
-			<lable>Thumnail:</lable>
-			<input name="Thumbnail_base64" type="file" accept="image/png,image/jpg,image/jpeg,image/svg,image/apng">
-			<br>
-			<lable>Select PDFs</lable>
-			<input name="PDF_path" type="file" accept="application/pdf" multiple>
-			<br>
 			<lable>Body</lable>
 			<textarea name="HTML_body" id="example" rows="20" cols="50" ></textarea>
 			<br>
+			<lable>Select Thumbnail</lable>
+			<input name="Files" type="file" accept="image/png,image/jpg,image/jpeg,image/svg,image/apng">
+			<br>
+			<lable>Select PDFs</lable>
+			<input name="Files" type="file" accept="application/pdf" multiple>
+			<br>
 			<button type="submit">Submit</button>
 		</form>
-
+		
 
 
 
 		<script>
+
 			var textarea = document.getElementById('example');
 			sceditor.create(textarea, {
 				format: 'bbcode',

@@ -23,7 +23,7 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__0_3",
+    "Method": "\u003C.ctor\u003Eb__0_4",
     "RelativePath": "delete/news",
     "HttpMethod": "POST",
     "IsController": false,
@@ -45,7 +45,7 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__0_2",
+    "Method": "\u003C.ctor\u003Eb__0_3",
     "RelativePath": "edit/news",
     "HttpMethod": "POST",
     "IsController": false,
@@ -53,7 +53,7 @@
     "Parameters": [
       {
         "Name": "news",
-        "Type": "NewsAppServer.Models.News",
+        "Type": "NewsAppServer.Models.NewsForm",
         "IsRequired": true
       }
     ],
@@ -66,8 +66,8 @@
     ]
   },
   {
-    "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__0_1",
+    "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec__DisplayClass0_0",
+    "Method": "\u003C.ctor\u003Eb__2",
     "RelativePath": "news",
     "HttpMethod": "POST",
     "IsController": false,
@@ -75,7 +75,7 @@
     "Parameters": [
       {
         "Name": "news",
-        "Type": "NewsAppServer.Models.News",
+        "Type": "NewsAppServer.Models.NewsForm",
         "IsRequired": true
       }
     ],
@@ -108,7 +108,31 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[NewsAppServer.Models.News, NewsAppServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[NewsAppServer.Models.NewsModel, NewsAppServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec",
+    "Method": "\u003C.ctor\u003Eb__0_1",
+    "RelativePath": "news/id/{newsID:int}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newsID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "NewsAppServer.Models.NewsModel",
         "MediaTypes": [
           "application/json"
         ],

@@ -3,10 +3,9 @@ using NewsAppServer.Models;
 
 namespace NewsAppServer.Database {
 	public class DatabaseManager {
-		private static readonly string _connectionString = "Data Source=database.sqlite";
+		public static string _connectionString = "Data Source=";
 
 		public static void Setup() {
-            //SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
             using (var connection = new SqliteConnection(_connectionString)) {
 				connection.Open();
 
@@ -15,11 +14,11 @@ namespace NewsAppServer.Database {
                             @"CREATE TABLE IF NOT EXISTS News 
 (Id INTEGER PRIMARY KEY, 
 Title VARCHAR(255) NOT NULL, 
-Thumbnail_base64 VARCHAR, 
-PDF_path VARCHAR NOT NULL, 
+Thumbnail_path VARCHAR, 
+PDF_path VARCHAR, 
 HTML_body VARCHAR NOT NULL,
 Tags VARCHAR,
-Posted_on DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
+Posted_on_UTC_timezored DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
 
 CREATE TABLE IF NOT EXISTS Admins (Password VARCHAR NOT NULL);
 ";
@@ -27,16 +26,16 @@ CREATE TABLE IF NOT EXISTS Admins (Password VARCHAR NOT NULL);
 			}
 		}
 
-		public async void AddNews(News news) {
+		public async void AddNews(NewsForm news) {
             using (var connection = new SqliteConnection(_connectionString)) {
                 connection.Open();
 
                 var command = connection.CreateCommand();
                 command.CommandText =
                             @"INSERT INTO News 
-(Title, Thumbnail_base64, PDF_path, HTML_body, Tags) VALUES ($title, $thumbnailbase64, $pdf_path, $html_body, $tags);";
+(Title, Thumbnail_path, PDF_path, HTML_body, Tags) VALUES ($title, $thumbnail_path, $pdf_path, $html_body, $tags);";
                 command.Parameters.AddWithValue("$title", news.Title);
-                command.Parameters.AddWithValue("$thumbnailbase64", news.Thumbnail_base64);
+                command.Parameters.AddWithValue("$thumbnail_path", news.Thumbnail_path);
                 command.Parameters.AddWithValue("$pdf_path", news.PDF_path);
                 command.Parameters.AddWithValue("$html_body", news.HTML_body);
                 command.Parameters.AddWithValue("$tags", news.Tags);
@@ -55,9 +54,9 @@ CREATE TABLE IF NOT EXISTS Admins (Password VARCHAR NOT NULL);
             }
         }
 
-		public async Task<List<News>> GetNews(int page, int amountPerPage) {
+		public async Task<List<NewsModel>> GetNews(int page, int amountPerPage) {
             // fist page is 0
-			List<News> list = new List<News>();
+			List<NewsModel> list = new List<NewsModel>();
             if (page < 1 || amountPerPage < 1) {
                 return list;
             }
@@ -70,33 +69,47 @@ CREATE TABLE IF NOT EXISTS Admins (Password VARCHAR NOT NULL);
                 command.Parameters.AddWithValue("$amount", amountPerPage);
                 using (var reader = await command.ExecuteReaderAsync()) {
                     while (reader.Read()) {
-                        foreach (News news in reader.Cast<News>()) {
-                            list.Add(news);
-                        }
+                        list.AddRange(reader.Cast<NewsModel>());
                     }
                 }
             }
             return list;
         }
 
-        public async void EditNews(News news) {
+        public async Task<NewsModel?> GetNewsByID(int newsID) {
+            NewsModel? news = null;
+            using (var connection = new SqliteConnection(_connectionString)) {
+                connection.Open();
+
+                var command = connection.CreateCommand();
+                command.CommandText = "SELECT * FROM News WHERE Id = $id;";
+                command.Parameters.AddWithValue("$id", newsID);
+                using (var reader = await command.ExecuteReaderAsync()) {
+                    while (reader.Read()) {
+                        news = reader.Cast<NewsModel>().First();
+                    }
+                }
+            }
+            return news;
+        }
+
+        public async void EditNews(NewsForm news) {
             using (var connection = new SqliteConnection(_connectionString)) {
                 connection.Open();
 
                 var command = connection.CreateCommand();
                 command.CommandText = @"UPDATE News 
-        SET Title = $title, Thumbnail_base64 = $thumbnail, PDF_path = $pdf, HTML_body = $html, Tags = $tags
+        SET Title = $title, Thumbnail_path = $thumbnail, PDF_path = $pdf, HTML_body = $html, Tags = $tags
         WHERE Id = $id";
                 command.Parameters.AddWithValue("$title", news.Title);
                 command.Parameters.AddWithValue("$id", news.Id);
-                command.Parameters.AddWithValue("$thumbnail", news.Thumbnail_base64);
+                command.Parameters.AddWithValue("$thumbnail", news.Thumbnail_path);
                 command.Parameters.AddWithValue("$pdf", news.PDF_path);
                 command.Parameters.AddWithValue("$html", news.HTML_body);
                 command.Parameters.AddWithValue("$tags", news.Tags);
                 await command.ExecuteNonQueryAsync();
             }
         }
-
 
         public async Task<List<string>> GetAdminPasswords() {
             List<string> list = new List<string>();

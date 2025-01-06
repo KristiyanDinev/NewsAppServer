@@ -7,12 +7,20 @@
       "RelativeMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|solutionrelative:controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|d:\\toolbox\\tools\\kit\\newsappserver\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|d:\\toolbox\\tools\\kit\\newsappserver\\models\\newsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|solutionrelative:models\\newsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|d:\\toolbox\\tools\\kit\\newsappserver\\database\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|solutionrelative:database\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|d:\\toolbox\\tools\\kit\\newsappserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|d:\\toolbox\\tools\\kit\\newsappserver\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,17 +30,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "NewsForm.cs",
+              "DocumentMoniker": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Models\\NewsForm.cs",
+              "RelativeDocumentMoniker": "Models\\NewsForm.cs",
+              "ToolTip": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Models\\NewsForm.cs",
+              "RelativeToolTip": "Models\\NewsForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-06T18:01:16.849Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DatabaseManager.cs",
+              "DocumentMoniker": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Database\\DatabaseManager.cs",
+              "RelativeDocumentMoniker": "Database\\DatabaseManager.cs",
+              "ToolTip": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Database\\DatabaseManager.cs",
+              "RelativeToolTip": "Database\\DatabaseManager.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwHEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-06T17:57:33.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-01-05T13:10:40.804Z",
               "EditorCaption": ""
@@ -45,20 +79,20 @@
               "RelativeDocumentMoniker": "Controllers\\NewsController.cs",
               "ToolTip": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Controllers\\NewsController.cs",
               "RelativeToolTip": "Controllers\\NewsController.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBkAAABOAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAMwDEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-05T13:45:23.901Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAcwBsAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAABhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-05T09:46:53.202Z",
               "EditorCaption": ""
