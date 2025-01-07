@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.Extensions.FileProviders;
 using NewsAppServer.Controllers;
 using NewsAppServer.Database;
 using System.Threading.RateLimiting;
@@ -35,7 +36,8 @@ namespace NewsAppServer
             app.UseRateLimiter();
 
             DatabaseManager._connectionString += 
-                app.Configuration.GetValue<string>("SQLite_Location");
+                app.Configuration.GetValue<string>("SQLite_Location") 
+                    ?? "database.sqlite";
             DatabaseManager.Setup();
 
             new NewsController(app);

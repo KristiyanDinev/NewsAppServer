@@ -34,11 +34,19 @@ CREATE TABLE IF NOT EXISTS Admins (Password VARCHAR NOT NULL);
                 command.CommandText =
                             @"INSERT INTO News 
 (Title, Thumbnail_path, PDF_path, HTML_body, Tags) VALUES ($title, $thumbnail_path, $pdf_path, $html_body, $tags);";
+
+                if (news.Thumbnail_path == null) {
+                    command.CommandText = command.CommandText.Replace("$thumbnail_path", "null");
+                }
+                if (news.PDF_path == null) {
+                    command.CommandText = command.CommandText.Replace("$pdf_path", "null");
+                }
+                if (news.PDF_path == null) {
+                    command.CommandText = command.CommandText.Replace("$tags", "null");
+                }
+
                 command.Parameters.AddWithValue("$title", news.Title);
-                command.Parameters.AddWithValue("$thumbnail_path", news.Thumbnail_path);
-                command.Parameters.AddWithValue("$pdf_path", news.PDF_path);
                 command.Parameters.AddWithValue("$html_body", news.HTML_body);
-                command.Parameters.AddWithValue("$tags", news.Tags);
                 await command.ExecuteNonQueryAsync();
             }
         }

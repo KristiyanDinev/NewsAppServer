@@ -37,28 +37,78 @@
                     if (_rules == null) {
                         _rules = new List<BBCodeRules>();
                         _rules.Add(new BBCodeRules("[b]{text}[/b]", "<strong>{text}</strong>", "{text}"));
+                        _rules.Add(new BBCodeRules("[b][/b]", "", ""));
+
                         _rules.Add(new BBCodeRules("[u]{text}[/u]", "<u>{text}</u>", "{text}"));
+                        _rules.Add(new BBCodeRules("[u][/u]", "", ""));
+
                         _rules.Add(new BBCodeRules("[i]{text}[/i]", "<i>{text}</i>", "{text}"));
+                        _rules.Add(new BBCodeRules("[i][/i]", "", ""));
+
                         _rules.Add(new BBCodeRules("[hr]", "</hr>", ""));
+
                         _rules.Add(new BBCodeRules("[sub]{text}[/sub]", "<sub>{text}</sub>", "{text}"));
+                        _rules.Add(new BBCodeRules("[sub][/sub]", "", ""));
+
                         _rules.Add(new BBCodeRules("[sup]{text}[/sup]", "<sup>{text}</sup>", "{text}"));
+                        _rules.Add(new BBCodeRules("[sup][/sup]", "", ""));
+
                         _rules.Add(new BBCodeRules("[center]{text}[/center]", "<center>{text}</center>", "{text}"));
+                        _rules.Add(new BBCodeRules("[center][/center]", "", ""));
+
                         _rules.Add(new BBCodeRules("[s]{text}[/s]", "<s>{text}</s>", "{text}"));
+                        _rules.Add(new BBCodeRules("[s][/s]", "", ""));
+
                         _rules.Add(new BBCodeRules("[right]{text}[/right]", "<p align=\"right\">{text}</p>", "{text}"));
+                        _rules.Add(new BBCodeRules("[right][/right]", "", ""));
+
                         _rules.Add(new BBCodeRules("[left]{text}[/left]", "<p align=\"left\">{text}</p>", "{text}"));
+                        _rules.Add(new BBCodeRules("[left][/left]", "", ""));
+
                         _rules.Add(new BBCodeRules("[justify]{text}[/justify]", "<p style=\"text-align: justify\">{text}</p>", "{text}"));
+                        _rules.Add(new BBCodeRules("[justify][/justify]", "", ""));
+
                         _rules.Add(new BBCodeRules("[color={d1}]{text}[/color]", "<span style='color: {d1};'>{text}</span>", "{d1};{text}"));
+                        _rules.Add(new BBCodeRules("[color={d1}][/color]", "", "{d1}"));
+                        _rules.Add(new BBCodeRules("[color]{text}[/color]", "<span>{text}</span>", "{text}"));
+                        _rules.Add(new BBCodeRules("[color][/color]", "", ""));
+
                         _rules.Add(new BBCodeRules("[size={d1}]{text}[/size]", "<span style='font-size: {d1}pt;'>{text}</span>", "{d1};{text}"));
+                        _rules.Add(new BBCodeRules("[size]{text}[/size]", "<span style='font-size: 3pt;'>{text}</span>", "{text}"));
+                        _rules.Add(new BBCodeRules("[size={d1}][/size]", "", "{d1}"));
+                        _rules.Add(new BBCodeRules("[size][/size]", "", ""));
+
                         _rules.Add(new BBCodeRules("[font={d1},{d2}]{text}[/font]", "<span style='font-family: {d1}; font-size: {d2}pt;'>{text}</span>", "{d1};{d2};{text}"));
+                        _rules.Add(new BBCodeRules("[font={d1},{d2}][/font]", "", "{d1};{d2}"));
+                        _rules.Add(new BBCodeRules("[font][/font]", "", ""));
+
                         _rules.Add(new BBCodeRules("[font={d1}]{text}[/font]", "<span style='font-family: {d1};'>{text}</span>", "{d1};{text}"));
+                        _rules.Add(new BBCodeRules("[font={d1}][/font]", "", "{d1}"));
+                        _rules.Add(new BBCodeRules("[font][/font]", "", ""));
+
                         _rules.Add(new BBCodeRules("[code]{text}[/code]", "<pre>{text}</pre>", "{text}"));
+                        _rules.Add(new BBCodeRules("[code][/code]", "", ""));
+
                         _rules.Add(new BBCodeRules("[url]{text}[/url]", "<a href='{text}'>{text}</a>", "{text}"));
+                        _rules.Add(new BBCodeRules("[url][/url]", "", ""));
+
                         _rules.Add(new BBCodeRules("[url={d1}]{text}[/url]", "<a href='{d1}'>{text}</a>", "{d1};{text}"));
+                        _rules.Add(new BBCodeRules("[url={d1}][/url]", "", "{d1}"));
+
                         _rules.Add(new BBCodeRules("[img]{text}[/img]", "<img src='{text}' />", "{text}"));
+                        _rules.Add(new BBCodeRules("[img][/img]", "", ""));
+
                         _rules.Add(new BBCodeRules("[img,{width},{height}]{text}[/img]", "<img style='width: {width}px; height: {height};' src='{text}' />", "{width};{height};{text}"));
+                        _rules.Add(new BBCodeRules("[img,{width},{height}][/img]", "", "{width};{height}"));
+
                         _rules.Add(new BBCodeRules("[img={width}x{height}]{text}[/img]", "<img style='width: {width}px; height: {height};' src='{text}' />", "{width};{height};{text}"));
+                        _rules.Add(new BBCodeRules("[img={width}x{height}][/img]", "", "{width};{height}"));
+
                         _rules.Add(new BBCodeRules("[youtube,{width},{height}]{videocode}[/youtube]", "<iframe width=\"{width}\" height=\"{height}\" src=\"https://www.youtube.com/embed/{videocode}\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>", "{videocode};{width};{height}"));
+                        _rules.Add(new BBCodeRules("[youtube,{width},{height}][/youtube]", "", "{width};{height}"));
+
                         _rules.Add(new BBCodeRules("[youtube]{videocode}[/youtube]", "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/{videocode}\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>", "{videocode}"));
+                        _rules.Add(new BBCodeRules("[youtube][/youtube]", "", ""));
                     }
                     return _rules;
                 }

@@ -1,4 +1,3 @@
-D:\ToolBox\Tools\Kit\NewsAppServer\bin\Debug\net8.0\appsettings.Development.json
 D:\ToolBox\Tools\Kit\NewsAppServer\bin\Debug\net8.0\appsettings.json
 D:\ToolBox\Tools\Kit\NewsAppServer\bin\Debug\net8.0\NewsAppServer.staticwebassets.runtime.json
 D:\ToolBox\Tools\Kit\NewsAppServer\bin\Debug\net8.0\NewsAppServer.staticwebassets.endpoints.json

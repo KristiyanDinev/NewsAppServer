@@ -22,16 +22,16 @@
     ]
   },
   {
-    "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__0_4",
+    "ContainingType": "NewsAppServer.Controllers.NewsController",
+    "Method": "\u003C.ctor\u003Eb__1_4",
     "RelativePath": "delete/news",
     "HttpMethod": "POST",
     "IsController": false,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "newsID",
-        "Type": "System.Int32",
+        "Name": "news",
+        "Type": "NewsAppServer.Models.NewsForm",
         "IsRequired": true
       }
     ],
@@ -44,8 +44,8 @@
     ]
   },
   {
-    "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__0_3",
+    "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec__DisplayClass1_0",
+    "Method": "\u003C.ctor\u003Eb__3",
     "RelativePath": "edit/news",
     "HttpMethod": "POST",
     "IsController": false,
@@ -66,7 +66,7 @@
     ]
   },
   {
-    "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec__DisplayClass0_0",
+    "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec__DisplayClass1_0",
     "Method": "\u003C.ctor\u003Eb__2",
     "RelativePath": "news",
     "HttpMethod": "POST",
@@ -89,7 +89,7 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__0_0",
+    "Method": "\u003C.ctor\u003Eb__1_0",
     "RelativePath": "news/{page:int}/{amount:int}",
     "HttpMethod": "GET",
     "IsController": false,
@@ -118,7 +118,7 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__0_1",
+    "Method": "\u003C.ctor\u003Eb__1_1",
     "RelativePath": "news/id/{newsID:int}",
     "HttpMethod": "GET",
     "IsController": false,
