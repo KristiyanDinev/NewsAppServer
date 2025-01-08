@@ -75,7 +75,6 @@ namespace NewsAppServer.Controllers {
 
                         }
 
-
                         db.AddNews(news);
 
                     } catch (Exception ex) {

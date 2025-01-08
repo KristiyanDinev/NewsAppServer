@@ -37,12 +37,18 @@ CREATE TABLE IF NOT EXISTS Admins (Password VARCHAR NOT NULL);
 
                 if (news.Thumbnail_path == null) {
                     command.CommandText = command.CommandText.Replace("$thumbnail_path", "null");
+                } else {
+                    command.Parameters.AddWithValue("$thumbnail_path", news.Thumbnail_path);
                 }
                 if (news.PDF_path == null) {
                     command.CommandText = command.CommandText.Replace("$pdf_path", "null");
+                } else {
+                    command.Parameters.AddWithValue("$pdf_path", news.PDF_path);
                 }
-                if (news.PDF_path == null) {
+                if (news.Tags == null) {
                     command.CommandText = command.CommandText.Replace("$tags", "null");
+                } else {
+                    command.Parameters.AddWithValue("$tags", news.Tags);
                 }
 
                 command.Parameters.AddWithValue("$title", news.Title);

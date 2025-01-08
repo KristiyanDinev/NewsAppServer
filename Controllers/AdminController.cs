@@ -5,7 +5,8 @@ using NewsAppServer.Database;
 namespace NewsAppServer.Controllers {
     public class AdminController {
         public AdminController(WebApplication app) {
-            app.MapPost("/adminlogin", async (HttpContext http, DatabaseManager db, [FromForm] string adminPassword) => {
+            app.MapPost("/adminlogin", async (HttpContext http, DatabaseManager db,
+                [FromForm] string adminPassword) => {
 
 
                 try {

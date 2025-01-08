@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.RateLimiting;
-using Microsoft.Extensions.FileProviders;
 using NewsAppServer.Controllers;
 using NewsAppServer.Database;
 using System.Threading.RateLimiting;
