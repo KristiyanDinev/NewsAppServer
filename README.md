@@ -2,7 +2,8 @@
 - dotnet add package Microsoft.Data.Sqlite.Core
 - dotnet add package Microsoft.Data.Sqlite
 - dotnet add package SQLite
-
+- dotnet publish -c release -r [OS] --self-contained
+ Options: https://learn.microsoft.com/en-us/dotnet/core/rid-catalog
 
 ### Resources
 - To publish it to internet https://www.youtube.com/watch?v=ey4u7OUAF3c  Required domain
