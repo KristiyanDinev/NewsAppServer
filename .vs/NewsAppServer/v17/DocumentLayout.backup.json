@@ -51,8 +51,7 @@
               "RelativeToolTip": "Database\\DatabaseManager.cs",
               "ViewState": "AgIAADsAAAAAAAAAAAA3wDEAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-08T13:02:04.785Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-08T13:02:04.785Z"
             },
             {
               "$type": "Document",
@@ -64,8 +63,7 @@
               "RelativeToolTip": "Controllers\\NewsController.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAAwC8AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-08T13:01:17.872Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-08T13:01:17.872Z"
             },
             {
               "$type": "Document",
@@ -73,12 +71,11 @@
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Program.cs*",
-              "RelativeToolTip": "Program.cs*",
+              "ToolTip": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Program.cs",
+              "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T09:46:53.202Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-05T09:46:53.202Z"
             }
           ]
         }
