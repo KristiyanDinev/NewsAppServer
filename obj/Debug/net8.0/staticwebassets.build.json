@@ -1,0 +1,20 @@
+{
+  "Version": 1,
+  "Hash": "O7G/IBKuAZysjfHtT9VCBRvqGHcsL9PiIN4XoGmYCAk=",
+  "Source": "NewsAppServer",
+  "BasePath": "_content/NewsAppServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "NewsAppServer\\wwwroot",
+      "Source": "NewsAppServer",
+      "ContentRoot": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\",
+      "BasePath": "_content/NewsAppServer",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [],
+  "Endpoints": []
+}

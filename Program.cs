@@ -19,9 +19,6 @@ namespace NewsAppServer
                 Directory.CreateDirectory("wwwroot");
                 Directory.CreateDirectory("wwwroot\\pdf");
                 Directory.CreateDirectory("wwwroot\\thumbnail");
-                Directory.CreateDirectory("wwwroot\\css");
-                Directory.CreateDirectory("wwwroot\\js");
-                Directory.CreateDirectory("wwwroot\\img");
             }
 
 
