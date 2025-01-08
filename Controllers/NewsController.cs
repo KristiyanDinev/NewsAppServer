@@ -51,7 +51,7 @@ namespace NewsAppServer.Controllers {
                     if (news.HTML_body.Length == 0 || news.Title.Length == 0) {
                         return Results.BadRequest();
                     }
-                    
+
                     if (news.Tags != null && news.Tags.Length == 0) {
                         news.Tags = null;
                     }
@@ -61,6 +61,9 @@ namespace NewsAppServer.Controllers {
 
                         foreach (IFormFile file in news.Files) {
                             string FileName = file.FileName.ToLower();
+                            if (FileName.Contains("\\") || FileName.Contains("/")) {
+                                return Results.BadRequest();
+                            }
                             if (FileName.EndsWith(".pdf")) {
                                 UploadFile(file, pdfFileLocation + file.FileName);
                                 news.PDF_path ??= "";
@@ -103,6 +106,10 @@ namespace NewsAppServer.Controllers {
 
                         foreach (IFormFile file in news.Files) {
                             string FileName = file.FileName.ToLower();
+                            if (FileName.Contains("\\") || FileName.Contains("/")) { 
+                                return Results.BadRequest();
+                            }
+
                             if (FileName.EndsWith(".pdf")) {
                                 UpdateFiles(news, file, 
                                     pdfFileLocation, pdfEndpoint, true);
