@@ -57,3 +57,8 @@ D:\ToolBox\Tools\Kit\NewsAppServer\obj\Debug\net8.0\refint\NewsAppServer.dll
 D:\ToolBox\Tools\Kit\NewsAppServer\obj\Debug\net8.0\NewsAppServer.pdb
 D:\ToolBox\Tools\Kit\NewsAppServer\obj\Debug\net8.0\NewsAppServer.genruntimeconfig.cache
 D:\ToolBox\Tools\Kit\NewsAppServer\obj\Debug\net8.0\ref\NewsAppServer.dll
+D:\ToolBox\Tools\Kit\NewsAppServer\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Certificate.dll
+D:\ToolBox\Tools\Kit\NewsAppServer\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+D:\ToolBox\Tools\Kit\NewsAppServer\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\ToolBox\Tools\Kit\NewsAppServer\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\ToolBox\Tools\Kit\NewsAppServer\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
