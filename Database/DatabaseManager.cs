@@ -140,5 +140,41 @@ CREATE TABLE IF NOT EXISTS Admins (Password VARCHAR NOT NULL);
             }
             return list;
         }
+
+        public async void EditAdminPassword(string oldPass, string newPass) {
+            using (var connection = new SqliteConnection(_connectionString)) {
+                connection.Open();
+
+                var command = connection.CreateCommand();
+                command.CommandText = @"UPDATE Admins 
+        SET Password = $newpass
+        WHERE Password = $oldpass";
+                command.Parameters.AddWithValue("$newpass", newPass);
+                command.Parameters.AddWithValue("$oldpass", oldPass);
+                await command.ExecuteNonQueryAsync();
+            }
+        }
+
+        public async void AddAdminPassword(string pass) {
+            using (var connection = new SqliteConnection(_connectionString)) {
+                connection.Open();
+
+                var command = connection.CreateCommand();
+                command.CommandText = @"INSERT INTO Admins VALUES ($pass)";
+                command.Parameters.AddWithValue("$pass", pass);
+                await command.ExecuteNonQueryAsync();
+            }
+        }
+
+        public async void RemoveAdmin(string pass) {
+            using (var connection = new SqliteConnection(_connectionString)) {
+                connection.Open();
+
+                var command = connection.CreateCommand();
+                command.CommandText = "DELETE FROM Admins WHERE Password = $pass;";
+                command.Parameters.AddWithValue("$pass", pass);
+                await command.ExecuteNonQueryAsync();
+            }
+        }
     }
 }

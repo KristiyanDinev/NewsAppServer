@@ -1,14 +1,100 @@
 [
   {
-    "ContainingType": "NewsAppServer.Controllers.AdminController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__0_0",
-    "RelativePath": "adminlogin",
+    "ContainingType": "NewsAppServer.Controllers.AdminController",
+    "Method": "\u003C.ctor\u003Eb__0_1",
+    "RelativePath": "admin/add",
     "HttpMethod": "POST",
     "IsController": false,
     "Order": 0,
     "Parameters": [
       {
         "Name": "adminPassword",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "currentAdmin",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewsAppServer.Controllers.AdminController",
+    "Method": "\u003C.ctor\u003Eb__0_3",
+    "RelativePath": "admin/edit",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "oldAdminPassword",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "currentAdmin",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "newAdminPassword",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewsAppServer.Controllers.AdminController",
+    "Method": "\u003C.ctor\u003Eb__0_0",
+    "RelativePath": "admin/login",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "adminPassword",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewsAppServer.Controllers.AdminController",
+    "Method": "\u003C.ctor\u003Eb__0_2",
+    "RelativePath": "admin/remove",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "adminPassword",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "currentAdmin",
         "Type": "System.String",
         "IsRequired": true
       }
