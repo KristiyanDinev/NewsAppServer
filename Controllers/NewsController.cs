@@ -23,7 +23,7 @@ namespace NewsAppServer.Controllers {
                     try {
                         List<NewsModel> news = await db.GetNews(page, amount);
                         return news;
-                    } catch (Exception e) { 
+                    } catch (Exception) { 
                         return new List<NewsModel>();
                     }
                     
@@ -37,7 +37,7 @@ namespace NewsAppServer.Controllers {
                     try {
                         NewsModel? news = await db.GetNewsByID(newsID);
                         return news;
-                    } catch (Exception e) { 
+                    } catch (Exception) { 
                         return null;
                     }
                     
@@ -80,7 +80,7 @@ namespace NewsAppServer.Controllers {
 
                         db.AddNews(news);
 
-                    } catch (Exception ex) {
+                    } catch (Exception) {
                         return Results.BadRequest();
                     }
                     return Results.Ok();
@@ -146,7 +146,7 @@ namespace NewsAppServer.Controllers {
 
                         db.EditNews(news);
 
-                    } catch (Exception ex) { 
+                    } catch (Exception) { 
                         return Results.BadRequest();
                     }
                         return Results.Ok();
@@ -176,7 +176,7 @@ namespace NewsAppServer.Controllers {
 
                     db.RemoveNews(news.Id);
 
-                } catch (Exception ex) {
+                } catch (Exception) {
                     return Results.BadRequest();
                 }
                 return Results.Ok();
@@ -187,7 +187,7 @@ namespace NewsAppServer.Controllers {
         }
 
 
-        private async void UploadFile(IFormFile file, string location) {
+        private static async void UploadFile(IFormFile file, string location) {
             using (FileStream fs = File.Create(location)) {
                 await file.CopyToAsync(fs);
             }

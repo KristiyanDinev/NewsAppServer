@@ -12,7 +12,7 @@ namespace NewsAppServer.Controllers {
                     CheckAdmin(db, adminPassword);
                     return Results.Ok();
 
-                } catch (Exception ex) {
+                } catch (Exception) {
                     return Results.Unauthorized();
                 }
 
@@ -27,7 +27,7 @@ namespace NewsAppServer.Controllers {
                         db.AddAdminPassword(adminPassword);
                         return Results.Ok();
 
-                    } catch (Exception ex) {
+                    } catch (Exception) {
                         return Results.Unauthorized();
                     }
 
@@ -42,7 +42,7 @@ namespace NewsAppServer.Controllers {
                         db.RemoveAdmin(adminPassword);
                         return Results.Ok();
 
-                    } catch (Exception ex) {
+                    } catch (Exception) {
                         return Results.Unauthorized();
                     }
 
@@ -58,7 +58,7 @@ namespace NewsAppServer.Controllers {
                         db.EditAdminPassword(oldAdminPassword, newAdminPassword);
                         return Results.Ok();
 
-                    } catch (Exception ex) {
+                    } catch (Exception) {
                         return Results.Unauthorized();
                     }
 

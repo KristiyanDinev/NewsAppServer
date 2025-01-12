@@ -1,6 +1,10 @@
+using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using Microsoft.AspNetCore.Server.Kestrel.Https;
 using NewsAppServer.Controllers;
 using NewsAppServer.Database;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.RateLimiting;
 
 namespace NewsAppServer
@@ -33,11 +37,43 @@ namespace NewsAppServer
                 })
             );
 
-            var app = builder.Build();
+            builder.Services.AddHttpsRedirection(options =>
+            {
+                options.HttpsPort = builder.Configuration.GetValue<int>("https_port");
+                options.RedirectStatusCode = 307;
+            });
+
+            builder.Services.AddAuthentication(
+                CertificateAuthenticationDefaults.AuthenticationScheme)
+            .AddCertificate();
+
+            builder.Services.Configure<KestrelServerOptions>(options =>
+            {
+                options.ConfigureHttpsDefaults(options =>
+                    options.ClientCertificateMode = ClientCertificateMode.RequireCertificate);
+            });
+
+            builder.WebHost.ConfigureKestrel(options =>
+                options.ConfigureEndpointDefaults(listenOptions =>
+                    listenOptions.UseHttps(new HttpsConnectionAdapterOptions {
+                        SslProtocols = System.Security.Authentication.SslProtocols.Tls12,
+                        ClientCertificateMode = ClientCertificateMode.AllowCertificate,
+                        ServerCertificate = new X509Certificate2("public_privatekey.pfx", "newsapppassword")
+
+                    })));
+
+            builder.WebHost
+                .UseUrls()
+                .UseKestrel();
+
+           var app = builder.Build();
 
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseStaticFiles();
+            //app.UseHsts();
             app.UseRateLimiter();
+            
 
             DatabaseManager._connectionString += 
                 app.Configuration.GetValue<string>("SQLite_Location") 

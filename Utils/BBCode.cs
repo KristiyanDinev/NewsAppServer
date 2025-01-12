@@ -28,7 +28,7 @@
     // 1. "<" in value will be replace by "&lt;" to avoid Html Injection
 
         public class BBCode {
-            static List<BBCodeRules> _rules = null;
+            static List<BBCodeRules>? _rules = null;
             static string _tempValueStr = "^````````^";
             static string _regexValue = ".+?";
 

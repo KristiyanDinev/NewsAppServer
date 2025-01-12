@@ -57,4 +57,3 @@ D:\ToolBox\Tools\Kit\NewsAppServer\obj\Debug\net8.0\refint\NewsAppServer.dll
 D:\ToolBox\Tools\Kit\NewsAppServer\obj\Debug\net8.0\NewsAppServer.pdb
 D:\ToolBox\Tools\Kit\NewsAppServer\obj\Debug\net8.0\NewsAppServer.genruntimeconfig.cache
 D:\ToolBox\Tools\Kit\NewsAppServer\obj\Debug\net8.0\ref\NewsAppServer.dll
-D:\ToolBox\Tools\Kit\NewsAppServer\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
