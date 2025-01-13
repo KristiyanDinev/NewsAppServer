@@ -20,7 +20,8 @@ openssl pkcs12 -export -out public_privatekey.pfx -inkey private.key -in publick
 - Thumbnail path -> stores the endpoint of the resource Ex: /thumbnail/something.png (not yet edited in the database)
 - PDF paths -> stores the endpoints of the PDFs seperated by `;` Ex: /pdf/comment.pdf;/pdf/comment2.pdf (not yet edited in the database)
 - (NewsForm) DeletePDFs -> stores the endpoints of the PDFs to be removed seperated by `;` Ex: /pdf/comment.pdf;/pdf/comment2.pdf
-- This adds the password `1@#c4V5B6N7M8(0,(*mN76B5V4c3347E65R*^T&y^&r%6E4W5C3` to admin login `INSERT INTO Admins VALUES ('1@#c4V5B6N7M8(0,(*mN76B5V4c3347E65R*^T&y^&r%6E4W5C3');`
+- This adds the password `UybRuyibINbvcyrteTYCRTUVYIugcxtETYCRTUVigYCYR` to admin login `INSERT INTO Admins VALUES ('UybRuyibINbvcyrteTYCRTUVYIugcxtETYCRTUVigYCYR');`
+- Rules for passwords: No `&`, `=`, `\`
 
 ### Docs (endpoint -> explain)
 - GET `/news/id/{newsID}` -> Ex: `/news/id/1` this will get the news with that id

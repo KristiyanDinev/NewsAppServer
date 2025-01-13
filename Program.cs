@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Authentication.Certificate;
+using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.AspNetCore.Server.Kestrel.Https;
 using NewsAppServer.Controllers;
 using NewsAppServer.Database;
+using System.Reflection.PortableExecutable;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.RateLimiting;
 
@@ -16,8 +18,7 @@ namespace NewsAppServer
             // Microsoft.Data.Sqlite.Core
             // Microsoft.Data.Sqlite
             // SQLite
-            // 1@#c4V5B6N7M8(0,(*mN76B5V4c3347E65R*^T&y^&r%6E4W5C3
-            // INSERT INTO Admins VALUES ('1@#c4V5B6N7M8(0,(*mN76B5V4c3347E65R*^T&y^&r%6E4W5C3');
+            // UybRuyibINbvcyrteTYCRTUVYIugcxtETYCRTUVigYCYR
 
             if (!File.Exists("wwwroot/")) {
                 Directory.CreateDirectory("wwwroot");
@@ -37,6 +38,9 @@ namespace NewsAppServer
                 })
             );
 
+            builder.WebHost.UseUrls([builder.Configuration.GetValue<string>("Urls") ?? "http://127.0.0.1:5000"]);
+
+            /*
             builder.Services.AddHttpsRedirection(options =>
             {
                 options.HttpsPort = builder.Configuration.GetValue<int>("https_port");
@@ -65,15 +69,29 @@ namespace NewsAppServer
             builder.WebHost
                 .UseUrls()
                 .UseKestrel();
-
-           var app = builder.Build();
-
-            app.UseHttpsRedirection();
-            app.UseAuthentication();
-            app.UseStaticFiles();
-            //app.UseHsts();
-            app.UseRateLimiter();
             
+             "https_port": 5001,
+  "Kestrel": {
+    "EndPoints": {
+      "Https": {
+        "Url": "https://192.168.1.13:5001",
+        "Certificate": {
+          "Path": "public_privatekey.pfx",
+          "Password": "newsapppassword"
+        }
+      }
+    }
+  }
+             */
+
+            var app = builder.Build();
+
+            //app.UseHttpsRedirection();
+            //app.UseAuthentication();
+            //app.UseHsts();
+            app.UseStaticFiles();
+            app.UseRateLimiter();
+
 
             DatabaseManager._connectionString += 
                 app.Configuration.GetValue<string>("SQLite_Location") 

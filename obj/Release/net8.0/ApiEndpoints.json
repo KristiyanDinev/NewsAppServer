@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "NewsAppServer.Controllers.AdminController",
+    "ContainingType": "NewsAppServer.Controllers.AdminController\u002B\u003C\u003Ec",
     "Method": "\u003C.ctor\u003Eb__0_1",
     "RelativePath": "admin/add",
     "HttpMethod": "POST",
@@ -27,7 +27,7 @@
     ]
   },
   {
-    "ContainingType": "NewsAppServer.Controllers.AdminController",
+    "ContainingType": "NewsAppServer.Controllers.AdminController\u002B\u003C\u003Ec",
     "Method": "\u003C.ctor\u003Eb__0_3",
     "RelativePath": "admin/edit",
     "HttpMethod": "POST",
@@ -59,7 +59,7 @@
     ]
   },
   {
-    "ContainingType": "NewsAppServer.Controllers.AdminController",
+    "ContainingType": "NewsAppServer.Controllers.AdminController\u002B\u003C\u003Ec",
     "Method": "\u003C.ctor\u003Eb__0_0",
     "RelativePath": "admin/login",
     "HttpMethod": "POST",
@@ -81,7 +81,7 @@
     ]
   },
   {
-    "ContainingType": "NewsAppServer.Controllers.AdminController",
+    "ContainingType": "NewsAppServer.Controllers.AdminController\u002B\u003C\u003Ec",
     "Method": "\u003C.ctor\u003Eb__0_2",
     "RelativePath": "admin/remove",
     "HttpMethod": "POST",

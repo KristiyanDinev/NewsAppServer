@@ -3,8 +3,7 @@
     "NewsAppServer": {
       "commandName": "Project",
       "launchBrowser": false,
-      "externalUrlConfiguration": true,
-      "applicationUrl": "https://192.168.1.13:5001"
+      "externalUrlConfiguration": true
     }
   }
 }
