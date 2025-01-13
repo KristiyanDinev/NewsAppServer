@@ -80,9 +80,6 @@ namespace NewsAppServer.Controllers {
 
         private static async Task<bool> CheckAdmin(DatabaseManager db, string pass) {
             List<string> passwords = await db.GetAdminPasswords();
-            Console.WriteLine(passwords.First());
-            Console.WriteLine(pass);
-
             return passwords.Contains(pass);
         }
     }
