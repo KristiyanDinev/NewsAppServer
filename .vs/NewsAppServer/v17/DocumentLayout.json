@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|d:\\toolbox\\tools\\kit\\newsappserver\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|solutionrelative:controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|d:\\toolbox\\tools\\kit\\newsappserver\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
       "RelativeMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|solutionrelative:readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|d:\\toolbox\\tools\\kit\\newsappserver\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|d:\\toolbox\\tools\\kit\\newsappserver\\models\\addnewsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|solutionrelative:models\\addnewsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|d:\\toolbox\\tools\\kit\\newsappserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,20 +34,33 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
-              "ToolTip": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "Controllers\\AdminController.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAQwCoAAAAmAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "AddNewsForm.cs",
+              "DocumentMoniker": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Models\\AddNewsForm.cs",
+              "RelativeDocumentMoniker": "Models\\AddNewsForm.cs",
+              "ToolTip": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Models\\AddNewsForm.cs",
+              "RelativeToolTip": "Models\\AddNewsForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-13T15:35:31.475Z",
+              "WhenOpened": "2025-01-15T16:03:01.113Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "NewsController.cs",
+              "DocumentMoniker": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Controllers\\NewsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\NewsController.cs",
+              "ToolTip": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Controllers\\NewsController.cs",
+              "RelativeToolTip": "Controllers\\NewsController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAADAAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-14T16:24:24.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "README.md",
               "DocumentMoniker": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\README.md",
               "RelativeDocumentMoniker": "README.md",
@@ -56,7 +73,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -69,7 +86,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",

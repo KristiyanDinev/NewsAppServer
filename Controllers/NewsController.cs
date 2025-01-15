@@ -45,8 +45,14 @@ namespace NewsAppServer.Controllers {
                 });
 
 
-            app.MapPost("/news", (HttpContext http, DatabaseManager db,
-                [FromForm] NewsForm news) => {
+            app.MapPost("/news", async (HttpContext http, DatabaseManager db) => {
+                IFormCollection form = await http.Request.ReadFormAsync();
+                Console.WriteLine(form.Count);
+                /*
+                    news.Title ??= "";
+                    news.HTML_body ??= "";
+                    string decodedString = System.Text.Encoding.UTF8.GetString(
+                        Convert.FromBase64String(a.Split(".")[0]));
 
                     if (news.HTML_body.Length == 0 || news.Title.Length == 0) {
                         return Results.BadRequest();
@@ -58,7 +64,7 @@ namespace NewsAppServer.Controllers {
 
                     try {
                         news.HTML_body = BBCode.ConvertToHtml(news.HTML_body);
-
+                        
                         foreach (IFormFile file in news.Files) {
                             string FileName = file.FileName.ToLower();
                             if (FileName.Contains("\\") || FileName.Contains("/")) {
@@ -78,13 +84,13 @@ namespace NewsAppServer.Controllers {
 
                         }
 
-                        db.AddNews(news);
+                        //db.AddNews(news);
 
                     } catch (Exception) {
                         return Results.BadRequest();
                     }
                     return Results.Ok();
-
+            */
                 }).DisableAntiforgery()
             .RequireRateLimiting("fixed");
 
@@ -104,7 +110,7 @@ namespace NewsAppServer.Controllers {
 
                         news.HTML_body = BBCode.ConvertToHtml(news.HTML_body);
 
-                        foreach (IFormFile file in news.Files) {
+                        foreach (IFormFile file in news.PDFs) {
                             string FileName = file.FileName.ToLower();
                             if (FileName.Contains("\\") || FileName.Contains("/")) { 
                                 return Results.BadRequest();

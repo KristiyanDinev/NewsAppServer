@@ -7,7 +7,12 @@
         public string HTML_body { get; set; }
         public string? Tags { get; set; } = null;
         public DateTime Posted_on_UTC_timezored { get; set; } = DateTime.UtcNow;
-        public IFormFileCollection Files { get; set; }
+
+        //public IFormFileCollection Files { get; set; }
+
+        public IFormFile? ThumbnailFile { get; set; } = null;
+
+        public IFormFileCollection? PDFs { get; set; } = null;
 
         public bool DeleteThumbnail { get; set; } = false;
         public string DeletePDFs { get; set; } = "";
