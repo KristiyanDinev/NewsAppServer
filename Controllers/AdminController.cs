@@ -78,7 +78,7 @@ namespace NewsAppServer.Controllers {
             .RequireRateLimiting("fixed");
         }
 
-        private static async Task<bool> CheckAdmin(DatabaseManager db, string pass) {
+        public static async Task<bool> CheckAdmin(DatabaseManager db, string pass) {
             List<string> passwords = await db.GetAdminPasswords();
             return passwords.Contains(pass);
         }

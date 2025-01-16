@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS Admins (Password VARCHAR NOT NULL);
 			}
 		}
 
-		public async void AddNews(NewsForm news) {
+		public async void AddNews(NewsModel news) {
             using (var connection = new SqliteConnection(_connectionString)) {
                 connection.Open();
 
@@ -81,10 +81,9 @@ CREATE TABLE IF NOT EXISTS Admins (Password VARCHAR NOT NULL);
                 command.CommandText = "SELECT * FROM News ORDER BY Posted_on DESC LIMIT $amount OFFSET $page;";
                 command.Parameters.AddWithValue("$page", page * amountPerPage);
                 command.Parameters.AddWithValue("$amount", amountPerPage);
-                using (var reader = await command.ExecuteReaderAsync()) {
-                    while (reader.Read()) {
-                        list.AddRange(reader.Cast<NewsModel>());
-                    }
+                using var reader = await command.ExecuteReaderAsync();
+                while (reader.Read()) {
+                    list.AddRange(reader.Cast<NewsModel>());
                 }
             }
             return list;
@@ -107,7 +106,7 @@ CREATE TABLE IF NOT EXISTS Admins (Password VARCHAR NOT NULL);
             return news;
         }
 
-        public async void EditNews(NewsForm news) {
+        public async void EditNews(NewsModel news) {
             using (var connection = new SqliteConnection(_connectionString)) {
                 connection.Open();
 
@@ -175,6 +174,51 @@ CREATE TABLE IF NOT EXISTS Admins (Password VARCHAR NOT NULL);
                 command.Parameters.AddWithValue("$pass", pass);
                 await command.ExecuteNonQueryAsync();
             }
+        }
+
+        public async Task<List<NewsModel>> SearchNews(string search, 
+            string[] tags) {
+            List<NewsModel> list = new List<NewsModel>();
+            using (var connection = new SqliteConnection(_connectionString)) {
+                connection.Open();
+
+                var command = connection.CreateCommand();
+
+                command.CommandText = @"
+                SELECT * 
+                FROM News
+                WHERE (Title LIKE '% $search %' OR 
+                Title LIKE '$search %' OR
+                Title LIKE '% $search' OR
+                Title = '$search' OR
+                HTML_body LIKE '% $search %' OR
+                HTML_body LIKE '$search %' OR
+                HTML_body LIKE '% $search' OR
+                HTML_body = '$search') AND (";
+
+                if (tags.Length > 0) {
+                    for (int i = 0; i < tags.Length - 1; i++) {
+                        string tag = tags[i];
+                        command.CommandText += "Tags LIKE '%;" + tag + ";%' OR ";
+                        command.CommandText += "Tags LIKE '" + tag + ";%' OR ";
+                        command.CommandText += "Tags LIKE '%;" + tag + "' OR ";
+                        command.CommandText += "Tags = '" + tag + "' OR ";
+                    }
+
+                    string lastTag = tags[tags.Length - 1];
+                    command.CommandText += "Tags LIKE '%;" + lastTag + ";%' OR ";
+                    command.CommandText += "Tags LIKE '" + lastTag + ";%' OR ";
+                    command.CommandText += "Tags LIKE '%;" + lastTag + "' OR ";
+                    command.CommandText += "Tags = '" + lastTag + "');";
+                    command.Parameters.AddWithValue("$search", search);
+                }
+
+                using var reader = await command.ExecuteReaderAsync();
+                while (reader.Read()) {
+                    list.AddRange(reader.Cast<NewsModel>());
+                }
+            }
+            return list;
         }
     }
 }
