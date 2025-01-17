@@ -26,11 +26,14 @@ namespace NewsAppServer.Controllers {
                 int page, int amount) => {
                     
                     page -= 1;
+                    Dictionary<string, object> res = 
+                        new Dictionary<string, object>();
                     try {
                         List<NewsModel> news = await db.GetNews(page, amount);
-                        return news;
+                        res.Add("News", news);
+                        return res;
                     } catch (Exception) { 
-                        return new List<NewsModel>();
+                        return res;
                     }
                     
             });
@@ -39,10 +42,12 @@ namespace NewsAppServer.Controllers {
             app.MapGet("/news/id/{newsID:int}", async (HttpContext http,
                 DatabaseManager db,
                 int newsID) => {
-
+                    Dictionary<string, object> res =
+                        new Dictionary<string, object>();
                     try {
                         NewsModel? news = await db.GetNewsByID(newsID);
-                        return news;
+                        res.Add("News", news);
+                        return res;
                     } catch (Exception) { 
                         return null;
                     }
@@ -50,24 +55,23 @@ namespace NewsAppServer.Controllers {
 
                 });
 
-            app.MapGet("/news/search", 
+            app.MapPost("/news/search", 
                 async (HttpContext http, DatabaseManager db) => {
-                    IQueryCollection query = http.Request.Query;
-                    if (!query.ContainsKey("search")) {
-                        return new List<NewsModel>();
+                    IFormCollection form = await http.Request.ReadFormAsync();
+                    Dictionary<string, object> res =
+                        new Dictionary<string, object>();
+                    if (!form.ContainsKey("search")) {
+                        return res;
                     }
 
-                    string search = query["search"].ToString();
-
-
+                    string search = form["search"].ToString();
                     if (search.Replace(" ", "").Length == 0) {
-                        return new List<NewsModel>();
+                        return res;
                     }
 
                     List<string> fixTags = new List<string>();
-                    if (query.ContainsKey("tags")) {
-                        string[] filter = query["tags"].ToString().Split(';');
-                        foreach (string tag in filter) {
+                    if (form.ContainsKey("tags")) {
+                        foreach (string tag in form["tags"].ToString().Split(';')) {
                             if (tag.Replace(" ", "").Length == 0) {
                                 continue;
                             }
@@ -76,7 +80,8 @@ namespace NewsAppServer.Controllers {
                     }
                     List<NewsModel> searchedNews = 
                         await db.SearchNews(search, fixTags.ToArray());
-                    return searchedNews;
+                    res.Add("News", searchedNews);
+                    return res;
                 });
 
             app.MapPost("/news", async (HttpContext http, DatabaseManager db) => {

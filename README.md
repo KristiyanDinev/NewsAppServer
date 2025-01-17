@@ -25,8 +25,8 @@ openssl pkcs12 -export -out public_privatekey.pfx -inkey private.key -in publick
 
 ### Docs (endpoint -> explain)
 - GET `/news/id/{newsID}` -> Ex: `/news/id/1` this will get the news with that id
-- GET `/news/{page}/{amountPerPage}` -> Ex: `/news/1/5` this will return the latest news in a list of objects: [{id, title, thumbnail_endpoint, pdf_endpoint, html_body, tags, posted_on_utc_timezored}]
-- GET `/news/search/{search}/{filter}` -> Ex: `/news/search/Some Title/news;post` this will return a list of all News that contain any of the search in the title or any or filter in the tags.
+- GET `/news/{page}/{amountPerPage}` -> Ex: `/news/1/5` this will return the latest news: {"News": [{id, title, thumbnail_endpoint, pdf_endpoint, html_body, tags, posted_on_utc_timezored}]}
+- POST `/news/search` -> body data: `search` and `tags` for the this will return a map with one key that points to a list of all News that contain any of the search in the title or any or filter in the tags.
 - POST `/news` -> Will create a new news.
 - POST `/edit/news` -> Will edit already existing news.
 - POST `/delete/news` -> Will delete already existing news.
