@@ -20,7 +20,7 @@ openssl pkcs12 -export -out public_privatekey.pfx -inkey private.key -in publick
 - Thumbnail path -> stores the endpoint of the resource Ex: /thumbnail/something.png (not yet edited in the database)
 - PDF paths -> stores the endpoints of the PDFs seperated by `;` Ex: /pdf/comment.pdf;/pdf/comment2.pdf (not yet edited in the database)
 - (NewsForm) DeletePDFs -> stores the endpoints of the PDFs to be removed seperated by `;` Ex: /pdf/comment.pdf;/pdf/comment2.pdf
-- This adds the password `UybRuyibINbvcyrteTYCRTUVYIugcxtETYCRTUVigYCYR` to admin login `INSERT INTO Admins VALUES ('UybRuyibINbvcyrteTYCRTUVYIugcxtETYCRTUVigYCYR');`
+- Default system admin password: `UybRuyibINbvcyrteTYCRTUVYIugcxtETYCRTUVigYCYR`
 - Rules for passwords: No `&`, `=`, `\`
 
 ### Docs (endpoint -> explain)
@@ -28,8 +28,8 @@ openssl pkcs12 -export -out public_privatekey.pfx -inkey private.key -in publick
 - GET `/news/{page}/{amountPerPage}` -> Ex: `/news/1/5` this will return the latest news: {"News": [{id, title, thumbnail_endpoint, pdf_endpoint, html_body, tags, posted_on_utc_timezored}]}
 - POST `/news/search` -> body data: `search` and `tags` for the this will return a map with one key that points to a list of all News that contain any of the search in the title or any or filter in the tags.
 - POST `/news` -> Will create a new news.
-- POST `/edit/news` -> Will edit already existing news.
-- POST `/delete/news` -> Will delete already existing news.
+- POST `/news/edit` -> Will edit already existing news.
+- POST `/news/delete` -> Will delete already existing news.
 - POST `/admin/login` -> `adminPassword` - the password to login; returns status code 200 if loged in. otherwise it returns 401.
 - POST `/admin/add` -> `adminPassword` - the admin password to add; `currentAdmin` - the admin's password who adds the new admin.
 - POST `/admin/remove` -> `adminPassword` - the admin password to remove; `currentAdmin` - the admin's password who rmoves the admin.

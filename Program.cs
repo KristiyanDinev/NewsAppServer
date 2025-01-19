@@ -96,6 +96,9 @@ namespace NewsAppServer
             DatabaseManager._connectionString += 
                 app.Configuration.GetValue<string>("SQLite_Location") 
                     ?? "database.sqlite";
+            DatabaseManager._sysadmin_password += app.Configuration
+                .GetValue<string>("Database_SystemAdmin_Password")
+                    ?? "UybRuyibINbvcyrteTYCRTUVYIugcxtETYCRTUVigYCYR";
             DatabaseManager.Setup();
 
             new NewsController(app);

@@ -13,7 +13,17 @@
         "IsRequired": true
       },
       {
-        "Name": "currentAdmin",
+        "Name": "adminUsername",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "currentAdminUsername",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "currentAdminPassword",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -35,17 +45,32 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "oldAdminPassword",
+        "Name": "currentAdminPassword",
         "Type": "System.String",
         "IsRequired": true
       },
       {
-        "Name": "currentAdmin",
+        "Name": "currentAdminUsername",
         "Type": "System.String",
         "IsRequired": true
       },
       {
         "Name": "newAdminPassword",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "oldAdminPassword",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "oldAdminUsername",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "newAdminUsername",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -70,12 +95,19 @@
         "Name": "adminPassword",
         "Type": "System.String",
         "IsRequired": true
+      },
+      {
+        "Name": "adminUsername",
+        "Type": "System.String",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Void",
-        "MediaTypes": [],
+        "Type": "NewsAppServer.Models.AdminModel",
+        "MediaTypes": [
+          "application/json"
+        ],
         "StatusCode": 200
       }
     ]
@@ -94,7 +126,17 @@
         "IsRequired": true
       },
       {
-        "Name": "currentAdmin",
+        "Name": "adminUsername",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "currentAdminPassword",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "currentAdminUsername",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -148,6 +190,22 @@
         "MediaTypes": [
           "application/json"
         ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewsAppServer.Controllers.NewsController",
+    "Method": "\u003C.ctor\u003Eb__1_4",
+    "RelativePath": "news/delete",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
         "StatusCode": 200
       }
     ]
