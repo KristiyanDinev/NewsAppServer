@@ -38,7 +38,6 @@ namespace NewsAppServer.Controllers {
                     
             });
 
-
             app.MapGet("/news/id/{newsID:int}", async (HttpContext http,
                 DatabaseManager db,
                 int newsID) => {
@@ -212,8 +211,7 @@ namespace NewsAppServer.Controllers {
 
                 if (!(form.ContainsKey("Id") && 
                     form.ContainsKey("Thumbnail") &&
-                    form.ContainsKey("PDFs") &&
-                    form.Keys.Count == 3)) {
+                    form.ContainsKey("PDFs"))) {
                     return Results.BadRequest();
                 }
 

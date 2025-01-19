@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using NewsAppServer.Models;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 
@@ -92,27 +93,26 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
                 command.Parameters.AddWithValue("$page", page * amountPerPage);
                 command.Parameters.AddWithValue("$amount", amountPerPage);
                 using var reader = await command.ExecuteReaderAsync();
-                while (reader.Read()) {
-                    list.AddRange(reader.Cast<NewsModel>());
+                using DataTable dt = new DataTable();
+                dt.Load(reader);
+                for (int i = 0; i < dt.Rows.Count; i++) {
+                    list.Add(ConvertToNews(dt.Rows[i]));
                 }
             }
             return list;
         }
 
         public async Task<NewsModel?> GetNewsByID(int newsID) {
-            NewsModel? news = null;
-            using (var connection = new SqliteConnection(_connectionString)) {
-                connection.Open();
+            using var connection = new SqliteConnection(_connectionString);
+            connection.Open();
 
-                using var command = connection.CreateCommand();
-                command.CommandText = "SELECT * FROM News WHERE Id = $id;";
-                command.Parameters.AddWithValue("$id", newsID);
-                using var reader = await command.ExecuteReaderAsync();
-                while (reader.Read()) {
-                    news = reader.Cast<NewsModel>().First();
-                }
-            }
-            return news;
+            using var command = connection.CreateCommand();
+            command.CommandText = "SELECT * FROM News WHERE Id = $id;";
+            command.Parameters.AddWithValue("$id", newsID);
+            using var reader = await command.ExecuteReaderAsync();
+            using DataTable dt = new DataTable();
+            dt.Load(reader);
+            return dt.Rows.Count > 0 ? ConvertToNews(dt.Rows[0]) : null;
         }
 
         public async void EditNews(NewsModel news) {
@@ -148,17 +148,7 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
                 using DataTable dt = new DataTable();
                 dt.Load(reader);
                 for (int i = 0; i < dt.Rows.Count; i++) {
-                    DataRow row = dt.Rows[i];
-
-                    AdminModel admin = new AdminModel();
-                    admin.Username = Convert.ToString(row["Username"]);
-                    admin.Password = Convert.ToString(row["Password"]);
-                    admin.Added_by = Convert.ToString(row["Added_by"]);
-
-                    admin.Added_Date_UTC_timezoned = DateTime.Parse(
-                        Convert.ToString(row["Added_Date_UTC_timezoned"]));
-
-                    list.Add(admin);
+                    list.Add(ConvertToAdmin(dt.Rows[i]));
                 }
             }
             return list;
@@ -256,23 +246,38 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
                 using DataTable dt = new DataTable();
                 dt.Load(reader);
                 for (int i = 0; i < dt.Rows.Count; i++) {
-                    DataRow row = dt.Rows[i];
-
-                    NewsModel newsModel = new NewsModel();
-                    newsModel.Title = Convert.ToString(row["Title"]);
-                    newsModel.Id = Convert.ToInt32(row["Id"]);
-                    newsModel.Thumbnail_path = Convert.ToString(row["Thumbnail_path"]);
-                    newsModel.PDF_path = Convert.ToString(row["PDF_path"]);
-                    newsModel.HTML_body = Convert.ToString(row["HTML_body"]);
-                    newsModel.Tags = Convert.ToString(row["Tags"]);
-
-                    newsModel.Posted_on_UTC_timezoned = DateTime.Parse(
-                        Convert.ToString(row["Posted_on_UTC_timezoned"]));
-
-                    list.Add(newsModel);
+                    list.Add(ConvertToNews(dt.Rows[i]));
                 }
             }
             return list;
+        }
+
+
+        private NewsModel ConvertToNews(DataRow row) {
+            NewsModel newsModel = new NewsModel();
+            newsModel.Title = Convert.ToString(row["Title"]);
+            newsModel.Id = Convert.ToInt32(row["Id"]);
+            newsModel.Thumbnail_path = Convert.ToString(row["Thumbnail_path"]);
+            newsModel.PDF_path = Convert.ToString(row["PDF_path"]);
+            newsModel.HTML_body = Convert.ToString(row["HTML_body"]);
+            newsModel.Tags = Convert.ToString(row["Tags"]);
+            newsModel.Posted_by_Admin_username = Convert.ToString(row["Posted_by_Admin_username"]);
+
+            newsModel.Posted_on_UTC_timezoned = DateTime.Parse(
+                Convert.ToString(row["Posted_on_UTC_timezoned"]));
+
+            return newsModel;
+        }
+
+        private AdminModel ConvertToAdmin(DataRow row) {
+            AdminModel admin = new AdminModel();
+            admin.Username = Convert.ToString(row["Username"]);
+            admin.Password = Convert.ToString(row["Password"]);
+            admin.Added_by = Convert.ToString(row["Added_by"]);
+
+            admin.Added_Date_UTC_timezoned = DateTime.Parse(
+                Convert.ToString(row["Added_Date_UTC_timezoned"]));
+            return admin;
         }
     }
 }
