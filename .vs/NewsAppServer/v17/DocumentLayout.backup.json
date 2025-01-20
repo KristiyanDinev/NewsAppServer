@@ -46,8 +46,7 @@
               "RelativeToolTip": "Database\\DatabaseManager.cs",
               "ViewState": "AgIAAKIAAAAAAAAAAAA+wLYAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T16:53:00.906Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-20T16:53:00.906Z"
             },
             {
               "$type": "Document",
@@ -59,8 +58,7 @@
               "RelativeToolTip": "Utils\\ControllerUtils.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAAswFIAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T16:52:20.192Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-20T16:52:20.192Z"
             },
             {
               "$type": "Document",
@@ -72,8 +70,7 @@
               "RelativeToolTip": "Controllers\\NewsController.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAiwBsAAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-14T16:24:24.283Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-14T16:24:24.283Z"
             },
             {
               "$type": "Document",
@@ -98,8 +95,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-13T13:07:37.514Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-13T13:07:37.514Z"
             },
             {
               "$type": "Document",
@@ -111,8 +107,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-01-12T14:54:06.615Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-12T14:54:06.615Z"
             }
           ]
         }
