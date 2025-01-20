@@ -46,25 +46,28 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
 
             if (news.Thumbnail_path == null) {
                 command.CommandText = command.CommandText.Replace("$thumbnail_path", "null");
+
             } else {
                 command.Parameters.AddWithValue("$thumbnail_path", news.Thumbnail_path);
             }
+
             if (news.PDF_path == null) {
                 command.CommandText = command.CommandText.Replace("$pdf_path", "null");
+
             } else {
                 command.Parameters.AddWithValue("$pdf_path", news.PDF_path);
             }
+
             if (news.Tags == null) {
                 command.CommandText = command.CommandText.Replace("$tags", "null");
+
             } else {
-                if (news.Tags != null) {
-                    news.Tags = news.Tags.Replace("'", "\"");
-                }
+                news.Tags = news.Tags.Replace("'", "\"").Trim();                
                 command.Parameters.AddWithValue("$tags", news.Tags);
             }
 
-            command.Parameters.AddWithValue("$title", news.Title);
-            command.Parameters.AddWithValue("$html_body", news.HTML_body);
+            command.Parameters.AddWithValue("$title", news.Title.Trim());
+            command.Parameters.AddWithValue("$html_body", news.HTML_body.Trim());
             command.Parameters.AddWithValue("$admin_username", news.Posted_by_Admin_username);
             await command.ExecuteNonQueryAsync();
         }
@@ -77,29 +80,6 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
             command.CommandText = "DELETE FROM News WHERE Id = $id;";
             command.Parameters.AddWithValue("$id", newsID);
             await command.ExecuteNonQueryAsync();
-        }
-
-		public async Task<List<NewsModel>> GetNews(int page, int amountPerPage) {
-            // fist page is 0
-			List<NewsModel> list = new List<NewsModel>();
-            if (page < 1 || amountPerPage < 1) {
-                return list;
-            }
-            using (var connection = new SqliteConnection(_connectionString)) {
-                connection.Open();
-
-                using var command = connection.CreateCommand();
-                command.CommandText = "SELECT * FROM News ORDER BY Posted_on_UTC_timezoned DESC LIMIT $amount OFFSET $page;";
-                command.Parameters.AddWithValue("$page", page * amountPerPage);
-                command.Parameters.AddWithValue("$amount", amountPerPage);
-                using var reader = await command.ExecuteReaderAsync();
-                using DataTable dt = new DataTable();
-                dt.Load(reader);
-                for (int i = 0; i < dt.Rows.Count; i++) {
-                    list.Add(ConvertToNews(dt.Rows[i]));
-                }
-            }
-            return list;
         }
 
         public async Task<NewsModel?> GetNewsByID(int newsID) {
@@ -174,8 +154,8 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
 
             using var command = connection.CreateCommand();
             command.CommandText = @"INSERT INTO Admins (Username, Password, Added_by) VALUES ($username, $pass, $added_by)";
-            command.Parameters.AddWithValue("$username", admin.Username);
-            command.Parameters.AddWithValue("$pass", admin.Password);
+            command.Parameters.AddWithValue("$username", admin.Username.Trim());
+            command.Parameters.AddWithValue("$pass", admin.Password.Trim());
             command.Parameters.AddWithValue("$added_by", admin.Added_by);
             await command.ExecuteNonQueryAsync();
         }
@@ -192,55 +172,21 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
         }
 
         public async Task<List<NewsModel>> SearchNews(string? search, 
-            string[] tags) {
+            string[] tags, string[] post_authors, int page, int amountPerPage) {
             List<NewsModel> list = new List<NewsModel>();
             using (var connection = new SqliteConnection(_connectionString)) {
                 connection.Open();
 
                 using var command = connection.CreateCommand();
 
-                command.CommandText = @"
-                        SELECT * 
-                        FROM News
-                        WHERE ";
+                command.CommandText = CraftSearchCommand(search, tags, 
+                    post_authors, page, amountPerPage);
 
                 if (search != null) {
-
-                    command.CommandText += @"(Title LIKE '% $search %' OR 
-                        Title LIKE '$search %' OR
-                        Title LIKE '% $search' OR
-                        Title = $search OR
-                        HTML_body LIKE '% $search %' OR
-                        HTML_body LIKE '$search %' OR
-                        HTML_body LIKE '% $search' OR
-                        HTML_body = $search)";
+                    command.Parameters.AddWithValue("$search", search.Trim());
                 }
-
-
-                if (tags.Length > 0) {
-                    command.CommandText += search != null ? " AND ( " : " ( ";
-                    
-                    for (int i = 0; i < tags.Length - 1; i++) {
-                        string tag = tags[i].Replace("'", "\"");
-                        command.CommandText += $""""
-                    Tags LIKE '%;{tag};%' OR  
-                    Tags LIKE '{tag};%' OR 
-                    Tags LIKE '%;{tag}' OR 
-                    Tags = '{tag}' OR 
-                    """";
-                    }
-
-                    string lastTag = tags[tags.Length - 1].Replace("'", "\"");
-                    command.CommandText += $"""
-                        Tags LIKE '%;{lastTag};%' OR 
-                        Tags LIKE '{lastTag};%' OR 
-                        Tags LIKE '%;{lastTag}' OR 
-                        Tags = '{lastTag}')
-                        """;
-                }
-
-                command.CommandText += " ORDER BY Posted_on_UTC_timezoned DESC ";
-                command.Parameters.AddWithValue("$search", search);
+                command.Parameters.AddWithValue("$page", page * amountPerPage);
+                command.Parameters.AddWithValue("$amount", amountPerPage);
 
                 using var reader = await command.ExecuteReaderAsync();
                 using DataTable dt = new DataTable();
@@ -252,8 +198,79 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
             return list;
         }
 
+        private static string CraftSearchCommand(string? search,
+            string[] tags, string[] post_authors, int page, int amountPerPage) {
+            string query = "SELECT * FROM News ";
+            query += search != null || tags.Length > 0 || post_authors.Length > 0 ? " WHERE " : "";
+            query += Craft_Title_And_Body_Command(ref query, search);
+            query += Craft_Tags_Command(ref query, tags);
+            query += Craft_PostAutors_Command(ref query, post_authors);
+            query += Craft_Page_Command(ref query);
+            return query;
 
-        private NewsModel ConvertToNews(DataRow row) {
+        }
+
+        private static string Craft_Title_And_Body_Command(ref string query, string? search) {
+            if (search != null && search.Trim().Length > 0) {
+                query += @" (Title LIKE '% $search %' OR 
+                        Title LIKE '$search %' OR
+                        Title LIKE '% $search' OR
+                        Title = $search OR
+                        HTML_body LIKE '% $search %' OR
+                        HTML_body LIKE '$search %' OR
+                        HTML_body LIKE '% $search' OR
+                        HTML_body = $search) ";
+            }
+            return query;
+        }
+
+        private static string Craft_Tags_Command(ref string query, string[] tags) {
+            if (tags.Length > 0) {
+                query += query.Contains("$search") ? " AND ( " : " ( ";
+
+                for (int i = 0; i < tags.Length - 1; i++) {
+                    string tag = tags[i];
+                    query += $""""
+                    Tags LIKE '%;{tag};%' OR  
+                    Tags LIKE '{tag};%' OR 
+                    Tags LIKE '%;{tag}' OR 
+                    Tags = '{tag}' OR 
+                    """";
+                }
+
+                string lastTag = tags[tags.Length - 1];
+                query += $"""
+                        Tags LIKE '%;{lastTag};%' OR 
+                        Tags LIKE '{lastTag};%' OR 
+                        Tags LIKE '%;{lastTag}' OR 
+                        Tags = '{lastTag}')
+                        """;
+            }
+            return query;
+        }
+
+        private static string Craft_PostAutors_Command(ref string query, string[] post_authors) {
+            if (post_authors.Length > 0) {
+                query += query.Contains("$search") || 
+                    query.Contains("Tags") ? " AND ( " : " ( ";
+
+                for (int i = 0; i < post_authors.Length - 1; i++) {
+                    string author = post_authors[i];
+                    query += $" Posted_by_Admin_username = '{author}' OR";
+                }
+
+                string lastAuthor = post_authors[post_authors.Length - 1];
+                query += $" Posted_by_Admin_username = '{lastAuthor}') ";
+            }
+            return query;
+        }
+
+        private static string Craft_Page_Command(ref string query) {
+            query += " ORDER BY Posted_on_UTC_timezoned DESC LIMIT $amount OFFSET $page;";
+            return query;
+        }
+
+        private static NewsModel ConvertToNews(DataRow row) {
             NewsModel newsModel = new NewsModel();
             newsModel.Title = Convert.ToString(row["Title"]);
             newsModel.Id = Convert.ToInt32(row["Id"]);
@@ -269,7 +286,7 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
             return newsModel;
         }
 
-        private AdminModel ConvertToAdmin(DataRow row) {
+        private static AdminModel ConvertToAdmin(DataRow row) {
             AdminModel admin = new AdminModel();
             admin.Username = Convert.ToString(row["Username"]);
             admin.Password = Convert.ToString(row["Password"]);

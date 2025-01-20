@@ -7,36 +7,8 @@ using System.Text;
 
 namespace NewsAppServer.Controllers {
     public class NewsController {
-        private readonly string wwwrootPath = "wwwroot";
+        
         public NewsController(WebApplication app) {
-            string thumbnailFileLocation = wwwrootPath + "\\thumbnail\\";
-            string pdfFileLocation = wwwrootPath + "\\pdf\\";
-
-            string pdfEndpoint = pdfFileLocation.Split("wwwroot").Last();
-            string thumbnailEndpoint = thumbnailFileLocation.Split("wwwroot").Last();
-
-            /*
-             * 
-             * public bool DeleteThumbnail { get; set; } = false;
-        public string DeletePDFs { get; set; } = "";
-             */
-
-            app.MapGet("/news/{page:int}/{amount:int}", async (HttpContext http, 
-                DatabaseManager db, 
-                int page, int amount) => {
-                    
-                    page -= 1;
-                    Dictionary<string, object> res = 
-                        new Dictionary<string, object>();
-                    try {
-                        List<NewsModel> news = await db.GetNews(page, amount);
-                        res.Add("News", news);
-                        return res;
-                    } catch (Exception) { 
-                        return res;
-                    }
-                    
-            });
 
             app.MapGet("/news/id/{newsID:int}", async (HttpContext http,
                 DatabaseManager db,
@@ -50,51 +22,40 @@ namespace NewsAppServer.Controllers {
                     } catch (Exception) { 
                         return null;
                     }
-                    
-
                 });
 
-            app.MapPost("/news/search", 
-                async (HttpContext http, DatabaseManager db) => {
+
+            app.MapPost("/news/search", async (HttpContext http, DatabaseManager db) => {
                     IFormCollection form = await http.Request.ReadFormAsync();
                     Dictionary<string, object> res =
                         new Dictionary<string, object>();
 
-                    string? search = null;
-                    if (form.ContainsKey("search")) {
-                        search = form["search"];
-                        if (!IsRequirementFilled(search)) {
-                            search = null;
-                        }
-                    }
+                    try {
+                        string? search = form["search"];
 
-                    List<string> fixTags = new List<string>();
-                    if (form.ContainsKey("tags")) {
-                        string? tagsValue = form["tags"];
+                        List<string> tags = ControllerUtils
+                            .SeperateValues(form["tags"]);
 
-                        if (IsRequirementFilled(tagsValue)) {
-                            foreach (string tag in tagsValue.Split(';')) {
-                                if (tag.Replace(" ", "").Length == 0) {
-                                    continue;
-                                }
-                                fixTags.Add(tag);
-                            }
-                        }
-                    }
+                        List<string> post_authors = ControllerUtils
+                            .SeperateValues(form["post_authors"]);;
 
-                    if (search == null && fixTags.Count == 0) {
+                        List<NewsModel> searchedNews = await db.SearchNews(search, 
+                            tags.ToArray(), post_authors.ToArray(), 
+                            int.Parse(form["page"]), int.Parse(form["amount"]));
+                        res.Add("News", searchedNews);
+                        return res;
+
+                    } catch (Exception) {
                         return res;
                     }
 
-                    List<NewsModel> searchedNews = 
-                        await db.SearchNews(search, fixTags.ToArray());
-                    res.Add("News", searchedNews);
-                    return res;
-                });
+                    
+                }).DisableAntiforgery();
+
 
             app.MapPost("/news", async (HttpContext http, DatabaseManager db) => {
                 IFormCollection form = await http.Request.ReadFormAsync();
-                bool isAdminReq = await CheckAdminRequest(form, db);
+                bool isAdminReq = await ControllerUtils.CheckAdminRequest(form, db);
                 if (!isAdminReq) {
                     return Results.Unauthorized();
                 }
@@ -106,105 +67,145 @@ namespace NewsAppServer.Controllers {
                     return Results.BadRequest();
                 }
 
-                if (!IsRequirementFilled(form["Title"]) || 
-                    !IsRequirementFilled(form["HTML_body"])) {
+                string? title = form["Title"];
+                string? html_body = form["HTML_body"];
+
+                if (!ControllerUtils.IsRequirementFilled(title) || 
+                    !ControllerUtils.IsRequirementFilled(html_body)) {
                     return Results.BadRequest();
                 }
 
                 NewsModel news = new NewsModel();
                 // ----------
-                news.Posted_by_Admin_username = form["AdminUsername"].ToString();
+                news.Posted_by_Admin_username = form["AdminUsername"];
                 // ----------
-                news.Title = form["Title"].ToString();
+                news.Title = title.Trim();
                 // -----------
                 string? tags = form["Tags"];
-                news.Tags = tags?.ToString();
+                news.Tags = tags;
                 // -----------
-                news.HTML_body = BBCode.ConvertToHtml(form["HTML_body"].ToString());
+                news.HTML_body = BBCode.ConvertToHtml(html_body);
 
                 // ------------
-                string thumbnail = form["Thumbnail"].ToString();
-                if (thumbnail.Length > 0) {
-                    string[] ThumbnailParts = form["Thumbnail"].ToString().Split(";");
-                    string ThumbnailName = ThumbnailParts[0];
-                    string ThumbnailData = ThumbnailParts[1];
-
-                    if (ThumbnailName.Contains('\\') ||
-                        ThumbnailName.Contains('/') || ThumbnailData.EndsWith(',')) {
-                        return Results.BadRequest();
-                    }
-
-                    UploadFile(FromStringToUint8Array(ThumbnailData),
-                        thumbnailFileLocation + ThumbnailName);
-                    news.Thumbnail_path = thumbnailEndpoint + ThumbnailName;
+                string? thumbnail = form["Thumbnail"];
+                if (thumbnail != null) {
+                    news.Thumbnail_path = await ControllerUtils.UploadThumbnail(thumbnail, null);
                 }
 
                 // ------------
 
-                string pdfs = form["PDFs"].ToString();
-                if (pdfs.Length > 0) {
-                    foreach (string pdfPart in form["PDFs"].ToString().Split(";")) {
-                        if (pdfPart.Replace(" ", "").Length == 0 || pdfPart.Equals("null")) {
-                            continue;
-                        }
-                        string[] pdfParts = pdfPart.Split(".");
-                        string pdfName = pdfParts[0] + ".pdf";
-                        string pdfData = pdfParts[1].Remove(0, 3);
-
-                        if (pdfData.EndsWith(',')) {
-                            continue;
-                        }
-
-                        UploadFile(FromStringToUint8Array(pdfData),
-                            pdfFileLocation + pdfName);
-
-                        news.PDF_path ??= "";
-                        news.PDF_path += pdfEndpoint + pdfName + ";";
-                    }
+                string? pdfs = form["PDFs"];
+                if (pdfs != null && pdfs.Length > 0) {
+                    news.PDF_path = await ControllerUtils.UploadPDFs(pdfs);
                 }
                 
                 db.AddNews(news);
                 return Results.Ok();
 
-            })
-                .DisableAntiforgery()
+            }).DisableAntiforgery()
             .RequireRateLimiting("fixed");
 
-            /*
-            app.MapPost("/news/edit", (HttpContext http, DatabaseManager db) => {
-            // PDF UpdateFiles(news, file, pdfFileLocation, pdfEndpoint, true);
-            // Thumbnail UpdateFiles(news, file, thumbnailFileLocation, thumbnailEndpoint, false);
             
+            app.MapPost("/news/edit", async (HttpContext http, DatabaseManager db) => {
+                IFormCollection form = await http.Request.ReadFormAsync();
+                bool isAdminReq = await ControllerUtils.CheckAdminRequest(form, db);
+                if (!isAdminReq) {
+                    return Results.Unauthorized();
+                }
 
-                        string thumbnailDeletePath = wwwrootPath + news.Thumbnail_path;
-                        if (news.DeleteThumbnail && File.Exists(thumbnailDeletePath)) {
-                            File.Delete(thumbnailDeletePath);
-                            news.Thumbnail_path = "";
-                        }
+                if (!(form.ContainsKey("Id") && form.ContainsKey("Title") &&
+                     form.ContainsKey("PDFs") && form.ContainsKey("Thumbnail")
+                     && form.ContainsKey("Tags") && form.ContainsKey("HTML_body"))) {
+                    return Results.BadRequest();
+                }
 
-                        if (news.DeletePDFs.Length > 0 && news.PDF_path != null) {
-                            foreach (string filePath in news.DeletePDFs.Split(';')) { 
-                                if (filePath.Length == 0) {
-                                    continue;
-                                }
-                            
-                                string fullFilePath = wwwrootPath + filePath;
-                                if (File.Exists(fullFilePath)) {
-                                    File.Delete(fullFilePath);
-                                }
-                                news.PDF_path = news.PDF_path.Replace(filePath+";", "");
-                            }
-                        }
+                if (!int.TryParse(form["Id"], out int Id)) {
+                    return Results.BadRequest();
+                }
 
-                        db.EditNews(news);
+                NewsModel? dbNewsModel = await db.GetNewsByID(Id);
+                if (dbNewsModel == null) {
+                    return Results.BadRequest();
+                }
 
-                }).DisableAntiforgery()
-                .RequireRateLimiting("fixed");*/
+                NewsModel newsModel = new NewsModel();
+
+
+                string? Title = form["Title"];
+                if (Title == null) {
+                    return Results.BadRequest();
+                }
+                Title = Title.Trim();
+                if (!dbNewsModel.Title.Equals(Title)) {
+                    // Change Title
+                    newsModel.Title = Title;
+                }
+
+                string? HTML_body = form["HTML_body"];
+                if (HTML_body == null) {
+                    return Results.BadRequest();
+                }
+                HTML_body = BBCode.ConvertToHtml(HTML_body);
+                if (!dbNewsModel.HTML_body.Equals(HTML_body)) {
+                    // Change HTML body
+                    newsModel.HTML_body = HTML_body;
+                }
+
+                newsModel.Tags = form["Tags"];
+
+
+                string? thumbnail = form["Thumbnail"];
+                // dbNewsModel.Thumbnail_path -> endpoint path
+                // thumbnail -> either same endpoint path or new data
+                if (dbNewsModel.Thumbnail_path != thumbnail) {
+                    if ((thumbnail == null || thumbnail.Length == 0) && 
+                        (dbNewsModel.Thumbnail_path != null && 
+                            dbNewsModel.Thumbnail_path.Length > 0)) {
+                        try {
+                            File.Delete(ControllerUtils.wwwrootPath + dbNewsModel.Thumbnail_path);
+                        } catch (Exception) { }
+                        newsModel.Thumbnail_path = null;
+
+                    } else if (thumbnail != null && !(thumbnail.StartsWith(';') ||
+                            thumbnail.EndsWith(';'))) {
+
+                        string? path = await ControllerUtils.UploadThumbnail(thumbnail, dbNewsModel.Thumbnail_path);
+                        newsModel.Thumbnail_path = path != null ? path : dbNewsModel.Thumbnail_path;
+
+                    } else {
+                        newsModel.Thumbnail_path = dbNewsModel.Thumbnail_path;
+                    }
+                }
+
+                
+
+                string? pdfsStr = form["PDFs"];
+                if (dbNewsModel.PDF_path != pdfsStr) {
+                    if ((pdfsStr == null || pdfsStr.Length == 0) &&
+                        (dbNewsModel.PDF_path != null && dbNewsModel.PDF_path.Length > 0)) {
+                        // delete all pdfs in  dbNewsModel.PDF_path
+                        ControllerUtils.DeletePDFs(dbNewsModel.PDF_path);
+                        newsModel.PDF_path = null;
+
+                    } else if (pdfsStr != null && pdfsStr.Length > 0) {
+                        // update PDFs
+                        string? pdfPath = await ControllerUtils.UploadPDFs(pdfsStr);
+                        newsModel.PDF_path = pdfPath != null ? pdfPath :
+                            dbNewsModel.PDF_path;
+
+                    }
+                }
+
+                db.EditNews(newsModel);
+                return Results.Ok();
+
+             }).DisableAntiforgery()
+             .RequireRateLimiting("fixed");
 
 
             app.MapPost("/news/delete", async (HttpContext http, DatabaseManager db) => {
                 IFormCollection form = await http.Request.ReadFormAsync();
-                bool isAdminReq = await CheckAdminRequest(form, db);
+                bool isAdminReq = await ControllerUtils.CheckAdminRequest(form, db);
                 if (!isAdminReq) {
                     return Results.Unauthorized();
                 }
@@ -220,108 +221,21 @@ namespace NewsAppServer.Controllers {
                 }
 
                 string? thumbnail_path = form["Thumbnail"];
-                if (IsRequirementFilled(thumbnail_path)) {
-                    File.Delete(wwwrootPath + thumbnail_path);
+                if (ControllerUtils.IsRequirementFilled(thumbnail_path)) {
+                    try { 
+                        File.Delete(ControllerUtils.wwwrootPath + thumbnail_path);
+                    } catch (Exception) { }
                 }
 
                 string? pdfs_path = form["PDFs"];
-                if (IsRequirementFilled(pdfs_path)) {
-                    foreach (string pdf in pdfs_path.Split(";")) {
-                        if (pdf.Length == 0 || pdf.Equals("null")) {
-                            continue;
-                        }
-                        File.Delete(wwwrootPath + pdf);
-                    }
+                if (ControllerUtils.IsRequirementFilled(pdfs_path)) {
+                    ControllerUtils.DeletePDFs(pdfs_path);
                 }
 
                 db.RemoveNews(Id);
                 return Results.Ok();
-
-
             }).DisableAntiforgery()
             .RequireRateLimiting("fixed");
-        }
-
-
-        private static async void UploadFile(byte[] data, string location) {
-            using FileStream fs = File.Create(location);
-            await fs.WriteAsync(data);
-        }
-
-        [Description(@"Reads the bytes of the stream. The input stream is not closed.
-        It doesn't close the Stream if it is MemoryStream, 
-but it copies the bytes from the input stream to new temp MemoryStream 
-and it reads it from the new temp MemoryStream, then it closes the new temp MemoryStream.")]
-        private byte[] ReadAllBytes(Stream inStream) {
-            if (inStream is MemoryStream inMemoryStream) {
-                return inMemoryStream.ToArray();
-            }
-
-            byte[] bytes = new byte[inStream.Length];
-            using (var outStream = new MemoryStream()) {
-                inStream.CopyTo(outStream);
-                bytes = outStream.ToArray();
-            }
-            return bytes;
-        }
-
-        private async void UpdateFiles(NewsModel news, string FileName, 
-            byte[] FileBytes,
-            string fileLocationRoot, string endpointLocationRoot, bool isPDF) {
-            
-            string newFileLocation = fileLocationRoot + FileName;
-
-            if (File.Exists(newFileLocation)) {
-                byte[] currentContent = await File.ReadAllBytesAsync(newFileLocation);
-
-                if (!currentContent.SequenceEqual(FileBytes)) {
-                    File.Delete(newFileLocation);
-                    UploadFile(FileBytes, newFileLocation);
-                }
-
-                return;
-            }
-
-            UploadFile(FileBytes, newFileLocation);
-
-            if (isPDF) {
-                news.PDF_path += endpointLocationRoot + FileName + ";";
-                return;
-            }
-
-            File.Delete(wwwrootPath + news.Thumbnail_path);
-            news.Thumbnail_path = endpointLocationRoot + FileName;
-        }
-
-
-        private static bool IsRequirementFilled(object? obj) {
-            return obj != null && obj.ToString()
-                            .Replace(" ", "").Length > 0;
-        }
-
-        private static byte[] FromStringToUint8Array(string data) {
-            string[] dataNumbers = data.Split(",");
-            byte[] byteArray = new byte[dataNumbers.Length];
-            for (int i = 0; i < dataNumbers.Length; i++) {
-                byteArray[i] = Convert.ToByte(dataNumbers[i]);
-            }
-            return byteArray;
-        }
-
-
-        private static async Task<bool> CheckAdminRequest(IFormCollection form, 
-            DatabaseManager db) {
-
-            try {
-                AdminModel loginAdmin = new AdminModel();
-                loginAdmin.Password = form["AdminPass"];
-                loginAdmin.Username = form["AdminUsername"];
-
-                AdminModel? admin = await AdminController.LoginAdmin(db, loginAdmin);
-                return admin != null;
-            } catch (Exception) { 
-                return false;
-            }
         }
     }
 }

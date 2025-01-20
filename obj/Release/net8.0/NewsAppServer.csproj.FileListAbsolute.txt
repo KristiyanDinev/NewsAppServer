@@ -63,3 +63,4 @@ D:\ToolBox\Tools\Kit\NewsAppServer\bin\Release\net8.0\Microsoft.Extensions.Cachi
 D:\ToolBox\Tools\Kit\NewsAppServer\bin\Release\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\ToolBox\Tools\Kit\NewsAppServer\bin\Release\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 D:\ToolBox\Tools\Kit\NewsAppServer\bin\Release\net8.0\Microsoft.Extensions.Options.dll
+D:\ToolBox\Tools\Kit\NewsAppServer\obj\Release\net8.0\NewsAppServer.sourcelink.json
