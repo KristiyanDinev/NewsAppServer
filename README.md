@@ -17,11 +17,9 @@ openssl pkcs12 -export -out public_privatekey.pfx -inkey private.key -in publick
 - When admin edits or deletes News he stores the old Thumbnail path, all PDF paths, Id, Title, HTML body, Tags
 
 ### DB
-- Thumbnail path -> stores the endpoint of the resource Ex: /thumbnail/something.png (not yet edited in the database)
-- PDF paths -> stores the endpoints of the PDFs seperated by `;` Ex: /pdf/comment.pdf;/pdf/comment2.pdf (not yet edited in the database)
-- (NewsForm) DeletePDFs -> stores the endpoints of the PDFs to be removed seperated by `;` Ex: /pdf/comment.pdf;/pdf/comment2.pdf
+- Thumbnail path -> stores the endpoint of the resource Ex: `/thumbnail/something.png` (not yet edited in the database)
+- PDF paths -> stores the endpoints of the PDFs seperated by `;` Ex: `/pdf/comment.pdf;/pdf/comment2.pdf` (not yet edited in the database)
 - Default system admin password: `UybRuyibINbvcyrteTYCRTUVYIugcxtETYCRTUVigYCYR`
-- Rules for passwords: No `&`, `=`, `\`
 
 ### Docs (endpoint -> explain)
 - GET `/news/id/{newsID}` -> Ex: `/news/id/1` this will get the news with that id

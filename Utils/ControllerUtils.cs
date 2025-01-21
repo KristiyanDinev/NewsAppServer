@@ -1,6 +1,7 @@
 ﻿using NewsAppServer.Controllers;
 using NewsAppServer.Database;
 using NewsAppServer.Models;
+using System.Text;
 
 namespace NewsAppServer.Utils {
     public class ControllerUtils {
@@ -87,7 +88,7 @@ namespace NewsAppServer.Utils {
                     if (tag.Length == 0) {
                         continue;
                     }
-                    list.Add(tag.Replace("'", "\"").Trim());
+                    list.Add(tag.Replace("'", "''").Trim());
                 }
             }
             return list;
@@ -100,15 +101,18 @@ namespace NewsAppServer.Utils {
                 string ThumbnailName = ThumbnailParts[0];
                 string ThumbnailData = ThumbnailParts[1];
 
+                string byteData = Encoding.UTF8.GetString(
+                    Convert.FromBase64String(ThumbnailData));
+
                 if (ThumbnailName.Contains('\\') ||
                     ThumbnailName.Contains('/') ||
-                    ThumbnailData.EndsWith(',') ||
-                    ThumbnailData.StartsWith(',')) {
+                    byteData.EndsWith(',') ||
+                    byteData.StartsWith(',')) {
                     return null;
                 }
 
                 string? path = await UpdateFile(oldThumbnail,
-                    ThumbnailName, FromStringToUint8Array(ThumbnailData),
+                    ThumbnailName, FromStringToUint8Array(byteData),
                     thumbnailFileLocation, thumbnailEndpoint, false);
 
                 return path;
@@ -126,15 +130,18 @@ namespace NewsAppServer.Utils {
                 string pdfName = pdfParts[0] + ".pdf";
                 string pdfData = pdfParts[1].Remove(0, 3);
 
+                string byteData = Encoding.UTF8.GetString(
+                    Convert.FromBase64String(pdfData));
+
                 if (pdfName.Contains('\\') ||
                     pdfName.Contains('/') ||
-                    pdfData.EndsWith(',') ||
-                    pdfData.StartsWith(',')) {
+                    byteData.EndsWith(',') ||
+                    byteData.StartsWith(',')) {
                     continue;
                 }
 
                 string? PDF_New_Path = await UpdateFile(null,
-                    pdfName, FromStringToUint8Array(pdfData),
+                    pdfName, FromStringToUint8Array(byteData),
                     pdfFileLocation, pdfEndpoint, true);
 
                 if (PDF_New_Path == null) {
@@ -156,5 +163,6 @@ namespace NewsAppServer.Utils {
                 } catch (Exception) { }
             }
         }
+
     }
 }

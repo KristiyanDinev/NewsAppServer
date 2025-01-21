@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using NewsAppServer.Models;
+using NewsAppServer.Utils;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -62,13 +63,14 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
                 command.CommandText = command.CommandText.Replace("$tags", "null");
 
             } else {
-                news.Tags = news.Tags.Replace("'", "\"").Trim();                
+                news.Tags = news.Tags.Replace("'", "''").Trim();                
                 command.Parameters.AddWithValue("$tags", news.Tags);
             }
 
             command.Parameters.AddWithValue("$title", news.Title.Trim());
             command.Parameters.AddWithValue("$html_body", news.HTML_body.Trim());
             command.Parameters.AddWithValue("$admin_username", news.Posted_by_Admin_username);
+            await command.PrepareAsync();
             await command.ExecuteNonQueryAsync();
         }
 
@@ -79,6 +81,7 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
             using var command = connection.CreateCommand();
             command.CommandText = "DELETE FROM News WHERE Id = $id;";
             command.Parameters.AddWithValue("$id", newsID);
+            await command.PrepareAsync();
             await command.ExecuteNonQueryAsync();
         }
 
@@ -89,6 +92,7 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
             using var command = connection.CreateCommand();
             command.CommandText = "SELECT * FROM News WHERE Id = $id;";
             command.Parameters.AddWithValue("$id", newsID);
+            await command.PrepareAsync();
             using var reader = await command.ExecuteReaderAsync();
             using DataTable dt = new DataTable();
             dt.Load(reader);
@@ -113,6 +117,7 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
                 news.Tags = news.Tags.Replace("'", "\"");
             }
             command.Parameters.AddWithValue("$tags", news.Tags);
+            await command.PrepareAsync();
             await command.ExecuteNonQueryAsync();
         }
 
@@ -145,6 +150,7 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
             command.Parameters.AddWithValue("$new_username", newAdmin.Username);
             command.Parameters.AddWithValue("$new_pass", newAdmin.Password);
             command.Parameters.AddWithValue("$old_username", oldAdmin.Username);
+            await command.PrepareAsync();
             await command.ExecuteNonQueryAsync();
         }
 
@@ -154,9 +160,10 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
 
             using var command = connection.CreateCommand();
             command.CommandText = @"INSERT INTO Admins (Username, Password, Added_by) VALUES ($username, $pass, $added_by)";
-            command.Parameters.AddWithValue("$username", admin.Username.Trim());
+            command.Parameters.AddWithValue("$username", admin.Username.Replace("'", "''").Trim());
             command.Parameters.AddWithValue("$pass", admin.Password.Trim());
             command.Parameters.AddWithValue("$added_by", admin.Added_by);
+            await command.PrepareAsync();
             await command.ExecuteNonQueryAsync();
         }
 
@@ -168,6 +175,7 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
             command.CommandText = "DELETE FROM Admins WHERE Username = $username AND Password = $pass;";
             command.Parameters.AddWithValue("$username", admin.Username);
             command.Parameters.AddWithValue("$pass", admin.Password);
+            await command.PrepareAsync();
             await command.ExecuteNonQueryAsync();
         }
 
@@ -179,14 +187,10 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
 
                 using var command = connection.CreateCommand();
 
-                command.CommandText = CraftSearchCommand(search, tags, 
+                command.CommandText = CraftSearchCommand(ref search, tags, 
                     post_authors, page, amountPerPage);
 
-                if (search != null) {
-                    command.Parameters.AddWithValue("$search", search.Trim());
-                }
-                command.Parameters.AddWithValue("$page", page * amountPerPage);
-                command.Parameters.AddWithValue("$amount", amountPerPage);
+                await command.PrepareAsync();
 
                 using var reader = await command.ExecuteReaderAsync();
                 using DataTable dt = new DataTable();
@@ -198,20 +202,31 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
             return list;
         }
 
-        private static string CraftSearchCommand(string? search,
+        private static string CraftSearchCommand(ref string? search,
             string[] tags, string[] post_authors, int page, int amountPerPage) {
             string query = "SELECT * FROM News ";
             query += search != null || tags.Length > 0 || post_authors.Length > 0 ? " WHERE " : "";
-            query += Craft_Title_And_Body_Command(ref query, search);
-            query += Craft_Tags_Command(ref query, tags);
-            query += Craft_PostAutors_Command(ref query, post_authors);
-            query += Craft_Page_Command(ref query);
+            Craft_Title_And_Body_Command(ref query, ref search);
+            Craft_Tags_Command(ref query, tags);
+            Craft_PostAutors_Command(ref query, post_authors);
+            Craft_Page_Command(ref query, page, amountPerPage);
             return query;
 
         }
 
-        private static string Craft_Title_And_Body_Command(ref string query, string? search) {
+        private static string Craft_Title_And_Body_Command(ref string query, 
+            ref string? search) {
             if (search != null && search.Trim().Length > 0) {
+                search = search.Trim().Replace("'", "''");
+                query += @$" (Title LIKE '% {search} %' OR 
+                        Title LIKE '{search} %' OR
+                        Title LIKE '% {search}' OR
+                        Title = '{search}' OR
+                        HTML_body LIKE '% {search} %' OR
+                        HTML_body LIKE '{search} %' OR
+                        HTML_body LIKE '% {search}' OR
+                        HTML_body = '{search}') ";
+                /*
                 query += @" (Title LIKE '% $search %' OR 
                         Title LIKE '$search %' OR
                         Title LIKE '% $search' OR
@@ -219,14 +234,14 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
                         HTML_body LIKE '% $search %' OR
                         HTML_body LIKE '$search %' OR
                         HTML_body LIKE '% $search' OR
-                        HTML_body = $search) ";
+                        HTML_body = $search) ";*/
             }
             return query;
         }
 
         private static string Craft_Tags_Command(ref string query, string[] tags) {
             if (tags.Length > 0) {
-                query += query.Contains("$search") ? " AND ( " : " ( ";
+                query += !query.Equals("SELECT * FROM News ") ? " AND ( " : " ( ";
 
                 for (int i = 0; i < tags.Length - 1; i++) {
                     string tag = tags[i];
@@ -251,8 +266,7 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
 
         private static string Craft_PostAutors_Command(ref string query, string[] post_authors) {
             if (post_authors.Length > 0) {
-                query += query.Contains("$search") || 
-                    query.Contains("Tags") ? " AND ( " : " ( ";
+                query += !query.Equals("SELECT * FROM News ") ? " AND ( " : " ( ";
 
                 for (int i = 0; i < post_authors.Length - 1; i++) {
                     string author = post_authors[i];
@@ -265,8 +279,8 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
             return query;
         }
 
-        private static string Craft_Page_Command(ref string query) {
-            query += " ORDER BY Posted_on_UTC_timezoned DESC LIMIT $amount OFFSET $page;";
+        private static string Craft_Page_Command(ref string query, int page, int amountPerPage) {
+            query += $" ORDER BY Posted_on_UTC_timezoned DESC LIMIT {amountPerPage} OFFSET {page * amountPerPage};";
             return query;
         }
 

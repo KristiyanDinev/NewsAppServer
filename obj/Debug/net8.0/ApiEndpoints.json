@@ -151,7 +151,7 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__5_2",
+    "Method": "\u003C.ctor\u003Eb__0_2",
     "RelativePath": "news",
     "HttpMethod": "POST",
     "IsController": false,
@@ -167,7 +167,7 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__5_4",
+    "Method": "\u003C.ctor\u003Eb__0_4",
     "RelativePath": "news/delete",
     "HttpMethod": "POST",
     "IsController": false,
@@ -183,7 +183,7 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__5_3",
+    "Method": "\u003C.ctor\u003Eb__0_3",
     "RelativePath": "news/edit",
     "HttpMethod": "POST",
     "IsController": false,
@@ -199,7 +199,7 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__5_0",
+    "Method": "\u003C.ctor\u003Eb__0_0",
     "RelativePath": "news/id/{newsID:int}",
     "HttpMethod": "GET",
     "IsController": false,
@@ -223,12 +223,38 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.NewsController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__5_1",
+    "Method": "\u003C.ctor\u003Eb__0_1",
     "RelativePath": "news/search",
     "HttpMethod": "POST",
     "IsController": false,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "tags",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "post_authors",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "amount",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.Dictionary\u00602[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",

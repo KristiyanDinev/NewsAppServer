@@ -25,12 +25,15 @@ namespace NewsAppServer.Controllers {
                 });
 
 
-            app.MapPost("/news/search", async (HttpContext http, DatabaseManager db) => {
-                    IFormCollection form = await http.Request.ReadFormAsync();
+            app.MapPost("/news/search", async (HttpContext http, DatabaseManager db,
+                [FromForm] string tags, [FromForm] string search, 
+                [FromForm] string post_authors, [FromForm] int page,
+                [FromForm] int amount) => {
+                    //IFormCollection form = await http.Request.ReadFormAsync();
                     Dictionary<string, object> res =
                         new Dictionary<string, object>();
-
-                    try {
+                    
+                    try {/*
                         string? search = form["search"];
 
                         List<string> tags = ControllerUtils
@@ -41,7 +44,17 @@ namespace NewsAppServer.Controllers {
 
                         List<NewsModel> searchedNews = await db.SearchNews(search, 
                             tags.ToArray(), post_authors.ToArray(), 
-                            int.Parse(form["page"]), int.Parse(form["amount"]));
+                            int.Parse(form["page"]) - 1, int.Parse(form["amount"]));*/
+
+                        List<string> tagsList = ControllerUtils
+                            .SeperateValues(tags);
+
+                        List<string> post_authorsList = ControllerUtils
+                            .SeperateValues(post_authors); ;
+
+                        List<NewsModel> searchedNews = await db.SearchNews(search,
+                            tagsList.ToArray(), post_authorsList.ToArray(),
+                            page - 1, amount);
                         res.Add("News", searchedNews);
                         return res;
 

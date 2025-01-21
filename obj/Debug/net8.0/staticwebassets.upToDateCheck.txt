@@ -1,0 +1,3 @@
+wwwroot\pdf\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf
+wwwroot\thumbnail\1.png
+wwwroot\thumbnail\1000000033.png
