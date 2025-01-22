@@ -1,16 +1,12 @@
 {
   "Files": [
     {
-      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\pdf\\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf",
-      "PackagePath": "staticwebassets\\pdf\\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf"
+      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\attachment\\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf",
+      "PackagePath": "staticwebassets\\attachment\\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf"
     },
     {
       "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\thumbnail\\1.png",
       "PackagePath": "staticwebassets\\thumbnail\\1.png"
-    },
-    {
-      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\thumbnail\\1000000033.png",
-      "PackagePath": "staticwebassets\\thumbnail\\1000000033.png"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.NewsAppServer.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

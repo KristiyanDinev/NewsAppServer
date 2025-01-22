@@ -12,7 +12,6 @@
 openssl req -new -x509 -key private.key -out publickey.cer -days 365
 openssl pkcs12 -export -out public_privatekey.pfx -inkey private.key -in publickey.cer`
 
-
 ### Client
 - When admin edits or deletes News he stores the old Thumbnail path, all PDF paths, Id, Title, HTML body, Tags
 

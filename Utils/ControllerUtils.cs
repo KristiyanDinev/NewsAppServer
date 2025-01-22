@@ -7,11 +7,11 @@ namespace NewsAppServer.Utils {
     public class ControllerUtils {
         public static readonly string wwwrootPath = "wwwroot";
 
-        public static readonly string thumbnailFileLocation = wwwrootPath + "\\thumbnail\\";
-        public static readonly string pdfFileLocation = wwwrootPath + "\\pdf\\";
+        public static readonly string thumbnail_FileLocation = wwwrootPath + "\\thumbnail\\";
+        public static readonly string attachment_FileLocation = wwwrootPath + "\\attachment\\";
 
-        public static readonly string pdfEndpoint = pdfFileLocation.Split("wwwroot").Last();
-        public static readonly string thumbnailEndpoint = thumbnailFileLocation.Split("wwwroot").Last();
+        public static readonly string attachment_Endpoint = attachment_FileLocation.Split("wwwroot").Last();
+        public static readonly string thumbnail_Endpoint = thumbnail_FileLocation.Split("wwwroot").Last();
 
         public static async void UploadFile(byte[] data, string location) {
             using FileStream fs = File.Create(location);
@@ -65,13 +65,13 @@ namespace NewsAppServer.Utils {
         }
 
 
-        public static async Task<bool> CheckAdminRequest(IFormCollection form,
+        public static async Task<bool> CheckAdminRequest(string AdminUsername, string AdminPassword,
             DatabaseManager db) {
 
             try {
                 AdminModel loginAdmin = new AdminModel();
-                loginAdmin.Password = form["AdminPass"];
-                loginAdmin.Username = form["AdminUsername"];
+                loginAdmin.Username = AdminUsername;
+                loginAdmin.Password = AdminPassword;
 
                 AdminModel? admin = await AdminController.LoginAdmin(db, loginAdmin);
                 return admin != null;
@@ -113,53 +113,56 @@ namespace NewsAppServer.Utils {
 
                 string? path = await UpdateFile(oldThumbnail,
                     ThumbnailName, FromStringToUint8Array(byteData),
-                    thumbnailFileLocation, thumbnailEndpoint, false);
+                    thumbnail_FileLocation, thumbnail_Endpoint, false);
 
                 return path;
             }
             return null;
         }
 
-        public static async Task<string?> UploadPDFs(string pdfValue) {
-            string? PDF_path = null;
-            foreach (string pdfPart in pdfValue.Split(";")) {
-                if (pdfPart.Length == 0) {
+        public static async Task<string?> UploadAttachments(string attachmentValue) {
+            string? Attachment_Path = null;
+            if (attachmentValue.Length == 0) {
+                return null;
+            }
+            foreach (string attachmetPart in attachmentValue.Split(";")) {
+                if (attachmetPart.Length == 0) {
                     continue;
                 }
-                string[] pdfParts = pdfPart.Split(".");
-                string pdfName = pdfParts[0] + ".pdf";
-                string pdfData = pdfParts[1].Remove(0, 3);
+                string[] attachmetParts = attachmetPart.Split("//");
+                string attachmentName = attachmetParts[0];
+                string attachmentData = attachmetParts[1];
 
                 string byteData = Encoding.UTF8.GetString(
-                    Convert.FromBase64String(pdfData));
+                    Convert.FromBase64String(attachmentData));
 
-                if (pdfName.Contains('\\') ||
-                    pdfName.Contains('/') ||
+                if (attachmentName.Contains('\\') ||
+                    attachmentName.Contains('/') ||
                     byteData.EndsWith(',') ||
                     byteData.StartsWith(',')) {
                     continue;
                 }
 
                 string? PDF_New_Path = await UpdateFile(null,
-                    pdfName, FromStringToUint8Array(byteData),
-                    pdfFileLocation, pdfEndpoint, true);
+                    attachmentName, FromStringToUint8Array(byteData),
+                    attachment_FileLocation, attachment_Endpoint, true);
 
                 if (PDF_New_Path == null) {
                     continue;
                 }
-                PDF_path ??= "";
-                PDF_path += pdfEndpoint + pdfName + ";";
+                Attachment_Path ??= "";
+                Attachment_Path += attachment_Endpoint + attachmentName + ";";
             }
-            return PDF_path;
+            return Attachment_Path;
         }
 
-        public static void DeletePDFs(string pdfValue) {
-            foreach (string pdfPath in pdfValue.Split(";")) {
-                if (pdfPath.Length == 0) {
+        public static void DeleteAttachments(string attachmentValue) {
+            foreach (string attachmentPath in attachmentValue.Split(";")) {
+                if (attachmentPath.Length == 0) {
                     continue;
                 }
                 try {
-                    File.Delete(wwwrootPath + pdfPath);
+                    File.Delete(wwwrootPath + attachmentPath);
                 } catch (Exception) { }
             }
         }

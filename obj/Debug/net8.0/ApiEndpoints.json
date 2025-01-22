@@ -156,7 +156,43 @@
     "HttpMethod": "POST",
     "IsController": false,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "AdminUsername",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "AdminPassword",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "HTML_body",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "Tags",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "Thumbnail",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "Attachments",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Void",
@@ -172,7 +208,33 @@
     "HttpMethod": "POST",
     "IsController": false,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "AdminUsername",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "AdminPassword",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "Thumbnail",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "Attachments",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Void",
@@ -188,7 +250,58 @@
     "HttpMethod": "POST",
     "IsController": false,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "AdminUsername",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "AdminPassword",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "HTML_body",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "Tags",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "Thumbnail",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "NewAttachments",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "DeleteThumbnail",
+        "Type": "System.Boolean",
+        "IsRequired": true
+      },
+      {
+        "Name": "DeleteAttachments",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Void",

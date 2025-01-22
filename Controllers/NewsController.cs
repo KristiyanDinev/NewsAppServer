@@ -29,22 +29,11 @@ namespace NewsAppServer.Controllers {
                 [FromForm] string tags, [FromForm] string search, 
                 [FromForm] string post_authors, [FromForm] int page,
                 [FromForm] int amount) => {
-                    //IFormCollection form = await http.Request.ReadFormAsync();
+
                     Dictionary<string, object> res =
                         new Dictionary<string, object>();
                     
-                    try {/*
-                        string? search = form["search"];
-
-                        List<string> tags = ControllerUtils
-                            .SeperateValues(form["tags"]);
-
-                        List<string> post_authors = ControllerUtils
-                            .SeperateValues(form["post_authors"]);;
-
-                        List<NewsModel> searchedNews = await db.SearchNews(search, 
-                            tags.ToArray(), post_authors.ToArray(), 
-                            int.Parse(form["page"]) - 1, int.Parse(form["amount"]));*/
+                    try {
 
                         List<string> tagsList = ControllerUtils
                             .SeperateValues(tags);
@@ -55,6 +44,7 @@ namespace NewsAppServer.Controllers {
                         List<NewsModel> searchedNews = await db.SearchNews(search,
                             tagsList.ToArray(), post_authorsList.ToArray(),
                             page - 1, amount);
+
                         res.Add("News", searchedNews);
                         return res;
 
@@ -66,75 +56,53 @@ namespace NewsAppServer.Controllers {
                 }).DisableAntiforgery();
 
 
-            app.MapPost("/news", async (HttpContext http, DatabaseManager db) => {
-                IFormCollection form = await http.Request.ReadFormAsync();
-                bool isAdminReq = await ControllerUtils.CheckAdminRequest(form, db);
+            app.MapPost("/news", async (HttpContext http, DatabaseManager db,
+                [FromForm] string AdminUsername, [FromForm] string AdminPassword,
+                [FromForm] string Title,
+                [FromForm] string HTML_body,
+                [FromForm] string Tags,
+                [FromForm] string Thumbnail,
+                [FromForm] string Attachments) => {
+
+                bool isAdminReq = await ControllerUtils
+                    .CheckAdminRequest(AdminUsername, AdminPassword, db);
                 if (!isAdminReq) {
                     return Results.Unauthorized();
                 }
 
-                if (!(form.ContainsKey("Title") && form.ContainsKey("Tags") &&
-                    form.ContainsKey("HTML_body") &&
-                    form.ContainsKey("Thumbnail") &&
-                    form.ContainsKey("PDFs"))) {
-                    return Results.BadRequest();
-                }
-
-                string? title = form["Title"];
-                string? html_body = form["HTML_body"];
-
-                if (!ControllerUtils.IsRequirementFilled(title) || 
-                    !ControllerUtils.IsRequirementFilled(html_body)) {
-                    return Results.BadRequest();
-                }
 
                 NewsModel news = new NewsModel();
-                // ----------
-                news.Posted_by_Admin_username = form["AdminUsername"];
-                // ----------
-                news.Title = title.Trim();
-                // -----------
-                string? tags = form["Tags"];
-                news.Tags = tags;
-                // -----------
-                news.HTML_body = BBCode.ConvertToHtml(html_body);
+                news.Posted_by_Admin_username = AdminUsername;
+                news.Title = Title.Trim();
+                news.Tags = Tags;
+                news.BBCode_body = HTML_body;
+                news.HTML_body = BBCode.ConvertToHtml(HTML_body);
+                news.Thumbnail_path = await ControllerUtils.UploadThumbnail(Thumbnail, null);
+                news.Attachments_path = await ControllerUtils.UploadAttachments(Attachments);
 
-                // ------------
-                string? thumbnail = form["Thumbnail"];
-                if (thumbnail != null) {
-                    news.Thumbnail_path = await ControllerUtils.UploadThumbnail(thumbnail, null);
-                }
-
-                // ------------
-
-                string? pdfs = form["PDFs"];
-                if (pdfs != null && pdfs.Length > 0) {
-                    news.PDF_path = await ControllerUtils.UploadPDFs(pdfs);
-                }
-                
                 db.AddNews(news);
                 return Results.Ok();
 
             }).DisableAntiforgery()
             .RequireRateLimiting("fixed");
 
-            
-            app.MapPost("/news/edit", async (HttpContext http, DatabaseManager db) => {
-                IFormCollection form = await http.Request.ReadFormAsync();
-                bool isAdminReq = await ControllerUtils.CheckAdminRequest(form, db);
+
+            app.MapPost("/news/edit", async(HttpContext http, DatabaseManager db,
+                 [FromForm] string AdminUsername, [FromForm] string AdminPassword,
+                 [FromForm] int Id, [FromForm] string Title,
+                 [FromForm] string HTML_body,
+                 [FromForm] string Tags,
+                 [FromForm] string Thumbnail,
+                 [FromForm] string NewAttachments,
+                 [FromForm] bool DeleteThumbnail,
+                 [FromForm] string DeleteAttachments) => {
+                
+                bool isAdminReq = await ControllerUtils
+                     .CheckAdminRequest(AdminUsername, AdminPassword, db);
                 if (!isAdminReq) {
                     return Results.Unauthorized();
                 }
 
-                if (!(form.ContainsKey("Id") && form.ContainsKey("Title") &&
-                     form.ContainsKey("PDFs") && form.ContainsKey("Thumbnail")
-                     && form.ContainsKey("Tags") && form.ContainsKey("HTML_body"))) {
-                    return Results.BadRequest();
-                }
-
-                if (!int.TryParse(form["Id"], out int Id)) {
-                    return Results.BadRequest();
-                }
 
                 NewsModel? dbNewsModel = await db.GetNewsByID(Id);
                 if (dbNewsModel == null) {
@@ -143,35 +111,24 @@ namespace NewsAppServer.Controllers {
 
                 NewsModel newsModel = new NewsModel();
 
-
-                string? Title = form["Title"];
-                if (Title == null) {
-                    return Results.BadRequest();
-                }
                 Title = Title.Trim();
                 if (!dbNewsModel.Title.Equals(Title)) {
                     // Change Title
                     newsModel.Title = Title;
                 }
 
-                string? HTML_body = form["HTML_body"];
-                if (HTML_body == null) {
-                    return Results.BadRequest();
-                }
                 HTML_body = BBCode.ConvertToHtml(HTML_body);
                 if (!dbNewsModel.HTML_body.Equals(HTML_body)) {
                     // Change HTML body
                     newsModel.HTML_body = HTML_body;
                 }
 
-                newsModel.Tags = form["Tags"];
+                newsModel.Tags = Tags;
 
 
-                string? thumbnail = form["Thumbnail"];
-                // dbNewsModel.Thumbnail_path -> endpoint path
-                // thumbnail -> either same endpoint path or new data
-                if (dbNewsModel.Thumbnail_path != thumbnail) {
-                    if ((thumbnail == null || thumbnail.Length == 0) && 
+                /*
+                if (dbNewsModel.Thumbnail_path != Thumbnail) {
+                    if ((Thumbnail == null || Thumbnail.Length == 0) && 
                         (dbNewsModel.Thumbnail_path != null && 
                             dbNewsModel.Thumbnail_path.Length > 0)) {
                         try {
@@ -179,10 +136,10 @@ namespace NewsAppServer.Controllers {
                         } catch (Exception) { }
                         newsModel.Thumbnail_path = null;
 
-                    } else if (thumbnail != null && !(thumbnail.StartsWith(';') ||
-                            thumbnail.EndsWith(';'))) {
+                    } else if (Thumbnail != null && !(Thumbnail.StartsWith(';') ||
+                            Thumbnail.EndsWith(';'))) {
 
-                        string? path = await ControllerUtils.UploadThumbnail(thumbnail, dbNewsModel.Thumbnail_path);
+                        string? path = await ControllerUtils.UploadThumbnail(Thumbnail, dbNewsModel.Thumbnail_path);
                         newsModel.Thumbnail_path = path != null ? path : dbNewsModel.Thumbnail_path;
 
                     } else {
@@ -192,61 +149,59 @@ namespace NewsAppServer.Controllers {
 
                 
 
-                string? pdfsStr = form["PDFs"];
-                if (dbNewsModel.PDF_path != pdfsStr) {
-                    if ((pdfsStr == null || pdfsStr.Length == 0) &&
-                        (dbNewsModel.PDF_path != null && dbNewsModel.PDF_path.Length > 0)) {
+                if (dbNewsModel.Attachments_path != Attachments) {
+                    if ((Attachments == null || Attachments.Length == 0) &&
+                        (dbNewsModel.Attachments_path != null && 
+                        dbNewsModel.Attachments_path.Length > 0)) {
                         // delete all pdfs in  dbNewsModel.PDF_path
-                        ControllerUtils.DeletePDFs(dbNewsModel.PDF_path);
-                        newsModel.PDF_path = null;
+                        ControllerUtils
+                             .DeleteAttachments(dbNewsModel.Attachments_path);
+                        newsModel.Attachments_path = null;
 
-                    } else if (pdfsStr != null && pdfsStr.Length > 0) {
+                    } else if (Attachments != null && 
+                         Attachments.Length > 0) {
                         // update PDFs
-                        string? pdfPath = await ControllerUtils.UploadPDFs(pdfsStr);
-                        newsModel.PDF_path = pdfPath != null ? pdfPath :
-                            dbNewsModel.PDF_path;
+                        string? pdfPath = await ControllerUtils
+                             .UploadAttachments(Attachments);
+                        newsModel.Attachments_path = pdfPath != null ? pdfPath :
+                            dbNewsModel.Attachments_path;
 
                     }
-                }
+                }*/
 
-                db.EditNews(newsModel);
+                //db.EditNews(newsModel);
                 return Results.Ok();
 
              }).DisableAntiforgery()
              .RequireRateLimiting("fixed");
 
 
-            app.MapPost("/news/delete", async (HttpContext http, DatabaseManager db) => {
-                IFormCollection form = await http.Request.ReadFormAsync();
-                bool isAdminReq = await ControllerUtils.CheckAdminRequest(form, db);
+            app.MapPost("/news/delete", async (HttpContext http, DatabaseManager db,
+                [FromForm] string AdminUsername, [FromForm] string AdminPassword,
+                 [FromForm] int Id,
+                 [FromForm] string Thumbnail,
+                 [FromForm] string Attachments) => {
+
+                bool isAdminReq = await ControllerUtils
+                     .CheckAdminRequest(AdminUsername, AdminPassword, db);
                 if (!isAdminReq) {
                     return Results.Unauthorized();
                 }
 
-                if (!(form.ContainsKey("Id") && 
-                    form.ContainsKey("Thumbnail") &&
-                    form.ContainsKey("PDFs"))) {
-                    return Results.BadRequest();
-                }
 
-                if (!int.TryParse(form["Id"], out int Id)) {
-                    return Results.BadRequest();
-                }
-
-                string? thumbnail_path = form["Thumbnail"];
-                if (ControllerUtils.IsRequirementFilled(thumbnail_path)) {
+                if (ControllerUtils.IsRequirementFilled(Thumbnail)) {
                     try { 
-                        File.Delete(ControllerUtils.wwwrootPath + thumbnail_path);
+                        File.Delete(ControllerUtils.wwwrootPath + Thumbnail);
                     } catch (Exception) { }
                 }
 
-                string? pdfs_path = form["PDFs"];
-                if (ControllerUtils.IsRequirementFilled(pdfs_path)) {
-                    ControllerUtils.DeletePDFs(pdfs_path);
+                if (ControllerUtils.IsRequirementFilled(Attachments)) {
+                    ControllerUtils.DeleteAttachments(Attachments);
                 }
 
                 db.RemoveNews(Id);
                 return Results.Ok();
+
             }).DisableAntiforgery()
             .RequireRateLimiting("fixed");
         }

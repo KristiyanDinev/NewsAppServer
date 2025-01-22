@@ -20,8 +20,9 @@ namespace NewsAppServer.Database {
 (Id INTEGER PRIMARY KEY, 
 Title VARCHAR(255) NOT NULL, 
 Thumbnail_path VARCHAR, 
-PDF_path VARCHAR, 
+Attachments_path VARCHAR, 
 HTML_body VARCHAR NOT NULL,
+BBCode_body VARCHAR NOT NULL,
 Tags VARCHAR,
 Posted_by_Admin_username VARCHAR NOT NULL,
 Posted_on_UTC_timezoned DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
@@ -43,7 +44,7 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
             using var command = connection.CreateCommand();
             command.CommandText =
                         @"INSERT INTO News 
-(Title, Thumbnail_path, PDF_path, HTML_body, Tags, Posted_by_Admin_username) VALUES ($title, $thumbnail_path, $pdf_path, $html_body, $tags, $admin_username);";
+(Title, Thumbnail_path, Attachments_path, HTML_body, BBCode_body, Tags, Posted_by_Admin_username) VALUES ($title, $thumbnail_path, $attachments_path, $html_body, $bbcode_body, $tags, $admin_username);";
 
             if (news.Thumbnail_path == null) {
                 command.CommandText = command.CommandText.Replace("$thumbnail_path", "null");
@@ -52,11 +53,11 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
                 command.Parameters.AddWithValue("$thumbnail_path", news.Thumbnail_path);
             }
 
-            if (news.PDF_path == null) {
-                command.CommandText = command.CommandText.Replace("$pdf_path", "null");
+            if (news.Attachments_path == null) {
+                command.CommandText = command.CommandText.Replace("$attachments_path", "null");
 
             } else {
-                command.Parameters.AddWithValue("$pdf_path", news.PDF_path);
+                command.Parameters.AddWithValue("$attachments_path", news.Attachments_path);
             }
 
             if (news.Tags == null) {
@@ -68,7 +69,8 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
             }
 
             command.Parameters.AddWithValue("$title", news.Title.Trim());
-            command.Parameters.AddWithValue("$html_body", news.HTML_body.Trim());
+            command.Parameters.AddWithValue("$html_body", news.HTML_body);
+            command.Parameters.AddWithValue("$bbcode_body", news.BBCode_body);
             command.Parameters.AddWithValue("$admin_username", news.Posted_by_Admin_username);
             await command.PrepareAsync();
             await command.ExecuteNonQueryAsync();
@@ -105,13 +107,14 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
 
             using var command = connection.CreateCommand();
             command.CommandText = @"UPDATE News 
-        SET Title = $title, Thumbnail_path = $thumbnail, PDF_path = $pdf, HTML_body = $html, Tags = $tags
+        SET Title = $title, Thumbnail_path = $thumbnail, Attachments_path = $attachments, HTML_body = $html, BBCode_body = $bbcode, Tags = $tags
         WHERE Id = $id";
             command.Parameters.AddWithValue("$title", news.Title);
             command.Parameters.AddWithValue("$id", news.Id);
             command.Parameters.AddWithValue("$thumbnail", news.Thumbnail_path);
-            command.Parameters.AddWithValue("$pdf", news.PDF_path);
+            command.Parameters.AddWithValue("$attachments", news.Attachments_path);
             command.Parameters.AddWithValue("$html", news.HTML_body);
+            command.Parameters.AddWithValue("$bbcode", news.BBCode_body);
 
             if (news.Tags != null) {
                 news.Tags = news.Tags.Replace("'", "\"");
@@ -160,7 +163,7 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
 
             using var command = connection.CreateCommand();
             command.CommandText = @"INSERT INTO Admins (Username, Password, Added_by) VALUES ($username, $pass, $added_by)";
-            command.Parameters.AddWithValue("$username", admin.Username.Replace("'", "''").Trim());
+            command.Parameters.AddWithValue("$username", admin.Username.Trim());
             command.Parameters.AddWithValue("$pass", admin.Password.Trim());
             command.Parameters.AddWithValue("$added_by", admin.Added_by);
             await command.PrepareAsync();
@@ -289,8 +292,9 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
             newsModel.Title = Convert.ToString(row["Title"]);
             newsModel.Id = Convert.ToInt32(row["Id"]);
             newsModel.Thumbnail_path = Convert.ToString(row["Thumbnail_path"]);
-            newsModel.PDF_path = Convert.ToString(row["PDF_path"]);
+            newsModel.Attachments_path = Convert.ToString(row["Attachments_path"]);
             newsModel.HTML_body = Convert.ToString(row["HTML_body"]);
+            newsModel.BBCode_body = Convert.ToString(row["BBCode_body"]);
             newsModel.Tags = Convert.ToString(row["Tags"]);
             newsModel.Posted_by_Admin_username = Convert.ToString(row["Posted_by_Admin_username"]);
 

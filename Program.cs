@@ -22,7 +22,7 @@ namespace NewsAppServer
 
             if (!File.Exists("wwwroot/")) {
                 Directory.CreateDirectory("wwwroot");
-                Directory.CreateDirectory("wwwroot\\pdf");
+                Directory.CreateDirectory("wwwroot\\attachment");
                 Directory.CreateDirectory("wwwroot\\thumbnail");
             }
 

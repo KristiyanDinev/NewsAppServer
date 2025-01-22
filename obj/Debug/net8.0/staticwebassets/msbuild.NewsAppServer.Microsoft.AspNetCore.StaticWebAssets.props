@@ -1,11 +1,11 @@
 ﻿<Project>
   <ItemGroup>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\pdf\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\attachment\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf'))">
       <SourceType>Package</SourceType>
       <SourceId>NewsAppServer</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/NewsAppServer</BasePath>
-      <RelativePath>pdf/(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf</RelativePath>
+      <RelativePath>attachment/(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -16,7 +16,7 @@
       <Integrity>IEAC4QWHdFlX9Q5ziNvz2KBzR+vby7Ci9mVN6A7sZGI=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\pdf\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\attachment\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\thumbnail\1.png'))">
       <SourceType>Package</SourceType>
@@ -35,24 +35,6 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\thumbnail\1.png'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\thumbnail\1000000033.png'))">
-      <SourceType>Package</SourceType>
-      <SourceId>NewsAppServer</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/NewsAppServer</BasePath>
-      <RelativePath>thumbnail/1000000033.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>sf7flc20h1</Fingerprint>
-      <Integrity>mCco6z0wZ6LDnSKdLBHkFmjid5Oj3Q/qK6RP/6ZXkaE=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\thumbnail\1000000033.png'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>
