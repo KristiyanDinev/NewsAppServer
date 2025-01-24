@@ -116,6 +116,11 @@ namespace NewsAppServer.Utils {
                     thumbnail_FileLocation, thumbnail_Endpoint, false);
 
                 return path;
+
+            } else if (oldThumbnail != null) {
+                try {
+                    File.Delete(wwwrootPath + oldThumbnail);
+                } catch (Exception) { }
             }
             return null;
         }

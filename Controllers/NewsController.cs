@@ -3,6 +3,7 @@ using NewsAppServer.Database;
 using NewsAppServer.Models;
 using NewsAppServer.Utils;
 using System.ComponentModel;
+using System.Net.Mail;
 using System.Text;
 
 namespace NewsAppServer.Controllers {
@@ -111,65 +112,39 @@ namespace NewsAppServer.Controllers {
 
                 NewsModel newsModel = new NewsModel();
 
-                Title = Title.Trim();
-                if (!dbNewsModel.Title.Equals(Title)) {
-                    // Change Title
-                    newsModel.Title = Title;
-                }
-
-                HTML_body = BBCode.ConvertToHtml(HTML_body);
-                if (!dbNewsModel.HTML_body.Equals(HTML_body)) {
-                    // Change HTML body
-                    newsModel.HTML_body = HTML_body;
-                }
+                newsModel.Id = Id;
+                newsModel.Title = Title.Trim();
+                
+                newsModel.HTML_body = BBCode.ConvertToHtml(HTML_body);
 
                 newsModel.Tags = Tags;
 
+                newsModel.BBCode_body = HTML_body;
 
-                /*
-                if (dbNewsModel.Thumbnail_path != Thumbnail) {
-                    if ((Thumbnail == null || Thumbnail.Length == 0) && 
-                        (dbNewsModel.Thumbnail_path != null && 
-                            dbNewsModel.Thumbnail_path.Length > 0)) {
-                        try {
-                            File.Delete(ControllerUtils.wwwrootPath + dbNewsModel.Thumbnail_path);
-                        } catch (Exception) { }
-                        newsModel.Thumbnail_path = null;
 
-                    } else if (Thumbnail != null && !(Thumbnail.StartsWith(';') ||
-                            Thumbnail.EndsWith(';'))) {
+               newsModel.Thumbnail_path = await ControllerUtils.UploadThumbnail(Thumbnail, 
+                    DeleteThumbnail && dbNewsModel.Thumbnail_path != null ? 
+                    dbNewsModel.Thumbnail_path : null);
 
-                        string? path = await ControllerUtils.UploadThumbnail(Thumbnail, dbNewsModel.Thumbnail_path);
-                        newsModel.Thumbnail_path = path != null ? path : dbNewsModel.Thumbnail_path;
 
-                    } else {
-                        newsModel.Thumbnail_path = dbNewsModel.Thumbnail_path;
-                    }
-                }
+                if (dbNewsModel.Attachments_path != null && DeleteAttachments.Length > 0) {
+                        foreach (string p in DeleteAttachments.Split(";")) {
+                             if (p.Length == 0) {
+                                 continue;
+                             }
+                             try {
+                                 File.Delete(ControllerUtils.wwwrootPath + p);
+                                 dbNewsModel.Attachments_path = 
+                                 dbNewsModel.Attachments_path.Replace(p+";", "");
+                             } catch (Exception) { }
+                         
+                         }
+                     }
+                newsModel.Attachments_path = dbNewsModel.Attachments_path;
+                newsModel.Attachments_path += await ControllerUtils
+                     .UploadAttachments(NewAttachments);
 
-                
-
-                if (dbNewsModel.Attachments_path != Attachments) {
-                    if ((Attachments == null || Attachments.Length == 0) &&
-                        (dbNewsModel.Attachments_path != null && 
-                        dbNewsModel.Attachments_path.Length > 0)) {
-                        // delete all pdfs in  dbNewsModel.PDF_path
-                        ControllerUtils
-                             .DeleteAttachments(dbNewsModel.Attachments_path);
-                        newsModel.Attachments_path = null;
-
-                    } else if (Attachments != null && 
-                         Attachments.Length > 0) {
-                        // update PDFs
-                        string? pdfPath = await ControllerUtils
-                             .UploadAttachments(Attachments);
-                        newsModel.Attachments_path = pdfPath != null ? pdfPath :
-                            dbNewsModel.Attachments_path;
-
-                    }
-                }*/
-
-                //db.EditNews(newsModel);
+                db.EditNews(newsModel);
                 return Results.Ok();
 
              }).DisableAntiforgery()

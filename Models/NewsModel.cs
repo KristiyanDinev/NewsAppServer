@@ -8,6 +8,6 @@
         public string BBCode_body { get; set; }
         public string? Tags { get; set; } = null;
         public string Posted_by_Admin_username { get; set; }
-        public DateTime Posted_on_UTC_timezoned { get; set; } = DateTime.UtcNow;
+        public DateTime Posted_on { get; set; } = DateTime.UtcNow;
     }
 }

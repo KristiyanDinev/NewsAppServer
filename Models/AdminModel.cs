@@ -3,6 +3,6 @@
         public string Username { get; set; }
         public string Password { get; set; }
         public string Added_by { get; set; }
-        public DateTime Added_Date_UTC_timezoned { get; set; } = DateTime.UtcNow;
+        public DateTime Added_Date { get; set; } = DateTime.UtcNow;
     }
 }

@@ -25,13 +25,13 @@ HTML_body VARCHAR NOT NULL,
 BBCode_body VARCHAR NOT NULL,
 Tags VARCHAR,
 Posted_by_Admin_username VARCHAR NOT NULL,
-Posted_on_UTC_timezoned DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
+Posted_on DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
 
 CREATE TABLE IF NOT EXISTS Admins (
 Username VARCHAR NOT NULL UNIQUE,
 Password VARCHAR NOT NULL UNIQUE,
 Added_by VARCHAR NOT NULL,
-Added_Date_UTC_timezoned DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
+Added_Date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
 
 INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin', '" + _sysadmin_password + "', 'System Startup');";
             command.ExecuteNonQuery();
@@ -105,19 +105,29 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
             using var connection = new SqliteConnection(_connectionString);
             connection.Open();
 
+            bool isThumbnailGiven = news.Thumbnail_path != null && news.Thumbnail_path.Length > 0;
+            bool areAttachmentsGiven = news.Attachments_path != null && news.Attachments_path.Length > 0;
+
             using var command = connection.CreateCommand();
             command.CommandText = @"UPDATE News 
-        SET Title = $title, Thumbnail_path = $thumbnail, Attachments_path = $attachments, HTML_body = $html, BBCode_body = $bbcode, Tags = $tags
-        WHERE Id = $id";
+        SET Title = $title, Thumbnail_path = "+ (!isThumbnailGiven ? "null" : "$thumbnail")+", Attachments_path = "+ (!areAttachmentsGiven ? "null" : "$attachments")+", HTML_body = $html, BBCode_body = $bbcode, Tags = $tags WHERE Id = $id";
             command.Parameters.AddWithValue("$title", news.Title);
             command.Parameters.AddWithValue("$id", news.Id);
-            command.Parameters.AddWithValue("$thumbnail", news.Thumbnail_path);
-            command.Parameters.AddWithValue("$attachments", news.Attachments_path);
+
+            if (isThumbnailGiven) {
+                command.Parameters.AddWithValue("$thumbnail", news.Thumbnail_path);
+
+            }
+
+            if (areAttachmentsGiven) {
+                command.Parameters.AddWithValue("$attachments", news.Attachments_path);
+
+            }
             command.Parameters.AddWithValue("$html", news.HTML_body);
             command.Parameters.AddWithValue("$bbcode", news.BBCode_body);
 
             if (news.Tags != null) {
-                news.Tags = news.Tags.Replace("'", "\"");
+                news.Tags = news.Tags.Replace("'", "''");
             }
             command.Parameters.AddWithValue("$tags", news.Tags);
             await command.PrepareAsync();
@@ -229,15 +239,6 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
                         HTML_body LIKE '{search} %' OR
                         HTML_body LIKE '% {search}' OR
                         HTML_body = '{search}') ";
-                /*
-                query += @" (Title LIKE '% $search %' OR 
-                        Title LIKE '$search %' OR
-                        Title LIKE '% $search' OR
-                        Title = $search OR
-                        HTML_body LIKE '% $search %' OR
-                        HTML_body LIKE '$search %' OR
-                        HTML_body LIKE '% $search' OR
-                        HTML_body = $search) ";*/
             }
             return query;
         }
@@ -283,7 +284,7 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
         }
 
         private static string Craft_Page_Command(ref string query, int page, int amountPerPage) {
-            query += $" ORDER BY Posted_on_UTC_timezoned DESC LIMIT {amountPerPage} OFFSET {page * amountPerPage};";
+            query += $" ORDER BY Posted_on DESC LIMIT {amountPerPage} OFFSET {page * amountPerPage};";
             return query;
         }
 
@@ -298,8 +299,8 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
             newsModel.Tags = Convert.ToString(row["Tags"]);
             newsModel.Posted_by_Admin_username = Convert.ToString(row["Posted_by_Admin_username"]);
 
-            newsModel.Posted_on_UTC_timezoned = DateTime.Parse(
-                Convert.ToString(row["Posted_on_UTC_timezoned"]));
+            newsModel.Posted_on = DateTime.Parse(
+                Convert.ToString(row["Posted_on"]));
 
             return newsModel;
         }
@@ -310,8 +311,8 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
             admin.Password = Convert.ToString(row["Password"]);
             admin.Added_by = Convert.ToString(row["Added_by"]);
 
-            admin.Added_Date_UTC_timezoned = DateTime.Parse(
-                Convert.ToString(row["Added_Date_UTC_timezoned"]));
+            admin.Added_Date = DateTime.Parse(
+                Convert.ToString(row["Added_Date"]));
             return admin;
         }
     }
