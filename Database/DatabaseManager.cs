@@ -217,7 +217,7 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
 
         private static string CraftSearchCommand(ref string? search,
             string[] tags, string[] post_authors, int page, int amountPerPage) {
-            string query = "SELECT * FROM News ";
+            string query = "SELECT * FROM News";
             query += search != null || tags.Length > 0 || post_authors.Length > 0 ? " WHERE " : "";
             Craft_Title_And_Body_Command(ref query, ref search);
             Craft_Tags_Command(ref query, tags);
@@ -245,7 +245,7 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
 
         private static string Craft_Tags_Command(ref string query, string[] tags) {
             if (tags.Length > 0) {
-                query += !query.Equals("SELECT * FROM News ") ? " AND ( " : " ( ";
+                query += query.StartsWith("SELECT * FROM News WHERE (") ? " AND ( " : " ( ";
 
                 for (int i = 0; i < tags.Length - 1; i++) {
                     string tag = tags[i];
@@ -270,7 +270,7 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
 
         private static string Craft_PostAutors_Command(ref string query, string[] post_authors) {
             if (post_authors.Length > 0) {
-                query += !query.Equals("SELECT * FROM News ") ? " AND ( " : " ( ";
+                query += query.StartsWith("SELECT * FROM News WHERE (") ? " AND ( " : " ( ";
 
                 for (int i = 0; i < post_authors.Length - 1; i++) {
                     string author = post_authors[i];

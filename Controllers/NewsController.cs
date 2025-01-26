@@ -23,7 +23,7 @@ namespace NewsAppServer.Controllers {
                     } catch (Exception) { 
                         return null;
                     }
-                });
+                }).RequireRateLimiting("fixed"); ;
 
 
             app.MapPost("/news/search", async (HttpContext http, DatabaseManager db,
@@ -54,7 +54,8 @@ namespace NewsAppServer.Controllers {
                     }
 
                     
-                }).DisableAntiforgery();
+                }).DisableAntiforgery()
+                .RequireRateLimiting("fixed");
 
 
             app.MapPost("/news", async (HttpContext http, DatabaseManager db,
@@ -121,10 +122,15 @@ namespace NewsAppServer.Controllers {
 
                 newsModel.BBCode_body = HTML_body;
 
+                     bool toDel = DeleteThumbnail && dbNewsModel.Thumbnail_path != null;
 
-               newsModel.Thumbnail_path = await ControllerUtils.UploadThumbnail(Thumbnail, 
-                    DeleteThumbnail && dbNewsModel.Thumbnail_path != null ? 
-                    dbNewsModel.Thumbnail_path : null);
+                    if (toDel || Thumbnail.Length > 0) {
+                         newsModel.Thumbnail_path = await ControllerUtils
+                            .UploadThumbnail(Thumbnail,
+                                toDel ? dbNewsModel.Thumbnail_path : null);
+                     } else {
+                         newsModel.Thumbnail_path = dbNewsModel.Thumbnail_path;
+                     }
 
 
                 if (dbNewsModel.Attachments_path != null && DeleteAttachments.Length > 0) {
@@ -141,10 +147,18 @@ namespace NewsAppServer.Controllers {
                          }
                      }
                 newsModel.Attachments_path = dbNewsModel.Attachments_path;
-                newsModel.Attachments_path += await ControllerUtils
-                     .UploadAttachments(NewAttachments);
+                 string? attachPath = await ControllerUtils
+                      .UploadAttachments(NewAttachments);
+                     if (attachPath != null && newsModel.Attachments_path != null) {
+                         newsModel.Attachments_path += attachPath;
 
-                db.EditNews(newsModel);
+                     } else if (attachPath != null
+                     && newsModel.Attachments_path == null) {
+                         newsModel.Attachments_path = attachPath;
+
+                     }
+
+                    db.EditNews(newsModel);
                 return Results.Ok();
 
              }).DisableAntiforgery()

@@ -1,0 +1,28 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/NewsAppServer/thumbnail/idk.bffm78cb3n.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\thumbnail\idk.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"bffm78cb3n"},{"Name":"integrity","Value":"sha256-aQEHPbg6Plix2M5PvNyOMVRa6MdLodyYRYSUa0lqcNc="},{"Name":"label","Value":"_content/NewsAppServer/thumbnail/idk.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"92568"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022aQEHPbg6Plix2M5PvNyOMVRa6MdLodyYRYSUa0lqcNc=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 14:57:18 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/NewsAppServer/thumbnail/idk.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\thumbnail\idk.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-aQEHPbg6Plix2M5PvNyOMVRa6MdLodyYRYSUa0lqcNc="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"92568"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022aQEHPbg6Plix2M5PvNyOMVRa6MdLodyYRYSUa0lqcNc=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 14:57:18 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/NewsAppServer/thumbnail/wallpapersden.com_serene-nature-hd-pixel-art-sunset_2560x1435.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\thumbnail\wallpapersden.com_serene-nature-hd-pixel-art-sunset_2560x1435.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-XyOc2HWT3JtmSi1CO8oJ9PdJ09rhn50mzstTkPBAPfM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"2094852"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022XyOc2HWT3JtmSi1CO8oJ9PdJ09rhn50mzstTkPBAPfM=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 14:29:03 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/NewsAppServer/thumbnail/wallpapersden.com_serene-nature-hd-pixel-art-sunset_2560x1435.vg8a2ee3zj.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\thumbnail\wallpapersden.com_serene-nature-hd-pixel-art-sunset_2560x1435.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"vg8a2ee3zj"},{"Name":"integrity","Value":"sha256-XyOc2HWT3JtmSi1CO8oJ9PdJ09rhn50mzstTkPBAPfM="},{"Name":"label","Value":"_content/NewsAppServer/thumbnail/wallpapersden.com_serene-nature-hd-pixel-art-sunset_2560x1435.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2094852"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022XyOc2HWT3JtmSi1CO8oJ9PdJ09rhn50mzstTkPBAPfM=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 14:29:03 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+  </ItemGroup>
+</Project>
