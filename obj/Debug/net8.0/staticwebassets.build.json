@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yD5neIXr6T++Uy53rH9ZJ0DyCXyadA3VhWRJh0giY2M=",
+  "Hash": "bamno1opczjwQM2VwgX+pguOsmU+ld4IsuF1lZDIJQo=",
   "Source": "NewsAppServer",
   "BasePath": "_content/NewsAppServer",
   "Mode": "Default",
@@ -57,27 +57,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\attachment\\HotelManagementSystem.docx"
-    },
-    {
-      "Identity": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\thumbnail\\idk.jpg",
-      "SourceId": "NewsAppServer",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\",
-      "BasePath": "_content/NewsAppServer",
-      "RelativePath": "thumbnail/idk#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "bffm78cb3n",
-      "Integrity": "aQEHPbg6Plix2M5PvNyOMVRa6MdLodyYRYSUa0lqcNc=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\thumbnail\\idk.jpg"
     },
     {
       "Identity": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\thumbnail\\wallpapersden.com_serene-nature-hd-pixel-art-sunset_2560x1435.jpg",
@@ -263,88 +242,6 @@
         {
           "Name": "integrity",
           "Value": "sha256-1ID3AmtPidpmNypjXqXYwKLHd7crdDOTBXBaPgE7xpg="
-        }
-      ]
-    },
-    {
-      "Route": "thumbnail/idk.bffm78cb3n.jpg",
-      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\thumbnail\\idk.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "92568"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"aQEHPbg6Plix2M5PvNyOMVRa6MdLodyYRYSUa0lqcNc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 15:15:11 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "bffm78cb3n"
-        },
-        {
-          "Name": "label",
-          "Value": "thumbnail/idk.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-aQEHPbg6Plix2M5PvNyOMVRa6MdLodyYRYSUa0lqcNc="
-        }
-      ]
-    },
-    {
-      "Route": "thumbnail/idk.jpg",
-      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\thumbnail\\idk.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "92568"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"aQEHPbg6Plix2M5PvNyOMVRa6MdLodyYRYSUa0lqcNc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 15:15:11 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-aQEHPbg6Plix2M5PvNyOMVRa6MdLodyYRYSUa0lqcNc="
         }
       ]
     },

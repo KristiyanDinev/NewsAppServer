@@ -73,12 +73,12 @@
                         _rules.Add(new BBCodeRules("[color]{text}[/color]", "<span>{text}</span>", "{text}"));
                         _rules.Add(new BBCodeRules("[color][/color]", "", ""));
 
-                        _rules.Add(new BBCodeRules("[size={d1}]{text}[/size]", "<span style='font-size: {d1}pt;'>{text}</span>", "{d1};{text}"));
-                        _rules.Add(new BBCodeRules("[size]{text}[/size]", "<span style='font-size: 3pt;'>{text}</span>", "{text}"));
+                        _rules.Add(new BBCodeRules("[size={d1}]{text}[/size]", "<span style='font-size: {d1}em;'>{text}</span>", "{d1};{text}"));
+                        _rules.Add(new BBCodeRules("[size]{text}[/size]", "<span style='font-size: 100%;'>{text}</span>", "{text}"));
                         _rules.Add(new BBCodeRules("[size={d1}][/size]", "", "{d1}"));
                         _rules.Add(new BBCodeRules("[size][/size]", "", ""));
 
-                        _rules.Add(new BBCodeRules("[font={d1},{d2}]{text}[/font]", "<span style='font-family: {d1}; font-size: {d2}pt;'>{text}</span>", "{d1};{d2};{text}"));
+                        _rules.Add(new BBCodeRules("[font={d1},{d2}]{text}[/font]", "<span style='font-family: {d1}; font-size: {d2}em;'>{text}</span>", "{d1};{d2};{text}"));
                         _rules.Add(new BBCodeRules("[font={d1},{d2}][/font]", "", "{d1};{d2}"));
                         _rules.Add(new BBCodeRules("[font][/font]", "", ""));
 

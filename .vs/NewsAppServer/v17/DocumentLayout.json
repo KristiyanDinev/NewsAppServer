@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|d:\\toolbox\\tools\\kit\\newsappserver\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|d:\\toolbox\\tools\\kit\\newsappserver\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|solutionrelative:controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0241525E-2884-4CC5-BF96-B9DECA02B7AA}|NewsAppServer.csproj|d:\\toolbox\\tools\\kit\\newsappserver\\database\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,14 +35,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
-              "ToolTip": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "Controllers\\AdminController.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAqwCwAAAAAAAAAAAAAAA==",
+              "Title": "NewsController.cs",
+              "DocumentMoniker": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Controllers\\NewsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\NewsController.cs",
+              "ToolTip": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Controllers\\NewsController.cs",
+              "RelativeToolTip": "Controllers\\NewsController.cs",
+              "ViewState": "AgIAAKQAAAAAAAAAAAAQwK0AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T14:52:16.3Z",
+              "WhenOpened": "2025-01-27T17:27:22.374Z",
               "EditorCaption": ""
             },
             {
@@ -53,7 +53,7 @@
               "RelativeDocumentMoniker": "Database\\DatabaseManager.cs",
               "ToolTip": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\Database\\DatabaseManager.cs",
               "RelativeToolTip": "Database\\DatabaseManager.cs",
-              "ViewState": "AgIAAIcAAAAAAAAAAAAowJoAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJoAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-26T12:19:00.091Z",
               "EditorCaption": ""
@@ -92,8 +92,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-01-12T14:54:06.615Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-12T14:54:06.615Z"
             }
           ]
         }
