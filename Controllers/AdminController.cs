@@ -1,4 +1,4 @@
-﻿
+﻿using Microsoft.Data.Sqlite;
 using Microsoft.AspNetCore.Mvc;
 using NewsAppServer.Database;
 using NewsAppServer.Models;
@@ -37,18 +37,19 @@ namespace NewsAppServer.Controllers {
                         loginAdmin.Username = currentAdminUsername;
 
                         AdminModel? adminModel = await LoginAdmin(db, loginAdmin) ?? throw new Exception();
-                         
+
                         AdminModel newAdmin = new AdminModel();
                         newAdmin.Username = adminUsername;
                         newAdmin.Password = adminPassword;
                         newAdmin.Added_by = adminModel.Username;
 
-                        db.AddAdmin(newAdmin);
-                        return Results.Ok();
+                        bool did = await db.AddAdmin(newAdmin);
+                        return did ? Results.Ok() : Results.Unauthorized();
 
                     } catch (Exception) {
                         return Results.Unauthorized();
-                    }
+
+                    } 
 
                 }).DisableAntiforgery()
             .RequireRateLimiting("fixed");

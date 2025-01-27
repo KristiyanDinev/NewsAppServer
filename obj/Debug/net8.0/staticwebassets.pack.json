@@ -1,6 +1,14 @@
 {
   "Files": [
     {
+      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\attachment\\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf",
+      "PackagePath": "staticwebassets\\attachment\\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf"
+    },
+    {
+      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\attachment\\HotelManagementSystem.docx",
+      "PackagePath": "staticwebassets\\attachment\\HotelManagementSystem.docx"
+    },
+    {
       "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\thumbnail\\idk.jpg",
       "PackagePath": "staticwebassets\\thumbnail\\idk.jpg"
     },

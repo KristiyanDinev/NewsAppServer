@@ -1,16 +1,40 @@
 ﻿<Project>
   <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/NewsAppServer/attachment/(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.86su6g9fnx.pdf">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\attachment\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"86su6g9fnx"},{"Name":"integrity","Value":"sha256-IEAC4QWHdFlX9Q5ziNvz2KBzR\u002Bvby7Ci9mVN6A7sZGI="},{"Name":"label","Value":"_content/NewsAppServer/attachment/(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"246828"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022IEAC4QWHdFlX9Q5ziNvz2KBzR\u002Bvby7Ci9mVN6A7sZGI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 27 Jan 2025 13:07:28 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/NewsAppServer/attachment/(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\attachment\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-IEAC4QWHdFlX9Q5ziNvz2KBzR\u002Bvby7Ci9mVN6A7sZGI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"246828"},{"Name":"Content-Type","Value":"application/pdf"},{"Name":"ETag","Value":"\u0022IEAC4QWHdFlX9Q5ziNvz2KBzR\u002Bvby7Ci9mVN6A7sZGI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 27 Jan 2025 13:07:28 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/NewsAppServer/attachment/HotelManagementSystem.docx">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\attachment\HotelManagementSystem.docx'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-1ID3AmtPidpmNypjXqXYwKLHd7crdDOTBXBaPgE7xpg="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"3507"},{"Name":"Content-Type","Value":"application/vnd.openxmlformats-officedocument.wordprocessingml.document"},{"Name":"ETag","Value":"\u00221ID3AmtPidpmNypjXqXYwKLHd7crdDOTBXBaPgE7xpg=\u0022"},{"Name":"Last-Modified","Value":"Mon, 27 Jan 2025 13:07:57 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/NewsAppServer/attachment/HotelManagementSystem.kkb5ngc97s.docx">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\attachment\HotelManagementSystem.docx'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"kkb5ngc97s"},{"Name":"integrity","Value":"sha256-1ID3AmtPidpmNypjXqXYwKLHd7crdDOTBXBaPgE7xpg="},{"Name":"label","Value":"_content/NewsAppServer/attachment/HotelManagementSystem.docx"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3507"},{"Name":"Content-Type","Value":"application/vnd.openxmlformats-officedocument.wordprocessingml.document"},{"Name":"ETag","Value":"\u00221ID3AmtPidpmNypjXqXYwKLHd7crdDOTBXBaPgE7xpg=\u0022"},{"Name":"Last-Modified","Value":"Mon, 27 Jan 2025 13:07:57 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/NewsAppServer/thumbnail/idk.bffm78cb3n.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\thumbnail\idk.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"bffm78cb3n"},{"Name":"integrity","Value":"sha256-aQEHPbg6Plix2M5PvNyOMVRa6MdLodyYRYSUa0lqcNc="},{"Name":"label","Value":"_content/NewsAppServer/thumbnail/idk.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"92568"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022aQEHPbg6Plix2M5PvNyOMVRa6MdLodyYRYSUa0lqcNc=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 14:57:18 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"92568"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022aQEHPbg6Plix2M5PvNyOMVRa6MdLodyYRYSUa0lqcNc=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 15:15:11 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/NewsAppServer/thumbnail/idk.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\thumbnail\idk.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-aQEHPbg6Plix2M5PvNyOMVRa6MdLodyYRYSUa0lqcNc="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"92568"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022aQEHPbg6Plix2M5PvNyOMVRa6MdLodyYRYSUa0lqcNc=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 14:57:18 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"92568"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022aQEHPbg6Plix2M5PvNyOMVRa6MdLodyYRYSUa0lqcNc=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 15:15:11 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/NewsAppServer/thumbnail/wallpapersden.com_serene-nature-hd-pixel-art-sunset_2560x1435.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\thumbnail\wallpapersden.com_serene-nature-hd-pixel-art-sunset_2560x1435.jpg'))</AssetFile>

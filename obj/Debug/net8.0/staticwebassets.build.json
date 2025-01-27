@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4vm7tRirmzjGDl2Z7iteCE30BLD5pbYeQ6PfN44J8II=",
+  "Hash": "yD5neIXr6T++Uy53rH9ZJ0DyCXyadA3VhWRJh0giY2M=",
   "Source": "NewsAppServer",
   "BasePath": "_content/NewsAppServer",
   "Mode": "Default",
@@ -16,6 +16,48 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\attachment\\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf",
+      "SourceId": "NewsAppServer",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\",
+      "BasePath": "_content/NewsAppServer",
+      "RelativePath": "attachment/(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "86su6g9fnx",
+      "Integrity": "IEAC4QWHdFlX9Q5ziNvz2KBzR+vby7Ci9mVN6A7sZGI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\attachment\\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf"
+    },
+    {
+      "Identity": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\attachment\\HotelManagementSystem.docx",
+      "SourceId": "NewsAppServer",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\",
+      "BasePath": "_content/NewsAppServer",
+      "RelativePath": "attachment/HotelManagementSystem#[.{fingerprint}]?.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kkb5ngc97s",
+      "Integrity": "1ID3AmtPidpmNypjXqXYwKLHd7crdDOTBXBaPgE7xpg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\attachment\\HotelManagementSystem.docx"
+    },
     {
       "Identity": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\thumbnail\\idk.jpg",
       "SourceId": "NewsAppServer",
@@ -61,6 +103,170 @@
   ],
   "Endpoints": [
     {
+      "Route": "attachment/(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.86su6g9fnx.pdf",
+      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\attachment\\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "246828"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"IEAC4QWHdFlX9Q5ziNvz2KBzR+vby7Ci9mVN6A7sZGI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 27 Jan 2025 13:07:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "86su6g9fnx"
+        },
+        {
+          "Name": "label",
+          "Value": "attachment/(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-IEAC4QWHdFlX9Q5ziNvz2KBzR+vby7Ci9mVN6A7sZGI="
+        }
+      ]
+    },
+    {
+      "Route": "attachment/(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf",
+      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\attachment\\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "246828"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"IEAC4QWHdFlX9Q5ziNvz2KBzR+vby7Ci9mVN6A7sZGI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 27 Jan 2025 13:07:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-IEAC4QWHdFlX9Q5ziNvz2KBzR+vby7Ci9mVN6A7sZGI="
+        }
+      ]
+    },
+    {
+      "Route": "attachment/HotelManagementSystem.docx",
+      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\attachment\\HotelManagementSystem.docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3507"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1ID3AmtPidpmNypjXqXYwKLHd7crdDOTBXBaPgE7xpg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 27 Jan 2025 13:07:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-1ID3AmtPidpmNypjXqXYwKLHd7crdDOTBXBaPgE7xpg="
+        }
+      ]
+    },
+    {
+      "Route": "attachment/HotelManagementSystem.kkb5ngc97s.docx",
+      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\attachment\\HotelManagementSystem.docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3507"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1ID3AmtPidpmNypjXqXYwKLHd7crdDOTBXBaPgE7xpg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 27 Jan 2025 13:07:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kkb5ngc97s"
+        },
+        {
+          "Name": "label",
+          "Value": "attachment/HotelManagementSystem.docx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-1ID3AmtPidpmNypjXqXYwKLHd7crdDOTBXBaPgE7xpg="
+        }
+      ]
+    },
+    {
       "Route": "thumbnail/idk.bffm78cb3n.jpg",
       "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\thumbnail\\idk.jpg",
       "Selectors": [],
@@ -83,7 +289,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 14:57:18 GMT"
+          "Value": "Sun, 26 Jan 2025 15:15:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -128,7 +334,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 14:57:18 GMT"
+          "Value": "Sun, 26 Jan 2025 15:15:11 GMT"
         },
         {
           "Name": "Cache-Control",

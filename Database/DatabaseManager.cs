@@ -167,17 +167,24 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
             await command.ExecuteNonQueryAsync();
         }
 
-        public async void AddAdmin(AdminModel admin) {
-            using var connection = new SqliteConnection(_connectionString);
-            connection.Open();
+        public async Task<bool> AddAdmin(AdminModel admin) {
+            try {
+                using var connection = new SqliteConnection(_connectionString);
+                connection.Open();
 
-            using var command = connection.CreateCommand();
-            command.CommandText = @"INSERT INTO Admins (Username, Password, Added_by) VALUES ($username, $pass, $added_by)";
-            command.Parameters.AddWithValue("$username", admin.Username.Trim());
-            command.Parameters.AddWithValue("$pass", admin.Password.Trim());
-            command.Parameters.AddWithValue("$added_by", admin.Added_by);
-            await command.PrepareAsync();
-            await command.ExecuteNonQueryAsync();
+                using var command = connection.CreateCommand();
+                command.CommandText = @"INSERT INTO Admins (Username, Password, Added_by) VALUES ($username, $pass, $added_by)";
+                command.Parameters.AddWithValue("$username", admin.Username.Trim());
+                command.Parameters.AddWithValue("$pass", admin.Password.Trim());
+                command.Parameters.AddWithValue("$added_by", admin.Added_by);
+                await command.PrepareAsync();
+                await command.ExecuteNonQueryAsync();
+                return true;
+
+            } catch (SqliteException) {
+                return false;
+            }
+            
         }
 
         public async void RemoveAdmin(AdminModel admin) {
