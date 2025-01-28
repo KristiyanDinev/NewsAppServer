@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bamno1opczjwQM2VwgX+pguOsmU+ld4IsuF1lZDIJQo=",
+  "Hash": "nvL/8U+kyIWSqq24hB8uaqog+dFtfnsR42CjiFr44LA=",
   "Source": "NewsAppServer",
   "BasePath": "_content/NewsAppServer",
   "Mode": "Default",
@@ -104,7 +104,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 27 Jan 2025 13:07:28 GMT"
+          "Value": "Mon, 27 Jan 2025 17:29:51 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -149,7 +149,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 27 Jan 2025 13:07:28 GMT"
+          "Value": "Mon, 27 Jan 2025 17:29:51 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -186,7 +186,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 27 Jan 2025 13:07:57 GMT"
+          "Value": "Mon, 27 Jan 2025 17:30:27 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -223,7 +223,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 27 Jan 2025 13:07:57 GMT"
+          "Value": "Mon, 27 Jan 2025 17:30:27 GMT"
         },
         {
           "Name": "Cache-Control",

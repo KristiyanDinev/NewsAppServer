@@ -14,16 +14,37 @@ namespace NewsAppServer.Controllers {
             app.MapGet("/news/id/{newsID:int}", async (HttpContext http,
                 DatabaseManager db,
                 int newsID) => {
+
                     Dictionary<string, object> res =
                         new Dictionary<string, object>();
+
                     try {
                         NewsModel? news = await db.GetNewsByID(newsID);
                         res.Add("News", news);
                         return res;
+
                     } catch (Exception) { 
                         return null;
                     }
-                }).RequireRateLimiting("fixed"); ;
+                }).RequireRateLimiting("fixed");
+
+            app.MapPost("/news/latest", async (HttpContext http,
+                DatabaseManager db, [FromForm] int page,
+                [FromForm] int amount) => {
+
+                    Dictionary<string, object> res =
+                        new Dictionary<string, object>();
+                    page -= 1;
+                    try {
+                        List<NewsModel> news = await db.GetLatestNews(page, amount);
+                        res.Add("News", news);
+                        return res;
+
+                    } catch (Exception) {
+                        return null;
+                    }
+                }).DisableAntiforgery()
+                .RequireRateLimiting("fixed");
 
 
             app.MapPost("/news/search", async (HttpContext http, DatabaseManager db,

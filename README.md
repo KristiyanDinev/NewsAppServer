@@ -24,6 +24,7 @@ openssl pkcs12 -export -out public_privatekey.pfx -inkey private.key -in publick
 - GET `/news/id/{newsID}` -> Ex: `/news/id/1` this will get the news with that id
 - POST `/news/search` -> body data: `search`, `tags`, `page`, `post_authors` and `amount` for the this will return a map with one key that points to a list of all News that contain any of the data given.
 - POST `/news` -> Will create a new news.
+- POST `/news/latest` -> body data: `page` and `amount` -> again list of the news in {"News": [{...}, {...}]}
 - POST `/news/edit` -> Will edit already existing news.
 - POST `/news/delete` -> Will delete already existing news.
 - POST `/admin/login` -> `adminPassword` - the password to login; returns status code 200 if loged in. otherwise it returns 401.

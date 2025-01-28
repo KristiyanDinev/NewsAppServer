@@ -187,6 +187,30 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
             
         }
 
+        public async Task<List<NewsModel>> GetLatestNews(int page, 
+            int amountPerPage) {
+            List<NewsModel> list = new List<NewsModel>();
+            using (var connection = new SqliteConnection(_connectionString)) {
+                connection.Open();
+
+                using var command = connection.CreateCommand();
+
+                string sql = "SELECT * FROM News ";
+                Craft_Page_Command(ref sql, page, amountPerPage);
+                command.CommandText = sql;
+
+                await command.PrepareAsync();
+
+                using var reader = await command.ExecuteReaderAsync();
+                using DataTable dt = new DataTable();
+                dt.Load(reader);
+                for (int i = 0; i < dt.Rows.Count; i++) {
+                    list.Add(ConvertToNews(dt.Rows[i]));
+                }
+            }
+            return list;
+        }
+
         public async void RemoveAdmin(AdminModel admin) {
             using var connection = new SqliteConnection(_connectionString);
             connection.Open();
