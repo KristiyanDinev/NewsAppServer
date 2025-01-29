@@ -24,7 +24,7 @@ namespace NewsAppServer.Controllers {
                         return res;
 
                     } catch (Exception) { 
-                        return null;
+                        return res;
                     }
                 }).RequireRateLimiting("fixed");
 
