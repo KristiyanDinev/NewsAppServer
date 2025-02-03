@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nvL/8U+kyIWSqq24hB8uaqog+dFtfnsR42CjiFr44LA=",
+  "Hash": "b9at34lZiApcljJipgBsM8iXpHW4tW2KoIpeQViegew=",
   "Source": "NewsAppServer",
   "BasePath": "_content/NewsAppServer",
   "Mode": "Default",
@@ -36,27 +36,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\attachment\\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf"
-    },
-    {
-      "Identity": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\attachment\\HotelManagementSystem.docx",
-      "SourceId": "NewsAppServer",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\",
-      "BasePath": "_content/NewsAppServer",
-      "RelativePath": "attachment/HotelManagementSystem#[.{fingerprint}]?.docx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "kkb5ngc97s",
-      "Integrity": "1ID3AmtPidpmNypjXqXYwKLHd7crdDOTBXBaPgE7xpg=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\attachment\\HotelManagementSystem.docx"
     },
     {
       "Identity": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\thumbnail\\wallpapersden.com_serene-nature-hd-pixel-art-sunset_2560x1435.jpg",
@@ -160,88 +139,6 @@
         {
           "Name": "integrity",
           "Value": "sha256-IEAC4QWHdFlX9Q5ziNvz2KBzR+vby7Ci9mVN6A7sZGI="
-        }
-      ]
-    },
-    {
-      "Route": "attachment/HotelManagementSystem.docx",
-      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\attachment\\HotelManagementSystem.docx",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3507"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"1ID3AmtPidpmNypjXqXYwKLHd7crdDOTBXBaPgE7xpg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 27 Jan 2025 17:30:27 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-1ID3AmtPidpmNypjXqXYwKLHd7crdDOTBXBaPgE7xpg="
-        }
-      ]
-    },
-    {
-      "Route": "attachment/HotelManagementSystem.kkb5ngc97s.docx",
-      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\attachment\\HotelManagementSystem.docx",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3507"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"1ID3AmtPidpmNypjXqXYwKLHd7crdDOTBXBaPgE7xpg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 27 Jan 2025 17:30:27 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "kkb5ngc97s"
-        },
-        {
-          "Name": "label",
-          "Value": "attachment/HotelManagementSystem.docx"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-1ID3AmtPidpmNypjXqXYwKLHd7crdDOTBXBaPgE7xpg="
         }
       ]
     },
