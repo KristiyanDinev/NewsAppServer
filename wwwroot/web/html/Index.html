@@ -1,0 +1,52 @@
+<!doctype html>
+</html lang="en">
+
+
+<head>
+    <title>Main Page</title>
+
+    {{HeaderImports}}
+
+    <link href='web/css/homeStyle.css' rel="stylesheet" />
+
+</head>
+
+
+<body>
+
+
+{{TitleBar}}
+
+<div class="home">
+
+    <div class="search-view">
+        <textarea id="search_title" class="search-box" type="text" placeholder="Search anything..."></textarea>
+        
+        <div class="submit" onclick="submitHomeSearch()">
+            <p>🔍</p>
+        </div>
+    </div>
+
+    <div class="button" onclick="goToSearchPage()">
+        <p>☰ Filter Search</p>
+    </div>
+
+    <div class='page-view'>
+               <p id="prev-page" class='page-text' onclick=''></p>
+                <p id="cur-page" class='cur-page-text'></p>
+                <p id="next-page" class='page-text' onclick=''></p>
+    </div>
+
+
+    <div id="news" class="news-list">
+
+    </div>
+
+</div>
+
+
+    {{BodyImports}}
+    
+    </body>
+
+<html>

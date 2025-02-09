@@ -12,6 +12,14 @@
 openssl req -new -x509 -key private.key -out publickey.cer -days 365
 openssl pkcs12 -export -out public_privatekey.pfx -inkey private.key -in publickey.cer`
 
+### Notes
+The web uses `{{propertyOfModel}}` placeholder for only Index.html files.
+
+### AppSettings.json
+This are the settings of the server.
+- `Database_SystemAdmin_Password` is the password for user `SystemAdmin` who is always to be in the database as admin
+- `SQLite_Location` the location of the database as sqlite.
+
 ### Client
 - When admin edits or deletes News he stores the old Thumbnail path, all PDF paths, Id, Title, HTML body, Tags
 

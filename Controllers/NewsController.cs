@@ -2,15 +2,12 @@
 using NewsAppServer.Database;
 using NewsAppServer.Models;
 using NewsAppServer.Utils;
-using System.ComponentModel;
-using System.Net.Mail;
-using System.Text;
 
 namespace NewsAppServer.Controllers {
     public class NewsController {
         
         public NewsController(WebApplication app) {
-
+            /*
             app.MapGet("/news/id/{newsID:int}", async (HttpContext http,
                 DatabaseManager db,
                 int newsID) => {
@@ -26,7 +23,7 @@ namespace NewsAppServer.Controllers {
                     } catch (Exception) { 
                         return res;
                     }
-                }).RequireRateLimiting("fixed");
+                }).RequireRateLimiting("fixed");*/
 
             app.MapPost("/news/latest", async (HttpContext http,
                 DatabaseManager db, [FromForm] int page,
@@ -37,6 +34,14 @@ namespace NewsAppServer.Controllers {
                     page -= 1;
                     try {
                         List<NewsModel> news = await db.GetLatestNews(page, amount);
+
+                        ISession session = http.Session;
+                        ControllerUtils.Add_News_To_SearchResults(ref session,
+                            news);
+
+                        await session.CommitAsync();
+
+
                         res.Add("News", news);
                         return res;
 
@@ -61,11 +66,27 @@ namespace NewsAppServer.Controllers {
                             .SeperateValues(tags);
 
                         List<string> post_authorsList = ControllerUtils
-                            .SeperateValues(post_authors); ;
+                            .SeperateValues(post_authors);
 
                         List<NewsModel> searchedNews = await db.SearchNews(search,
                             tagsList.ToArray(), post_authorsList.ToArray(),
                             page - 1, amount);
+
+                        // is_fav
+                        ISession session = http.Session;
+                        List<NewsModel> savedNews =
+                        ControllerUtils.Get_NewsModels_From_SavedNewsSession(session);
+
+                        foreach (NewsModel news in searchedNews) {
+                            if (savedNews.Find(n => n.Id == news.Id) != null) {
+                                news.IsFav = true;
+                            }
+                        }
+
+                        ControllerUtils.Add_News_To_SearchResults(ref session,
+                            searchedNews);
+
+                        await session.CommitAsync();
 
                         res.Add("News", searchedNews);
                         return res;

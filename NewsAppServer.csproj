@@ -8,6 +8,9 @@
 
   <ItemGroup>
     <Folder Include="Properties\" />
+    <Folder Include="wwwroot\web\css\" />
+    <Folder Include="wwwroot\web\js\" />
+    <Folder Include="wwwroot\web\html\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.AspNetCore.Server.Kestrel.Https;
 using NewsAppServer.Controllers;
 using NewsAppServer.Database;
+using NewsAppServer.Utils;
+using System;
 using System.Reflection.PortableExecutable;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.RateLimiting;
@@ -24,21 +26,35 @@ namespace NewsAppServer
                 Directory.CreateDirectory("wwwroot");
                 Directory.CreateDirectory("wwwroot\\attachment");
                 Directory.CreateDirectory("wwwroot\\thumbnail");
+                Directory.CreateDirectory("wwwroot\\web");
+                Directory.CreateDirectory("wwwroot\\web\\js");
+                Directory.CreateDirectory("wwwroot\\web\\css");
+                Directory.CreateDirectory("wwwroot\\web\\html");
             }
+
 
 
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddScoped<DatabaseManager>();
             builder.Services.AddRateLimiter(_ => _
                 .AddFixedWindowLimiter(policyName: "fixed", options => {
-                    options.PermitLimit = 4;
-                    options.Window = TimeSpan.FromSeconds(12);
+                    options.PermitLimit = 2;
+                    options.Window = TimeSpan.FromSeconds(2);
                     options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
-                    options.QueueLimit = 2;
+                    options.QueueLimit = 1;
                 })
             );
+            
 
             builder.WebHost.UseUrls([builder.Configuration.GetValue<string>("Urls") ?? "http://127.0.0.1:5000"]);
+
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options => {
+                options.Cookie.Name = ".Resturant.Session";
+                options.Cookie.IsEssential = true;
+                //options.IOTimeout = TimeSpan.FromSeconds(20);
+                options.Cookie.HttpOnly = true;
+            });
 
             /*
             builder.Services.AddHttpsRedirection(options =>
@@ -89,8 +105,31 @@ namespace NewsAppServer
             //app.UseHttpsRedirection();
             //app.UseAuthentication();
             //app.UseHsts();
-            app.UseStaticFiles();
+            //app.UseStaticFiles();
             app.UseRateLimiter();
+            app.UseSession();
+
+
+            string dicPath = Directory.GetCurrentDirectory();
+            app.Use(async (HttpContext context, RequestDelegate next) => {
+
+                ISession session = context.Session;
+                await session.LoadAsync();
+                if (!session.IsAvailable) {
+                    return;
+                }
+
+                string path = context.Request.Path;
+                if (path.Contains('.')) {
+                    context.Response.Clear();
+                    await context.Response.WriteAsync(
+                        await File.ReadAllTextAsync(dicPath+
+                        "\\wwwroot"+path.Replace("/", "\\")));
+                    return;
+                }
+
+                await next.Invoke(context);
+            });
 
 
             DatabaseManager._connectionString += 
@@ -103,6 +142,7 @@ namespace NewsAppServer
 
             new NewsController(app);
             new AdminController(app);
+            new WebController(app);
 
             app.Run();
         }

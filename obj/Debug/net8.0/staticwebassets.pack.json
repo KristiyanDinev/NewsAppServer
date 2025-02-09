@@ -9,6 +9,62 @@
       "PackagePath": "staticwebassets\\thumbnail\\wallpapersden.com_serene-nature-hd-pixel-art-sunset_2560x1435.jpg"
     },
     {
+      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\css\\homeStyle.css",
+      "PackagePath": "staticwebassets\\web\\css\\homeStyle.css"
+    },
+    {
+      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\css\\main.css",
+      "PackagePath": "staticwebassets\\web\\css\\main.css"
+    },
+    {
+      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\html\\Index.html",
+      "PackagePath": "staticwebassets\\web\\html\\Index.html"
+    },
+    {
+      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\html\\aboutapp\\Index.html",
+      "PackagePath": "staticwebassets\\web\\html\\aboutapp\\Index.html"
+    },
+    {
+      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\html\\admin\\Index.html",
+      "PackagePath": "staticwebassets\\web\\html\\admin\\Index.html"
+    },
+    {
+      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\html\\adminedit_news\\Index.html",
+      "PackagePath": "staticwebassets\\web\\html\\adminedit_news\\Index.html"
+    },
+    {
+      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\html\\adminlogin\\Index.html",
+      "PackagePath": "staticwebassets\\web\\html\\adminlogin\\Index.html"
+    },
+    {
+      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\html\\contactus\\Index.html",
+      "PackagePath": "staticwebassets\\web\\html\\contactus\\Index.html"
+    },
+    {
+      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\html\\news\\Index.html",
+      "PackagePath": "staticwebassets\\web\\html\\news\\Index.html"
+    },
+    {
+      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\html\\options\\Index.html",
+      "PackagePath": "staticwebassets\\web\\html\\options\\Index.html"
+    },
+    {
+      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\html\\savednews\\Index.html",
+      "PackagePath": "staticwebassets\\web\\html\\savednews\\Index.html"
+    },
+    {
+      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\html\\search\\Index.html",
+      "PackagePath": "staticwebassets\\web\\html\\search\\Index.html"
+    },
+    {
+      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\js\\main.js",
+      "PackagePath": "staticwebassets\\web\\js\\main.js"
+    },
+    {
+      "Id": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\js\\savednews.js",
+      "PackagePath": "staticwebassets\\web\\js\\savednews.js"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.NewsAppServer.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },

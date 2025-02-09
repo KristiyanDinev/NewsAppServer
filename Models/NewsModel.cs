@@ -9,5 +9,6 @@
         public string? Tags { get; set; } = null;
         public string Posted_by_Admin_username { get; set; }
         public DateTime Posted_on { get; set; } = DateTime.UtcNow;
+        public bool IsFav { get; set; } = false;
     }
 }

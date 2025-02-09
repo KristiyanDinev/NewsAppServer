@@ -1,0 +1,32 @@
+</html>
+
+<head>
+    <title>News</title>
+</head>
+
+<body>
+
+    <p>{{Title}}</p>
+    <br>
+
+    <div id="tags">
+
+        </div>
+
+    <script>
+        let s = "{{Tags}}".split(';')
+        let dd = document.getElementById("tags")
+        for (let x in s) {
+            let p = document.createElement("p")
+            p.innerHTML = s[x]
+            dd.appendChild(p)
+        }
+     </script><br>
+
+    {{HTML_body}}
+    <br>
+    {{Attachments_path}}
+
+</body>
+
+<html>
