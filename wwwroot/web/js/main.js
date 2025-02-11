@@ -1,9 +1,10 @@
 var Host = "http://192.168.1.13:8080";
 var amountPerPage = 10;
 
-var page = 0;
+var cur_page = 0;
+var maxPage = 0;
 var NewsData = {};
-// page number: key | list of objects: value
+// page number: key (string) | list of objects: value
 
 function onClickOptions() {
     console.log(window.location.href)
@@ -19,29 +20,37 @@ function handlePage() {
     // ◀ Page {page}
     //  Page {page} 
     // Page {page + 1} ▶ 
-
+    let num = Number(cur_page)
     let prevPage = document.getElementById("prev-page")
     let curPage = document.getElementById("cur-page")
     let nextPage = document.getElementById("next-page")
 
-    if (page > 1) {
-        prevPage.innerHTML = " ◀ Page "+(page - 1)+" "
+    if (num > 1) {
+        prevPage.innerHTML = " ◀ Page " + (num - 1)+" "
 
-    } else if (page == 1) {
-        curPage.innerHTML = " Page "+ page + " "
-        nextPage.innerHTML = " Page " + (page + 1)+" ▶ "
+    } else if (num == 1) {
+        prevPage.innerHTML = ""
     }
+        
+    curPage.innerHTML = " Page " + num + " "
+       
+    nextPage.innerHTML = " Page " + (num + 1)+" ▶ "
+    
 }
 
 function showNews(data) {
-    let newsDiv = document.getElementById("news")
+    var newsDiv = document.getElementById("news")
 
-    let newNewsDiv = document.createElement("div")
+    var newNewsDiv = document.createElement("div")
     newNewsDiv.className = "news-view"
+    newNewsDiv.onclick = () => goToNews(data.id)
 
+    
     let thumbnail = document.createElement("img")
-    thumbnail.className = "news-thumbnail"
-    thumbnail.src = Host + data.thumbnail_path
+    if (data.thumbnail_path.length) {
+        thumbnail.className = "news-thumbnail"
+        thumbnail.src = data.thumbnail_path.replace('\\\\', '/').slice(1)
+    }
 
     newNewsDiv.appendChild(thumbnail)
 
@@ -59,21 +68,30 @@ function showNews(data) {
     var tagsDiv = document.createElement("div")
     tagsDiv.className = "news-tag-view"
     var count = 0;
+
+    var tagsColumDiv = document.createElement("div")
+    tagsColumDiv.className = "news-tag-view2"
     for (let i in splited) {
         let tagValue = splited[i]
         if (tagValue.length === 0) {
             continue
         }
+        
         let tags = document.createElement("p")
         tags.className = "news-tags"
-        tags.innerHTML = splited[i]
-        tagsDiv.appendChild(tags)
+        tags.innerHTML = tagValue
+        tagsColumDiv.appendChild(tags)
+        
         count++;
-        if (count % 5 === 0) {
-            newNewsDiv.appendChild(tagsDiv)
-            tagsDiv = document.createElement("div")
+
+        if (count % 5 === 0 || i == (splited.length - 1)) {
+            tagsDiv.appendChild(tagsColumDiv)
+            tagsColumDiv = document.createElement("div")
+            tagsColumDiv.className = "news-tag-view2"
         }
     }
+
+    newNewsDiv.appendChild(tagsDiv)
 
     // posted_by_Admin_username
     let author = document.createElement("p")
@@ -95,12 +113,26 @@ function showNews(data) {
     newsDiv.appendChild(newNewsDiv)
 }
 
-async function submitSearch(search, tags, authors) {
+function clearNews() {
+    var newsDiv = document.getElementById("news")
+    while (newsDiv.firstChild) {
+        newsDiv.removeChild(newsDiv.lastChild);
+    }
+}
+
+function showPage(_page) {
+    let news = NewsData[String(_page)]
+    for (let x in news) {
+        showNews(news[x])
+    }
+}
+
+async function submitSearch(search, tags, authors, page) {
     let formData = new FormData()
     formData.append("tags", tags)
     formData.append("search", search)
     formData.append("post_authors", authors)
-    formData.append("page", 1)
+    formData.append("page", page)
     formData.append("amount", amountPerPage)
 
     const res = await fetch(Host + "/news/search", {
@@ -116,30 +148,70 @@ async function submitSearch(search, tags, authors) {
 
     const data = await res.json();
     const News = data.News;
-    if (News === null || News.length === 0) {
+    if (News === null || News === undefined || News.length === 0) {
         alert("No news")
         return;
     }
 
-    page = 1
-    NewsData[page] = News
-    handlePage()
-
-    for (let x in News) {
-        console.log(News[x])
-        showNews(News[x])
+    cur_page = String(page)
+    if (Number(page) > Number(maxPage)) {
+        maxPage = String(page)
     }
+
+    NewsData[cur_page] = News
+    handlePage()
+    clearNews()
+    showPage(cur_page)
 }
 
-const searchParams = new URLSearchParams(window.location.search)
 
-var searchV = searchParams.get('search')
-var tags = searchParams.get('tags')
-var authors = searchParams.get('authors')
+async function goPageForward() {
+    let num_cur_page = Number(cur_page)
+    if (num_cur_page === Number(maxPage) && NewsData[maxPage].length < amountPerPage) {
+        alert("There shouldn't be any other news, "+
+           +"but if you want to check if there are really no other news then submit your search again.")
+        return
+    }
+    let nextPage = num_cur_page + 1
+    if (NewsData[String(nextPage)] !== undefined) {
+        clearNews()
+        cur_page = nextPage
+        handlePage()
+        showPage(cur_page)
+        return
+    }
+    await submitSearch(document.getElementById("search_title").value, '', '', nextPage)
+}
 
-if ((searchV !== null || tags !== null || authors !== null) &&
-    (searchV.length > 0 || tags.length > 0 || authors.length > 0)) {
-    submitSearch(searchV, tags, authors)
+function goPageBackword() {
+    clearNews()
+    cur_page = Number(cur_page) - 1
+    handlePage()
+    showPage(cur_page)
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+const searchCookieV = getCookie("Search.S")
+const tagsCookieV = getCookie("Search.T")
+const authorsCookieV = getCookie("Search.A")
+
+if (searchCookieV.length > 0 || tagsCookieV.length > 0 || authorsCookieV.length > 0) {
+    submitSearch(searchCookieV, tagsCookieV, authorsCookieV, 1)
+    fetch(Host + '/resetsearch', {method: 'GET', redirect:'follow'})
 }
 
 function goToSearchPage() {
@@ -149,6 +221,31 @@ function goToSearchPage() {
 // let searchV = document.getElementById("search_title").value
 async function submitHomeSearch() {
     await submitSearch(document.getElementById("search_title").value,
-        "", "")
+        "", "", 1)
+}
+
+async function saveSearch(search, tags, authors) {
+    let formData = new FormData()
+    formData.append('search', search)
+    formData.append('tags', tags)
+    formData.append('authors', authors)
+
+    const res = await fetch(Host + "/savesearch", {
+        method: "POST",
+        body: formData,
+        redirect: 'follow'
+    })
+
+    if (res.status !== 200) {
+        alert("Error.")
+        return
+    }
+
+    window.location.href = "/"
+}
+
+
+function goToNews(id) {
+    window.location.href = 'news/'+id
 }
 

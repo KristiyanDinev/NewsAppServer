@@ -3,12 +3,33 @@
 <head>
     <title>Search Page</title>
     {{HeaderImports}}
+
+    <link href='web/css/searchStyle.css' rel="stylesheet" />
 </head>
 
 <body>
 {{TitleBar}}
 
-    <h1>Search</h1>
+    <div class="search">
+
+        <div class="search-view">
+            <textarea id="search_title" class="search-box" type="text" placeholder="Search anything..."></textarea>
+            
+            <button class="submit" onclick="saveSearch(document.getElementById('search_title').value, 
+                        document.getElementById('tags').value, document.getElementById('authors').value)">🔍</button>
+        </div>
+        
+
+        <div class="filter-box">
+            <p class="filter-text">Filter: Enter tags to filter your result. Spaces are allowed. Seperate them by ;</p>
+<textarea id="tags" class="filter-input" type="text" placeholder="Tag1;Tag2;..."></textarea>
+
+            <p class="filter-text">Enter usernames of authors to get only their posts. Spaces are allowed. Seperate them by ;</p>
+
+            <textarea id="authors" class="filter-input" type="text" placeholder="Author1;Author2;..."></textarea>
+        </div>
+
+    </div>
 
     {{BodyImports}}
 </body>

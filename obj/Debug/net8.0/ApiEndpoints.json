@@ -17,7 +17,7 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.WebController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__0_9",
+    "Method": "\u003C.ctor\u003Eb__0_11",
     "RelativePath": "admin",
     "HttpMethod": "GET",
     "IsController": false,
@@ -117,7 +117,7 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.WebController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__0_10",
+    "Method": "\u003C.ctor\u003Eb__0_12",
     "RelativePath": "admin/editnews",
     "HttpMethod": "GET",
     "IsController": false,
@@ -251,7 +251,7 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.WebController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__0_1",
+    "Method": "\u003C.ctor\u003Eb__0_3",
     "RelativePath": "news/{id:int}",
     "HttpMethod": "GET",
     "IsController": false,
@@ -455,7 +455,7 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.WebController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__0_3",
+    "Method": "\u003C.ctor\u003Eb__0_5",
     "RelativePath": "options",
     "HttpMethod": "GET",
     "IsController": false,
@@ -471,7 +471,7 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.WebController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__0_4",
+    "Method": "\u003C.ctor\u003Eb__0_6",
     "RelativePath": "options/aboutapp",
     "HttpMethod": "GET",
     "IsController": false,
@@ -487,7 +487,7 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.WebController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__0_8",
+    "Method": "\u003C.ctor\u003Eb__0_10",
     "RelativePath": "options/adminlogin",
     "HttpMethod": "GET",
     "IsController": false,
@@ -503,7 +503,7 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.WebController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__0_5",
+    "Method": "\u003C.ctor\u003Eb__0_7",
     "RelativePath": "options/contactus",
     "HttpMethod": "GET",
     "IsController": false,
@@ -519,7 +519,7 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.WebController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__0_6",
+    "Method": "\u003C.ctor\u003Eb__0_8",
     "RelativePath": "options/savednews",
     "HttpMethod": "GET",
     "IsController": false,
@@ -535,7 +535,7 @@
   },
   {
     "ContainingType": "NewsAppServer.Controllers.WebController\u002B\u003C\u003Ec",
-    "Method": "\u003C.ctor\u003Eb__0_7",
+    "Method": "\u003C.ctor\u003Eb__0_9",
     "RelativePath": "options/savednews",
     "HttpMethod": "POST",
     "IsController": false,
@@ -554,6 +554,54 @@
   {
     "ContainingType": "NewsAppServer.Controllers.WebController\u002B\u003C\u003Ec",
     "Method": "\u003C.ctor\u003Eb__0_2",
+    "RelativePath": "resetsearch",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewsAppServer.Controllers.WebController\u002B\u003C\u003Ec",
+    "Method": "\u003C.ctor\u003Eb__0_1",
+    "RelativePath": "savesearch",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "tags",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "authors",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "NewsAppServer.Controllers.WebController\u002B\u003C\u003Ec",
+    "Method": "\u003C.ctor\u003Eb__0_4",
     "RelativePath": "search",
     "HttpMethod": "GET",
     "IsController": false,

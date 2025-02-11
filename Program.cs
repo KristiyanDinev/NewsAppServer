@@ -105,7 +105,7 @@ namespace NewsAppServer
             //app.UseHttpsRedirection();
             //app.UseAuthentication();
             //app.UseHsts();
-            //app.UseStaticFiles();
+            app.UseStaticFiles();
             app.UseRateLimiter();
             app.UseSession();
 
@@ -119,14 +119,6 @@ namespace NewsAppServer
                     return;
                 }
 
-                string path = context.Request.Path;
-                if (path.Contains('.')) {
-                    context.Response.Clear();
-                    await context.Response.WriteAsync(
-                        await File.ReadAllTextAsync(dicPath+
-                        "\\wwwroot"+path.Replace("/", "\\")));
-                    return;
-                }
 
                 await next.Invoke(context);
             });

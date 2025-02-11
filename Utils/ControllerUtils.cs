@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using NewsAppServer.Controllers;
+﻿using NewsAppServer.Controllers;
 using NewsAppServer.Database;
 using NewsAppServer.Models;
-using System.Collections.Generic;
-using System.Security.Claims;
 using System.Text;
 
 namespace NewsAppServer.Utils {
@@ -188,14 +185,14 @@ namespace NewsAppServer.Utils {
                 string HeaderImports = @"
     <meta charset=""utf-16"">
     <meta name=""viewport"" content=""width=device-width, initial-scale=1"">
-<link href='web/css/main.css' rel=""stylesheet"" />
+<link href='../../../../web/css/main.css' rel=""stylesheet"" />
 ";
 
 
                 string BodyImports = @"
 
             <script src=""https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js""></script>
-<script src='web/js/main.js'></script>
+<script src='../../../../web/js/main.js'></script>
 ";
 
                 string TitleBar = @"

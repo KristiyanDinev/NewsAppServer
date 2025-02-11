@@ -18,6 +18,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\attachment\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))">
+      <SourceType>Package</SourceType>
+      <SourceId>NewsAppServer</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/NewsAppServer</BasePath>
+      <RelativePath>favicon.ico</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>5ipweew5fc</Fingerprint>
+      <Integrity>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\thumbnail\wallpapersden.com_serene-nature-hd-pixel-art-sunset_2560x1435.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>NewsAppServer</SourceId>
@@ -48,8 +66,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>zlhcu1ljz1</Fingerprint>
-      <Integrity>2YlpPucCYIL8IX1/HMv6xYyOLZwymRz1NpV/9JCWkPM=</Integrity>
+      <Fingerprint>8ja9ltunff</Fingerprint>
+      <Integrity>bPkTw8RGnya0IBRHMGtHGIKLTbQhTXzg+C6axFdk6HQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\web\css\homeStyle.css'))</OriginalItemSpec>
@@ -66,11 +84,29 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>vac5n5uiht</Fingerprint>
-      <Integrity>eScw+e9bd+/oLY7VquElQC6fMy/4qEPUDcBdEcmoMdE=</Integrity>
+      <Fingerprint>40o9ip2maw</Fingerprint>
+      <Integrity>xNePtFdJdR9XtMK61Kj8h8k4nKQzYDHXwxL3TyUa9ZY=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\web\css\main.css'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\web\css\searchStyle.css'))">
+      <SourceType>Package</SourceType>
+      <SourceId>NewsAppServer</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/NewsAppServer</BasePath>
+      <RelativePath>web/css/searchStyle.css</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>8kgipp6dtb</Fingerprint>
+      <Integrity>WIFUpKJjAUAzy+MkUcpOrV3ZX+990SUTE6wdP+3dKm8=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\web\css\searchStyle.css'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\web\html\aboutapp\Index.html'))">
       <SourceType>Package</SourceType>
@@ -174,8 +210,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>g41nbwxyay</Fingerprint>
-      <Integrity>cGC2KQtyfYIVnWHSm9pzClVylznVqrsmD39VpRGYn8Q=</Integrity>
+      <Fingerprint>rzmipwno4z</Fingerprint>
+      <Integrity>GRJd/eWB4E6Yv4Cd5d92ol5wbd2GkWcJJofST5yjzfI=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\web\html\Index.html'))</OriginalItemSpec>
@@ -246,8 +282,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>rsonq69ymx</Fingerprint>
-      <Integrity>Sx/h/4NxG49E0hOCMRkOWiPvmOsCbDObD8oXEiScEKM=</Integrity>
+      <Fingerprint>b7xkhqrcyr</Fingerprint>
+      <Integrity>6RFpSJaYSTOdowMbwo8LV6QGFogS6VeaCWdtGbNxR3o=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\web\html\search\Index.html'))</OriginalItemSpec>
@@ -264,8 +300,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>4ltkhjosyf</Fingerprint>
-      <Integrity>yC9jFiDSzMMJORDxrvYg48Dmh/qv/phvTjhwGDRqfbg=</Integrity>
+      <Fingerprint>ei4yyd6klm</Fingerprint>
+      <Integrity>qp5RWhmgecHnnc1qg/TDJ4Nvl2BeKgSq21Lg/D+7QMY=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\web\js\main.js'))</OriginalItemSpec>

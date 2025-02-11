@@ -2,7 +2,6 @@
 using NewsAppServer.Database;
 using NewsAppServer.Models;
 using NewsAppServer.Utils;
-using System.Reflection;
 
 namespace NewsAppServer.Controllers {
     public class WebController {
@@ -19,6 +18,44 @@ namespace NewsAppServer.Controllers {
                 } catch (Exception) { 
                     return Results.BadRequest();
                 }
+            });
+
+            // this will set the search params in a cookie
+            app.MapPost("/savesearch", 
+                async (HttpContext context, 
+                [FromForm] string search, [FromForm] string tags, 
+                [FromForm] string authors) => {
+
+
+                    IResponseCookies cookies = context.Response.Cookies;
+                    cookies.Delete("Search.S");
+                    cookies.Delete("Search.T");
+                    cookies.Delete("Search.A");
+
+                    if (search.Replace(" ", "").Length > 0) {
+                        cookies.Append("Search.S", search);
+                    }
+
+                    if (tags.Replace(" ", "").Length > 0) {
+                        cookies.Append("Search.T", tags);
+                    }
+
+                    if (authors.Replace(" ", "").Length > 0) {
+                        cookies.Append("Search.A", authors);
+                    }
+
+                    return Results.Ok();
+
+           
+                 }).DisableAntiforgery();
+
+            // this will remove the search params in the cookie
+            app.MapGet("resetsearch", (HttpContext context) => {
+                IResponseCookies cookies = context.Response.Cookies;
+                cookies.Delete("Search.S");
+                cookies.Delete("Search.T");
+                cookies.Delete("Search.A");
+                return Results.Ok();
             });
 
             // page about this one post

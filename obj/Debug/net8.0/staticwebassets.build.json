@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QifUz43GNKGAJyHwf5/1V7KLbRuyXF7mVkZ1JgRjHNc=",
+  "Hash": "4EKn2QgaZBxIVuYu2FbqdXV6dTnavHxSddQFwzqZaLc=",
   "Source": "NewsAppServer",
   "BasePath": "_content/NewsAppServer",
   "Mode": "Default",
@@ -38,6 +38,27 @@
       "OriginalItemSpec": "wwwroot\\attachment\\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf"
     },
     {
+      "Identity": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\favicon.ico",
+      "SourceId": "NewsAppServer",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\",
+      "BasePath": "_content/NewsAppServer",
+      "RelativePath": "favicon#[.{fingerprint}]?.ico",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "5ipweew5fc",
+      "Integrity": "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
       "Identity": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\thumbnail\\wallpapersden.com_serene-nature-hd-pixel-art-sunset_2560x1435.jpg",
       "SourceId": "NewsAppServer",
       "SourceType": "Discovered",
@@ -73,8 +94,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "zlhcu1ljz1",
-      "Integrity": "2YlpPucCYIL8IX1/HMv6xYyOLZwymRz1NpV/9JCWkPM=",
+      "Fingerprint": "8ja9ltunff",
+      "Integrity": "bPkTw8RGnya0IBRHMGtHGIKLTbQhTXzg+C6axFdk6HQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\web\\css\\homeStyle.css"
@@ -94,11 +115,32 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "vac5n5uiht",
-      "Integrity": "eScw+e9bd+/oLY7VquElQC6fMy/4qEPUDcBdEcmoMdE=",
+      "Fingerprint": "40o9ip2maw",
+      "Integrity": "xNePtFdJdR9XtMK61Kj8h8k4nKQzYDHXwxL3TyUa9ZY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\web\\css\\main.css"
+    },
+    {
+      "Identity": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\css\\searchStyle.css",
+      "SourceId": "NewsAppServer",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\",
+      "BasePath": "_content/NewsAppServer",
+      "RelativePath": "web/css/searchStyle#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "8kgipp6dtb",
+      "Integrity": "WIFUpKJjAUAzy+MkUcpOrV3ZX+990SUTE6wdP+3dKm8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\web\\css\\searchStyle.css"
     },
     {
       "Identity": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\html\\aboutapp\\Index.html",
@@ -220,8 +262,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "g41nbwxyay",
-      "Integrity": "cGC2KQtyfYIVnWHSm9pzClVylznVqrsmD39VpRGYn8Q=",
+      "Fingerprint": "rzmipwno4z",
+      "Integrity": "GRJd/eWB4E6Yv4Cd5d92ol5wbd2GkWcJJofST5yjzfI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\web\\html\\Index.html"
@@ -304,8 +346,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "rsonq69ymx",
-      "Integrity": "Sx/h/4NxG49E0hOCMRkOWiPvmOsCbDObD8oXEiScEKM=",
+      "Fingerprint": "b7xkhqrcyr",
+      "Integrity": "6RFpSJaYSTOdowMbwo8LV6QGFogS6VeaCWdtGbNxR3o=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\web\\html\\search\\Index.html"
@@ -325,8 +367,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "4ltkhjosyf",
-      "Integrity": "yC9jFiDSzMMJORDxrvYg48Dmh/qv/phvTjhwGDRqfbg=",
+      "Fingerprint": "ei4yyd6klm",
+      "Integrity": "qp5RWhmgecHnnc1qg/TDJ4Nvl2BeKgSq21Lg/D+7QMY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\web\\js\\main.js"
@@ -437,6 +479,88 @@
       ]
     },
     {
+      "Route": "favicon.5ipweew5fc.ico",
+      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\favicon.ico",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "0"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/x-icon"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 12:54:16 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5ipweew5fc"
+        },
+        {
+          "Name": "label",
+          "Value": "favicon.ico"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU="
+        }
+      ]
+    },
+    {
+      "Route": "favicon.ico",
+      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\favicon.ico",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "0"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/x-icon"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 12:54:16 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU="
+        }
+      ]
+    },
+    {
       "Route": "thumbnail/wallpapersden.com_serene-nature-hd-pixel-art-sunset_2560x1435.jpg",
       "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\thumbnail\\wallpapersden.com_serene-nature-hd-pixel-art-sunset_2560x1435.jpg",
       "Selectors": [],
@@ -519,6 +643,51 @@
       ]
     },
     {
+      "Route": "web/css/homeStyle.8ja9ltunff.css",
+      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\css\\homeStyle.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4027"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bPkTw8RGnya0IBRHMGtHGIKLTbQhTXzg+C6axFdk6HQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 14:54:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8ja9ltunff"
+        },
+        {
+          "Name": "label",
+          "Value": "web/css/homeStyle.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-bPkTw8RGnya0IBRHMGtHGIKLTbQhTXzg+C6axFdk6HQ="
+        }
+      ]
+    },
+    {
       "Route": "web/css/homeStyle.css",
       "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\css\\homeStyle.css",
       "Selectors": [],
@@ -529,7 +698,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3094"
+          "Value": "4027"
         },
         {
           "Name": "Content-Type",
@@ -537,11 +706,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"2YlpPucCYIL8IX1/HMv6xYyOLZwymRz1NpV/9JCWkPM=\""
+          "Value": "\"bPkTw8RGnya0IBRHMGtHGIKLTbQhTXzg+C6axFdk6HQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 17:20:29 GMT"
+          "Value": "Tue, 11 Feb 2025 14:54:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -551,13 +720,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-2YlpPucCYIL8IX1/HMv6xYyOLZwymRz1NpV/9JCWkPM="
+          "Value": "sha256-bPkTw8RGnya0IBRHMGtHGIKLTbQhTXzg+C6axFdk6HQ="
         }
       ]
     },
     {
-      "Route": "web/css/homeStyle.zlhcu1ljz1.css",
-      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\css\\homeStyle.css",
+      "Route": "web/css/main.40o9ip2maw.css",
+      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\css\\main.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -566,7 +735,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3094"
+          "Value": "1050"
         },
         {
           "Name": "Content-Type",
@@ -574,11 +743,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"2YlpPucCYIL8IX1/HMv6xYyOLZwymRz1NpV/9JCWkPM=\""
+          "Value": "\"xNePtFdJdR9XtMK61Kj8h8k4nKQzYDHXwxL3TyUa9ZY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 17:20:29 GMT"
+          "Value": "Tue, 11 Feb 2025 13:53:29 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -588,15 +757,15 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "zlhcu1ljz1"
+          "Value": "40o9ip2maw"
         },
         {
           "Name": "label",
-          "Value": "web/css/homeStyle.css"
+          "Value": "web/css/main.css"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-2YlpPucCYIL8IX1/HMv6xYyOLZwymRz1NpV/9JCWkPM="
+          "Value": "sha256-xNePtFdJdR9XtMK61Kj8h8k4nKQzYDHXwxL3TyUa9ZY="
         }
       ]
     },
@@ -611,7 +780,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1024"
+          "Value": "1050"
         },
         {
           "Name": "Content-Type",
@@ -619,11 +788,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"eScw+e9bd+/oLY7VquElQC6fMy/4qEPUDcBdEcmoMdE=\""
+          "Value": "\"xNePtFdJdR9XtMK61Kj8h8k4nKQzYDHXwxL3TyUa9ZY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 14:54:36 GMT"
+          "Value": "Tue, 11 Feb 2025 13:53:29 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -633,13 +802,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-eScw+e9bd+/oLY7VquElQC6fMy/4qEPUDcBdEcmoMdE="
+          "Value": "sha256-xNePtFdJdR9XtMK61Kj8h8k4nKQzYDHXwxL3TyUa9ZY="
         }
       ]
     },
     {
-      "Route": "web/css/main.vac5n5uiht.css",
-      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\css\\main.css",
+      "Route": "web/css/searchStyle.8kgipp6dtb.css",
+      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\css\\searchStyle.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -648,7 +817,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1024"
+          "Value": "1769"
         },
         {
           "Name": "Content-Type",
@@ -656,11 +825,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"eScw+e9bd+/oLY7VquElQC6fMy/4qEPUDcBdEcmoMdE=\""
+          "Value": "\"WIFUpKJjAUAzy+MkUcpOrV3ZX+990SUTE6wdP+3dKm8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 14:54:36 GMT"
+          "Value": "Tue, 11 Feb 2025 15:02:09 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -670,15 +839,52 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "vac5n5uiht"
+          "Value": "8kgipp6dtb"
         },
         {
           "Name": "label",
-          "Value": "web/css/main.css"
+          "Value": "web/css/searchStyle.css"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-eScw+e9bd+/oLY7VquElQC6fMy/4qEPUDcBdEcmoMdE="
+          "Value": "sha256-WIFUpKJjAUAzy+MkUcpOrV3ZX+990SUTE6wdP+3dKm8="
+        }
+      ]
+    },
+    {
+      "Route": "web/css/searchStyle.css",
+      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\css\\searchStyle.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1769"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WIFUpKJjAUAzy+MkUcpOrV3ZX+990SUTE6wdP+3dKm8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 15:02:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WIFUpKJjAUAzy+MkUcpOrV3ZX+990SUTE6wdP+3dKm8="
         }
       ]
     },
@@ -1093,51 +1299,6 @@
       ]
     },
     {
-      "Route": "web/html/Index.g41nbwxyay.html",
-      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\html\\Index.html",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "957"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/html"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"cGC2KQtyfYIVnWHSm9pzClVylznVqrsmD39VpRGYn8Q=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 16:57:50 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "g41nbwxyay"
-        },
-        {
-          "Name": "label",
-          "Value": "web/html/Index.html"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-cGC2KQtyfYIVnWHSm9pzClVylznVqrsmD39VpRGYn8Q="
-        }
-      ]
-    },
-    {
       "Route": "web/html/Index.html",
       "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\html\\Index.html",
       "Selectors": [],
@@ -1148,7 +1309,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "957"
+          "Value": "1112"
         },
         {
           "Name": "Content-Type",
@@ -1156,11 +1317,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"cGC2KQtyfYIVnWHSm9pzClVylznVqrsmD39VpRGYn8Q=\""
+          "Value": "\"GRJd/eWB4E6Yv4Cd5d92ol5wbd2GkWcJJofST5yjzfI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 16:57:50 GMT"
+          "Value": "Tue, 11 Feb 2025 17:36:26 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1170,7 +1331,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-cGC2KQtyfYIVnWHSm9pzClVylznVqrsmD39VpRGYn8Q="
+          "Value": "sha256-GRJd/eWB4E6Yv4Cd5d92ol5wbd2GkWcJJofST5yjzfI="
+        }
+      ]
+    },
+    {
+      "Route": "web/html/Index.rzmipwno4z.html",
+      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\html\\Index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1112"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GRJd/eWB4E6Yv4Cd5d92ol5wbd2GkWcJJofST5yjzfI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 17:36:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rzmipwno4z"
+        },
+        {
+          "Name": "label",
+          "Value": "web/html/Index.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GRJd/eWB4E6Yv4Cd5d92ol5wbd2GkWcJJofST5yjzfI="
         }
       ]
     },
@@ -1421,6 +1627,51 @@
       ]
     },
     {
+      "Route": "web/html/search/Index.b7xkhqrcyr.html",
+      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\html\\search\\Index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1189"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6RFpSJaYSTOdowMbwo8LV6QGFogS6VeaCWdtGbNxR3o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 16:54:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "b7xkhqrcyr"
+        },
+        {
+          "Name": "label",
+          "Value": "web/html/search/Index.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6RFpSJaYSTOdowMbwo8LV6QGFogS6VeaCWdtGbNxR3o="
+        }
+      ]
+    },
+    {
       "Route": "web/html/search/Index.html",
       "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\html\\search\\Index.html",
       "Selectors": [],
@@ -1431,7 +1682,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "170"
+          "Value": "1189"
         },
         {
           "Name": "Content-Type",
@@ -1439,11 +1690,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Sx/h/4NxG49E0hOCMRkOWiPvmOsCbDObD8oXEiScEKM=\""
+          "Value": "\"6RFpSJaYSTOdowMbwo8LV6QGFogS6VeaCWdtGbNxR3o=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 16:47:24 GMT"
+          "Value": "Tue, 11 Feb 2025 16:54:12 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1453,57 +1704,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Sx/h/4NxG49E0hOCMRkOWiPvmOsCbDObD8oXEiScEKM="
+          "Value": "sha256-6RFpSJaYSTOdowMbwo8LV6QGFogS6VeaCWdtGbNxR3o="
         }
       ]
     },
     {
-      "Route": "web/html/search/Index.rsonq69ymx.html",
-      "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\html\\search\\Index.html",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "170"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/html"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Sx/h/4NxG49E0hOCMRkOWiPvmOsCbDObD8oXEiScEKM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 16:47:24 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "rsonq69ymx"
-        },
-        {
-          "Name": "label",
-          "Value": "web/html/search/Index.html"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Sx/h/4NxG49E0hOCMRkOWiPvmOsCbDObD8oXEiScEKM="
-        }
-      ]
-    },
-    {
-      "Route": "web/js/main.4ltkhjosyf.js",
+      "Route": "web/js/main.ei4yyd6klm.js",
       "AssetFile": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\wwwroot\\web\\js\\main.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -1513,7 +1719,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4405"
+          "Value": "6784"
         },
         {
           "Name": "Content-Type",
@@ -1521,11 +1727,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"yC9jFiDSzMMJORDxrvYg48Dmh/qv/phvTjhwGDRqfbg=\""
+          "Value": "\"qp5RWhmgecHnnc1qg/TDJ4Nvl2BeKgSq21Lg/D+7QMY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 18:03:37 GMT"
+          "Value": "Tue, 11 Feb 2025 17:55:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1535,7 +1741,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "4ltkhjosyf"
+          "Value": "ei4yyd6klm"
         },
         {
           "Name": "label",
@@ -1543,7 +1749,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-yC9jFiDSzMMJORDxrvYg48Dmh/qv/phvTjhwGDRqfbg="
+          "Value": "sha256-qp5RWhmgecHnnc1qg/TDJ4Nvl2BeKgSq21Lg/D+7QMY="
         }
       ]
     },
@@ -1558,7 +1764,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4405"
+          "Value": "6784"
         },
         {
           "Name": "Content-Type",
@@ -1566,11 +1772,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"yC9jFiDSzMMJORDxrvYg48Dmh/qv/phvTjhwGDRqfbg=\""
+          "Value": "\"qp5RWhmgecHnnc1qg/TDJ4Nvl2BeKgSq21Lg/D+7QMY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 09 Feb 2025 18:03:37 GMT"
+          "Value": "Tue, 11 Feb 2025 17:55:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1580,7 +1786,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-yC9jFiDSzMMJORDxrvYg48Dmh/qv/phvTjhwGDRqfbg="
+          "Value": "sha256-qp5RWhmgecHnnc1qg/TDJ4Nvl2BeKgSq21Lg/D+7QMY="
         }
       ]
     },

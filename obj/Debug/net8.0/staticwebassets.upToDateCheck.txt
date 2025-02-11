@@ -1,7 +1,9 @@
 wwwroot\attachment\(SOL volA) Symbols for Object Lessons Foundation Edtion Volume A.pdf
+wwwroot\favicon.ico
 wwwroot\thumbnail\wallpapersden.com_serene-nature-hd-pixel-art-sunset_2560x1435.jpg
 wwwroot\web\css\homeStyle.css
 wwwroot\web\css\main.css
+wwwroot\web\css\searchStyle.css
 wwwroot\web\html\aboutapp\Index.html
 wwwroot\web\html\admin\Index.html
 wwwroot\web\html\adminedit_news\Index.html
