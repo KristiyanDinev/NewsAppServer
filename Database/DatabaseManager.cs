@@ -152,6 +152,24 @@ INSERT OR IGNORE INTO Admins(Username, Password, Added_by) VALUES ('SystemAdmin'
             return list;
         }
 
+        public async Task<AdminModel?> GetAdminByLogin(AdminModel adminModel)
+        {
+            using (var connection = new SqliteConnection(_connectionString))
+            {
+                connection.Open();
+
+                using var command = connection.CreateCommand();
+                command.CommandText = "SELECT * FROM Admins WHERE Password = $password AND Username = $username;";
+                command.Parameters.AddWithValue("$password", adminModel.Password);
+                command.Parameters.AddWithValue("$username", adminModel.Username);
+
+                using var reader = await command.ExecuteReaderAsync();
+                using DataTable dt = new DataTable();
+                dt.Load(reader);
+                return dt.Rows.Count == 0 ? null : ConvertToAdmin(dt.Rows[0]);
+            }
+        }
+
         public async void EditAdmin(AdminModel oldAdmin, AdminModel newAdmin) {
             using var connection = new SqliteConnection(_connectionString);
             connection.Open();

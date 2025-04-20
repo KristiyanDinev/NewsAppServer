@@ -50,7 +50,7 @@ namespace NewsAppServer
 
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession(options => {
-                options.Cookie.Name = ".Resturant.Session";
+                options.Cookie.Name = ".Restaurant.Session";
                 options.Cookie.IsEssential = true;
                 //options.IOTimeout = TimeSpan.FromSeconds(20);
                 options.Cookie.HttpOnly = true;

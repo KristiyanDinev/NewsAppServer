@@ -12,8 +12,8 @@ namespace NewsAppServer.Controllers {
                         AdminModel loginAdmin = new AdminModel();
                         loginAdmin.Password = adminPassword;
                         loginAdmin.Username = adminUsername;
-                        AdminModel? adminModel = await LoginAdmin(db, loginAdmin);
-                        
+                        AdminModel? adminModel = await db.GetAdminByLogin(loginAdmin);
+
                         return adminModel;
 
                     } catch (Exception) {
@@ -35,7 +35,7 @@ namespace NewsAppServer.Controllers {
                         loginAdmin.Password = currentAdminPassword;
                         loginAdmin.Username = currentAdminUsername;
 
-                        AdminModel? adminModel = await LoginAdmin(db, loginAdmin) ?? throw new Exception();
+                        AdminModel? adminModel = await db.GetAdminByLogin(loginAdmin) ?? throw new Exception();
 
                         AdminModel newAdmin = new AdminModel();
                         newAdmin.Username = adminUsername;
@@ -65,7 +65,7 @@ namespace NewsAppServer.Controllers {
                         loginAdmin.Password = currentAdminPassword;
                         loginAdmin.Username = currentAdminUsername;
 
-                        AdminModel? adminModel = await LoginAdmin(db, loginAdmin) ?? throw new Exception();
+                        AdminModel? adminModel = await db.GetAdminByLogin(loginAdmin) ?? throw new Exception();
 
                         AdminModel deleteAdmin = new AdminModel();
                         deleteAdmin.Username = adminUsername;
@@ -93,7 +93,7 @@ namespace NewsAppServer.Controllers {
                         loginAdmin.Password = currentAdminPassword;
                         loginAdmin.Username = currentAdminUsername;
 
-                        AdminModel? adminModel = await LoginAdmin(db, loginAdmin) ?? throw new Exception();
+                        AdminModel? adminModel = await db.GetAdminByLogin(loginAdmin) ?? throw new Exception();
 
                         AdminModel oldAdmin = new AdminModel();
                         oldAdmin.Password = oldAdminPassword;
@@ -112,16 +112,6 @@ namespace NewsAppServer.Controllers {
 
                 }).DisableAntiforgery()
             .RequireRateLimiting("fixed");
-        }
-
-        public static async Task<AdminModel?> LoginAdmin(DatabaseManager db, AdminModel admin) {
-            List<AdminModel> admins = await db.GetAdmins();
-            foreach (AdminModel a in admins) {
-                if (a.Username.Equals(admin.Username) && a.Password.Equals(admin.Password)) {
-                    return a;
-                }
-            }
-            return null;
         }
     }
 }

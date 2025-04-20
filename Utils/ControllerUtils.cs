@@ -75,7 +75,7 @@ namespace NewsAppServer.Utils {
                 loginAdmin.Username = AdminUsername;
                 loginAdmin.Password = AdminPassword;
 
-                AdminModel? admin = await AdminController.LoginAdmin(db, loginAdmin);
+                AdminModel? admin = await db.GetAdminByLogin(loginAdmin);
                 return admin != null;
             } catch (Exception) {
                 return false;

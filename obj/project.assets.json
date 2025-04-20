@@ -772,23 +772,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP-OMEN 17-AN014NU\\.nuget\\packages\\": {},
+    "C:\\Users\\krisk\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\NewsAppServer.csproj",
+      "projectUniqueName": "D:\\Projects\\NewsAppServer\\NewsAppServer.csproj",
       "projectName": "NewsAppServer",
-      "projectPath": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\NewsAppServer.csproj",
-      "packagesPath": "C:\\Users\\HP-OMEN 17-AN014NU\\.nuget\\packages\\",
-      "outputPath": "D:\\ToolBox\\Tools\\Kit\\NewsAppServer\\obj\\",
+      "projectPath": "D:\\Projects\\NewsAppServer\\NewsAppServer.csproj",
+      "packagesPath": "C:\\Users\\krisk\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\NewsAppServer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\HP-OMEN 17-AN014NU\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\krisk\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -797,6 +797,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -815,7 +816,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -857,7 +858,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
